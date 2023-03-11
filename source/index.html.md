@@ -114,9 +114,7 @@ axios.get(url, { headers })
   .then((response) => {
     const json = response.data;
   })
-  .catch((error) => {
-    console.error(error);
-  });
+  ;
 ```
 
 > Make sure to replace `xxxxxxxxxx` with your API key.
@@ -199,9 +197,7 @@ axios.get(url, { headers })
   .then((response) => {
     const json = response.data;
   })
-  .catch((error) => {
-    console.error(error);
-  });
+  ;
 ```
 
 > The above code returns JSON structured like this:
@@ -362,8 +358,6 @@ const headers = {
 axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -496,8 +490,6 @@ const headers = {
 axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -629,8 +621,6 @@ const headers = {
 axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -1119,8 +1109,6 @@ const headers = {
 axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -1587,8 +1575,6 @@ const headers = {
 axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -2021,8 +2007,6 @@ const headers = {
 axios.get(url, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -2139,8 +2123,6 @@ const headers = {
 axios.post(url, params, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 
@@ -2234,8 +2216,6 @@ const headers = {
 axios.delete(url, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  }).catch((error) => {
-    console.error(error);
   });
 ```
 

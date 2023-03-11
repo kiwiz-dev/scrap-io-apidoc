@@ -2046,3 +2046,209 @@ This endpoint allows you to get the list of all your blacklists.
 **HTTP Request**
 
 `GET https://scrap.io/api/v1/blacklist`
+
+## Add
+
+```php
+$url = 'https://scrap.io/api/v1/blacklist/my-list-1';
+
+$params = [
+  'type' => 'domain',
+  'data' => 'sugarfishsushi.com'
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+
+params = {
+  type: 'domain',
+  data: 'sugarfishsushi.com'
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.post(url, headers: headers, body: params)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/blacklist/my-list-1"
+ 
+params = {
+  "type": "domain",
+  "data": "sugarfishsushi.com"
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.post(url, data=params, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl -X POST "https://scrap.io/api/v1/blacklist/my-list-1" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "type=domain" \
+  -d "data=sugarfishsushi.com"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+
+const params = {
+  type: 'domain',
+  data: 'sugarfishsushi.com'
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.post(url, params, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "success"
+}
+```
+
+This endpoint allows you to add data to a blacklist (google_id, place_id, domain or email).
+
+**HTTP Request**
+
+`POST https://scrap.io/api/v1/blacklist/{list-name}`
+
+### Query Parameters
+
+Parameter | Default | Required | Description
+--------- | ------- | ------- | -----------
+type | | yes | Type of data to add to the blacklist (google_id,place_id,domain,email)
+data | | yes | Data to add to the blacklist
+
+## Delete
+
+```php
+$url = 'https://scrap.io/api/v1/blacklist/my-list-1';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.delete(url, headers: headers)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/blacklist/my-list-1"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.delete(url, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl -X DELETE "https://scrap.io/api/v1/blacklist/my-list-1" \
+  -H "Authorization: Bearer xxxxxxxxxx"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.delete(url, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "success"
+}
+```
+
+This endpoint allows you to delete a list.
+
+**HTTP Request**
+
+`DELETE https://scrap.io/api/v1/blacklist/{list-name}`

@@ -113,8 +113,7 @@ const headers = {
 axios.get(url, { headers })
   .then((response) => {
     const json = response.data;
-  })
-  ;
+  });
 ```
 
 > Make sure to replace `xxxxxxxxxx` with your API key.
@@ -196,8 +195,7 @@ const headers = {
 axios.get(url, { headers })
   .then((response) => {
     const json = response.data;
-  })
-  ;
+  });
 ```
 
 > The above code returns JSON structured like this:

@@ -96,11 +96,9 @@ headers = {
 response = requests.post(url, headers=headers)
  
 json = response.json()
-
 ```
 
 ```shell
-# With curl, you can just pass the correct header with each request
 curl "api_endpoint_here" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
@@ -111,13 +109,16 @@ const axios = require('axios')
 const url = 'api_endpoint_here'
 
 const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
+  Authorization: 'Bearer xxxxxxxxxx',
+};
 
-axios.get(url, {}, headers)
+axios.get(url, { headers })
   .then((response) => {
-    json = JSON.parse(response.data)  
+    const json = response.data;
   })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
 > Make sure to replace `xxxxxxxxxx` with your API key.
@@ -180,11 +181,9 @@ headers = {
 response = requests.post(url, headers=headers)
  
 json = response.json()
-
 ```
 
 ```shell
-# With curl, you can just pass the correct header with each request
 curl "https://scrap.io/api/v1/subscription" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
@@ -195,16 +194,19 @@ const axios = require('axios')
 const url = 'https://scrap.io/api/v1/subscription'
 
 const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
+  Authorization: 'Bearer xxxxxxxxxx',
+};
 
-axios.get(url, {}, headers)
+axios.get(url, { headers })
   .then((response) => {
-    json = JSON.parse(response.data)  
+    const json = response.data;
   })
+  .catch((error) => {
+    console.error(error);
+  });
 ```
 
-> The above command returns JSON structured like this:
+> The above code returns JSON structured like this:
 
 ```json
 {
@@ -272,17 +274,22 @@ Get subscription details and remaining credits.
 
 # GMap
 
-## GMap types
+## Types
 
 ```php
-$url = 'https://scrap.io/api/v1/subscription';
+$url = 'https://scrap.io/api/v1/gmap/types';
+
+$params = [
+  'search_term' => 'boulang',
+  'locale' => 'fr'
+];
 
 $headers = [
   'Authorization: Bearer xxxxxxxxxx'
 ];
 
 $curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
@@ -297,12 +304,18 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/subscription'
+url = 'https://scrap.io/api/v1/gmap/types'
+
+params = {
+  search_term: 'boulang',
+  locale: 'fr'
+}
+
 headers = {
   Authorization: 'Bearer xxxxxxxxxx',
 }
 
-response = HTTParty.get(url, headers: headers)
+response = HTTParty.get(url, headers: headers, query: params)
 
 json = JSON.parse(response.body)
 ```
@@ -311,40 +324,52 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/subscription"
+url = "https://scrap.io/api/v1/gmap/types"
+
+params = {
+  "search_term": "boulang",
+  "locale": "fr"
+}
  
 headers = {
   "Authorization": "Bearer xxxxxxxxxx"
 }
 
-response = requests.post(url, headers=headers)
+response = requests.get(url, params=params, headers=headers)
  
 json = response.json()
-
 ```
 
 ```shell
-# With curl, you can just pass the correct header with each request
-curl "https://scrap.io/api/v1/subscription" \
-  -H "Authorization: Bearer xxxxxxxxxx"
+curl "https://scrap.io/api/v1/gmap/types" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "search_term=boulang" \
+  -d "locale=fr"
 ```
 
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/subscription'
+const url = 'https://scrap.io/api/v1/gmap/types'
+
+const params = {
+  search_term: 'boulang',
+  locale: 'fr'
+}
 
 const headers = {
   headers: { Authorization: 'Bearer xxxxxxxxxx' },
 }
 
-axios.get(url, {}, headers)
+axios.get(url, { params: params }, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
-  })
+  }).catch((error) => {
+    console.error(error);
+  });
 ```
 
-> The above command returns JSON structured like this:
+> The above code returns JSON structured like this:
 
 ```json
 [
@@ -367,7 +392,7 @@ Search for a Gmap Type and retrieve its id.
 
 **HTTP Request**
 
-`GET https://scrap.io/api/v1/subscription/gmap/types`
+`GET https://scrap.io/api/v1/gmap/types`
 
 ### Query Parameters
 
@@ -375,107 +400,1537 @@ Parameter | Default | Required | Description
 --------- | ------- | ------- | -----------
 locale | en | no | Search locale
 
-## Get a Specific Kitten
+
+## Locations
+
+```php
+$url = 'https://scrap.io/api/v1/gmap/locations';
+
+$params = [
+  'country_code' => 'us',
+  'type' => 'admin1',
+  'search_term' => 'New',
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
 
 ```ruby
-require 'kittn'
+require 'httparty'
+require 'json'
 
-api = Kittn::APIClient.authorize!('xxxxxxxxxx')
-api.kittens.get(2)
+url = 'https://scrap.io/api/v1/gmap/locations'
+
+params = {
+  country_code: 'us',
+  type: 'admin1',
+  search_term: 'New',
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers, query: params)
+
+json = JSON.parse(response.body)
 ```
 
 ```python
-import kittn
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/gmap/locations"
 
-api = kittn.authorize('xxxxxxxxxx')
-api.kittens.get(2)
+params = {
+  "country_code": "us",
+  "type": "admin1",
+  "search_term": "New",
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, params=params, headers=headers)
+ 
+json = response.json()
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -H "Authorization: Bearer xxxxxxxxxx"
+curl "https://scrap.io/api/v1/gmap/locations" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "country_code=us" \
+  -d "type=admin1" \
+  -d "search_term=New"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const axios = require('axios')
 
-let api = kittn.authorize('xxxxxxxxxx');
-let max = api.kittens.get(2);
+const url = 'https://scrap.io/api/v1/gmap/locations'
+
+const params = {
+  country_code: 'us',
+  type: 'admin1',
+  search_term: 'New',
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, { params: params }, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
 ```
 
-> The above command returns JSON structured like this:
+> The above code returns JSON structured like this:
 
 ```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+[
+    {
+        "id": "NH",
+        "text": "New Hampshire"
+    },
+    {
+        "id": "NJ",
+        "text": "New Jersey"
+    },
+    {
+        "id": "NM",
+        "text": "New Mexico"
+    },
+    {
+        "id": "NY",
+        "text": "New York"
+    }
+]
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+Search for a location entity (admin1, admin2 or city) and retrieve its id.
 
 **HTTP Request**
 
-`GET http://example.com/kittens/<ID>`
+`GET https://scrap.io/api/v1/gmap/locations`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter | Default | Required | Description
+--------- | ------- | ------- | -----------
+country_code | | yes | ISO Country code (FR,US, etc.)
+type | | yes |  Type of entity to search for (admin1, admin2, city)
+admin1_code | | no | Admin 1 code (if you want to restrict to a specific admin 1 division)
+admin2_code | | no | Admin 2 code (if you want to restrict to a specific admin 2 division)
+search_term | | no | Term to search for
 
-## Delete a Specific Kitten
+## Place
+
+```php
+$url = 'https://scrap.io/api/v1/gmap/place';
+
+$params = [
+  'google_id' => '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
 
 ```ruby
-require 'kittn'
+require 'httparty'
+require 'json'
 
-api = Kittn::APIClient.authorize!('xxxxxxxxxx')
-api.kittens.delete(2)
+url = 'https://scrap.io/api/v1/gmap/place'
+
+params = {
+  google_id: '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers, query: params)
+
+json = JSON.parse(response.body)
 ```
 
 ```python
-import kittn
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/gmap/place"
 
-api = kittn.authorize('xxxxxxxxxx')
-api.kittens.delete(2)
+params = {
+  "google_id": "0x3e5f43348a67e24b:0xff45e502e1ceb7e2",
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, params=params, headers=headers)
+ 
+json = response.json()
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2" \
-  -X DELETE \
-  -H "Authorization: Bearer xxxxxxxxxx"
+curl "https://scrap.io/api/v1/gmap/place" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const axios = require('axios')
 
-let api = kittn.authorize('xxxxxxxxxx');
-let max = api.kittens.delete(2);
+const url = 'https://scrap.io/api/v1/gmap/place'
+
+const params = {
+  google_id: '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, { params: params }, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
 ```
 
-> The above command returns JSON structured like this:
+> The above code returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+    "meta": {
+        "found": true,
+        "status": "updating"
+    },
+    "data": {
+        "google_id": "0x3e5f43348a67e24b:0xff45e502e1ceb7e2",
+        "name": "Burj Khalifa",
+        "types": [
+            {
+                "type": "landmark",
+                "deleted": false,
+                "is_main": true
+            },
+            {
+                "type": "tourist-attraction",
+                "deleted": false,
+                "is_main": false
+            }
+        ],
+        "is_closed": false,
+        "descriptions": [
+            "160-story skyscraper & observation deck",
+            "Spired 828-meter skyscraper with a viewing deck, restaurant, hotel and offices and 11-hectare park."
+        ],
+        "website": "http://www.burjkhalifa.ae",
+        "phone": "+971 4 888 8888",
+        "phone_international": "+97148888888",
+        "timezone": "Asia/Dubai",
+        "location_full_address": "Burj Khalifa - 1 Sheikh Mohammed bin Rashid Blvd - Downtown Dubai - Dubai - United Arab Emirates",
+        "location_borough": "Downtown Dubai",
+        "location_street_1": "1 Sheikh Mohammed bin Rashid Blvd",
+        "location_street_2": "1 Sheikh Mohammed bin Rashid Blvd",
+        "location_city": null,
+        "location_postal_code": null,
+        "location_state": "Dubai",
+        "location_latitude": "25.197197",
+        "location_longitude": "55.2743764",
+        "location_country_code": "AE",
+        "location_admin1_code": "03",
+        "location_admin2_code": null,
+        "link": "https://www.google.com/maps/place/Burj+Khalifa/data=!4m2!3m1!1s0x3e5f43348a67e24b:0xff45e502e1ceb7e2!10m1!1e1",
+        "place_id": "ChIJS-JnijRDXz4R4rfO4QLlRf8",
+        "owner_name": "Burj Khalifa",
+        "owner_id": "104965669872746574451",
+        "price_range": null,
+        "reviews_id": "-52384020103776286",
+        "reviews_count": 106266,
+        "reviews_rating": 4.7,
+        "reviews_per_score": {
+            "1": 3303,
+            "2": 1183,
+            "3": 2803,
+            "4": 10414,
+            "5": 88563
+        },
+        "photos_count": "377083+",
+        "photos": {
+            "0": "https://lh5.googleusercontent.com/p/AF1QipOCRDiPjJ0c7WKYsuiOF9WkCiXv8cQNp_YeLEZo",
+            "2": "https://lh5.googleusercontent.com/p/AF1QipPEPJrgd49pNpmeBF3tvZTgut9SZ_q3K5tK1lDz"
+        },
+        "characteristics": {
+            "accessibility": {
+                "wheelchair-accessible-entrance": "has-wheelchair-accessible-entrance"
+            }
+        },
+        "occupancy": {
+            "monday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-as-busy-as-it-gets",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-a-little-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "tuesday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-too-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-as-busy-as-it-gets",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-a-little-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-too-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "wednesday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-too-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-a-little-busy",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-not-too-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "thursday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-too-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-as-busy-as-it-gets",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-a-little-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-too-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "friday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-too-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-a-little-busy",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-a-little-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-too-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "saturday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-too-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-a-little-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-a-little-busy",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-a-little-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-too-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            },
+            "sunday": {
+                "4 AM": "usually-not-busy",
+                "5 AM": "usually-not-busy",
+                "6 AM": "usually-not-busy",
+                "7 AM": "usually-not-busy",
+                "8 AM": "usually-not-too-busy",
+                "9 AM": "usually-not-too-busy",
+                "10 AM": "usually-not-too-busy",
+                "11 AM": "usually-a-little-busy",
+                "12 PM": "usually-a-little-busy",
+                "1 PM": "usually-as-busy-as-it-gets",
+                "2 PM": "usually-as-busy-as-it-gets",
+                "3 PM": "usually-as-busy-as-it-gets",
+                "4 PM": "usually-as-busy-as-it-gets",
+                "5 PM": "usually-as-busy-as-it-gets",
+                "6 PM": "usually-as-busy-as-it-gets",
+                "7 PM": "usually-as-busy-as-it-gets",
+                "8 PM": "usually-as-busy-as-it-gets",
+                "9 PM": "usually-a-little-busy",
+                "10 PM": "usually-not-too-busy",
+                "11 PM": "usually-not-too-busy",
+                "12 AM": "usually-not-busy",
+                "1 AM": "usually-not-busy",
+                "2 AM": "usually-not-busy",
+                "3 AM": "usually-not-busy"
+            }
+        },
+        "is_claimed": true,
+        "working_hours": {
+            "monday": "open-24-hours",
+            "tuesday": "open-24-hours",
+            "wednesday": "open-24-hours",
+            "thursday": "open-24-hours",
+            "friday": "open-24-hours",
+            "saturday": "open-24-hours",
+            "sunday": "open-24-hours"
+        },
+        "status": "pending",
+        "scraped_at": "2022-06-12T12:43:50.000000Z",
+        "website_data": {
+            "url": "http://www.burjkhalifa.ae",
+            "domain": "burjkhalifa.ae",
+            "is_responding": true,
+            "is_empty": null,
+            "title": "Buy Online & Book Now to Visit the Burj Khalifa | Burj Khalifa",
+            "meta_keywords": null,
+            "meta_description": "Burj Khalifa is the tallest tower in the world and it’s one of the top attractions to visit in Dubai. Visit our website and book your Burj Khalifa tickets!",
+            "meta_og_title": "Buy Online & Book Now to Visit the Burj Khalifa | Burj Khalifa",
+            "meta_og_image": null,
+            "meta_generator": null,
+            "lang": "/e",
+            "contact_pages": [
+                "http://www.burjkhalifa.ae/en/contact-us",
+                "http://www.burjkhalifa.ae/ar/contact-us"
+            ],
+            "facebook": [
+                "https://facebook.com/burjkhalifa"
+            ],
+            "youtube": [
+                "https://youtube.com/channel/UCKvfrKJ2qRF4Aw487-dCzUw"
+            ],
+            "twitter": [
+                "https://twitter.com/burjkhalifa"
+            ],
+            "instagram": [
+                "https://instagram.com/burjkhalifa"
+            ],
+            "linkedin": null,
+            "technologies": [
+                "Google Tag Manager"
+            ],
+            "ad_pixels": [
+                "Google Tag Manager"
+            ],
+            "emails": [
+                {
+                    "email": "reception@theburjclub.com",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/the-burj-club/gym/",
+                        "https://www.burjkhalifa.ae/en/the-burj-club/spa/",
+                        "https://www.burjkhalifa.ae/en/the-burj-club/rooftop/"
+                    ]
+                },
+                {
+                    "email": "customer.privacy@emaar.ae",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/privacy-policy/"
+                    ]
+                },
+                {
+                    "email": "artanddesign@burjkhalifa.ae",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/open-call/"
+                    ]
+                },
+                {
+                    "email": "schools@emaar.ae",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/schools/"
+                    ]
+                },
+                {
+                    "email": "info@atthetop.ae",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/events/"
+                    ]
+                }
+            ],
+            "phones": [
+                {
+                    "phone": "+97148883900",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/the-burj-club/gym/",
+                        "https://www.burjkhalifa.ae/en/the-burj-club/spa/",
+                        "https://www.burjkhalifa.ae/en/the-burj-club/rooftop/"
+                    ]
+                },
+                {
+                    "phone": "+971480036227",
+                    "sources": [
+                        "https://www.burjkhalifa.ae/en/privacy-policy/"
+                    ]
+                }
+            ],
+            "status": "completed",
+            "scraped_at": "2022-06-12T12:48:07.000000Z"
+        }
+    }
 }
 ```
 
-This endpoint deletes a specific kitten.
+Get data for one google place.
+
+<aside class="notice">
+  Status can be either:
+  <ul>
+    <li><strong>updating:</strong> When the result is being updated.</li>
+    <li><strong>completed:</strong> When the result is up-to-date.</li>
+    <li><strong>incomplete:</strong> When you don't have enough credits to display the result.</li>
+  </ul>
+  If you want to get up-to-date data, you can make a first request to launch the update, and keep polling the URL (for example, every 10 seconds for 1 minute) until the status is completed.
+</aside>
 
 **HTTP Request**
 
-`DELETE http://example.com/kittens/<ID>`
+`GET https://scrap.io/api/v1/gmap/place`
 
-### URL Parameters
+### Query Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Parameter | Default | Required | Description
+--------- | ------- | ------- | -----------
+google_id | | no | Google id (ex: 0xabc:0xdef)
+place_id | | no |  Place id (ex: ChIabcDeFGhIJkLMnoPqR)
+skip_data | 0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit.
 
+<aside class="warning">
+  You have to provide either a google_id or a place_id. And only one at a time.
+</aside>
+
+## Search
+
+```php
+$url = 'https://scrap.io/api/v1/gmap/search';
+
+$params = [
+  'country_code' => 'us',
+  'admin1_code' => 'NY',
+  'city' => 'New York',
+  'type' => 'restaurant'
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/gmap/search'
+
+params = {
+  country_code: 'us',
+  admin1_code: 'NY',
+  city: 'New York',
+  type: 'restaurant'
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers, query: params)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/gmap/search"
+
+params = {
+  "country_code": "us",
+  "admin1_code": "NY",
+  "city": "New York",
+  "type": "restaurant"
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, params=params, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl "https://scrap.io/api/v1/gmap/search" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "country_code=us" \
+  -d "admin1_code=NY" \
+  -d "city=New York" \
+  -d "type=restaurant"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/gmap/search'
+
+const params = {
+  country_code: 'us',
+  admin1_code: 'NY',
+  city: 'New York',
+  type: 'restaurant'
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, { params: params }, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "meta": {
+        "count": "4092",
+        "status": "completed",
+        "next_cursor": "eyJnbWFwX3BsYWNlX2lkIjo0NTE0NjQsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+        "previous_cursor": null,
+        "per_page": 10,
+        "has_more_pages": true
+    },
+    "data": [
+        {
+            "google_id": "0x89c259a17dedfa2b:0x6f033e0043942344",
+            "name": "SUGARFISH by sushi nozawa",
+            "types": [
+                {
+                    "type": "restaurant",
+                    "deleted": false,
+                    "is_main": true
+                },
+                {
+                    "type": "sushi-restaurant",
+                    "deleted": false,
+                    "is_main": false
+                }
+            ],
+            "is_closed": false,
+            "descriptions": [
+                "SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four \"Trust Me®\" options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter.",
+                "Acclaimed sushi & sake destination",
+                "Celebrated local sushi chain serving traditional rolls & sake in a chic, intimate space."
+            ],
+            "website": "https://sugarfishsushi.com/locations/flatiron",
+            "phone": "+1 347-705-8100",
+            "phone_international": "+13477058100",
+            "timezone": "America/New_York",
+            "location_full_address": "SUGARFISH by sushi nozawa, 33 E 20th St, New York, NY 10003, United States",
+            "location_borough": "Manhattan",
+            "location_street_1": "33 E 20th St",
+            "location_street_2": "33 E 20th St",
+            "location_city": "New York",
+            "location_postal_code": "10003",
+            "location_state": "New York",
+            "location_latitude": "40.739001",
+            "location_longitude": "-73.9888323",
+            "location_country_code": "US",
+            "location_admin1_code": "NY",
+            "location_admin2_code": "061",
+            "link": "https://www.google.com/maps/place/SUGARFISH+by+sushi+nozawa/data=!4m2!3m1!1s0x89c259a17dedfa2b:0x6f033e0043942344!10m1!1e1",
+            "place_id": "ChIJK_rtfaFZwokRRCOUQwA-A28",
+            "owner_name": "SUGARFISH by sushi nozawa",
+            "owner_id": "100376796693654910584",
+            "price_range": "$$$",
+            "reviews_id": "7999305533994836804",
+            "reviews_count": 1401,
+            "reviews_rating": 4.5,
+            "reviews_per_score": {
+                "1": 78,
+                "2": 28,
+                "3": 67,
+                "4": 194,
+                "5": 1034
+            },
+            "photos_count": "1179+",
+            "photos": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "2": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "characteristics": {
+                "service-options": {
+                    "delivery": "offers-delivery",
+                    "takeout": "offers-takeout",
+                    "dine-in": "serves-dine-in"
+                },
+                "health-and-safety": {
+                    "staff-required-to-disinfect-surfaces-between-visits": "staff-required-to-disinfect-surfaces-between-visits"
+                },
+                "highlights": {
+                    "great-tea-selection": "has-great-tea-selection"
+                },
+                "popular-for": {
+                    "lunch": "popular-for-lunch",
+                    "dinner": "popular-for-dinner",
+                    "solo-dining": "good-for-solo-dining"
+                },
+                "accessibility": {
+                    "wheelchair-accessible-entrance": "has-wheelchair-accessible-entrance",
+                    "wheelchair-accessible-parking-lot": "no-wheelchair-accessible-parking-lot"
+                },
+                "offerings": {
+                    "alcohol": "serves-alcohol",
+                    "beer": "serves-beer",
+                    "healthy-options": "serves-healthy-options",
+                    "small-plates": "serves-small-plates",
+                    "wine": "serves-wine"
+                },
+                "dining-options": {
+                    "lunch": "serves-lunch",
+                    "dinner": "serves-dinner",
+                    "seating": "has-seating"
+                },
+                "atmosphere": {
+                    "casual": "casual",
+                    "cozy": "cozy",
+                    "upscale": "upscale"
+                },
+                "crowd": {
+                    "tourists": "popular-with-tourists"
+                },
+                "planning": {
+                    "usually-a-wait": "usually-has-a-wait"
+                },
+                "payments": {
+                    "debit-cards": "accepts-debit-cards"
+                }
+            },
+            "occupancy": {
+                "monday": null,
+                "tuesday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "wednesday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "thursday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-a-little-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-a-little-busy",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "friday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-a-little-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-as-busy-as-it-gets",
+                    "9 p.m.": "usually-as-busy-as-it-gets",
+                    "10 p.m.": "usually-a-little-busy",
+                    "11 p.m.": "usually-not-too-busy"
+                },
+                "saturday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-a-little-busy",
+                    "11 p.m.": "usually-not-too-busy"
+                },
+                "sunday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "closed",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-a-little-busy",
+                    "7 p.m.": "usually-a-little-busy",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-not-too-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                }
+            },
+            "is_claimed": true,
+            "working_hours": {
+                "monday": "closed",
+                "tuesday": "1130am-11pm",
+                "wednesday": "1130am-11pm",
+                "thursday": "1130am-11pm",
+                "friday": "1130am-12am",
+                "saturday": "1130am-12am",
+                "sunday": "12-11pm"
+            },
+            "status": "completed",
+            "scraped_at": "2022-07-04T10:24:57.000000Z",
+            "website_data": {
+                "url": "https://sugarfishsushi.com/locations/flatiron",
+                "domain": "sugarfishsushi.com",
+                "is_responding": true,
+                "is_empty": null,
+                "title": "Flatiron – SUGARFISH",
+                "meta_keywords": null,
+                "meta_description": null,
+                "meta_og_title": null,
+                "meta_og_image": null,
+                "meta_generator": "WordPress 5.8.4",
+                "lang": "en",
+                "contact_pages": [
+                    "https://sugarfishsushi.com/contact-us"
+                ],
+                "facebook": [
+                    "https://facebook.com/sugarfishsushi"
+                ],
+                "youtube": null,
+                "twitter": [
+                    "https://twitter.com/sugarfish"
+                ],
+                "instagram": [
+                    "https://instagram.com/sugarfishbynozawa"
+                ],
+                "linkedin": null,
+                "technologies": [
+                    "Apache",
+                    "Google Analytics",
+                    "WordPress",
+                    "PHP",
+                    "MySQL"
+                ],
+                "ad_pixels": [
+                    "Google Tag Manager"
+                ],
+                "emails": [
+                    {
+                        "email": "flatiron@sugarfishsushi.com",
+                        "sources": [
+                            "https://sugarfishsushi.com/locations/flatiron"
+                        ]
+                    },
+                    {
+                        "email": "eat@sugarfishsushi.com",
+                        "sources": [
+                            "https://sugarfishsushi.com/locations/flatiron"
+                        ]
+                    }
+                ],
+                "phones": null,
+                "status": "completed",
+                "scraped_at": "2022-07-04T10:24:53.000000Z"
+            }
+        },
+        ...
+    ]
+}
+```
+
+Search Gmap Places by type and location.
+
+<aside class="notice">
+    If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
+</aside>
+
+<aside class="notice">
+  Status can be either:
+  <ul>
+    <li><strong>updating:</strong> When the result is being updated.</li>
+    <li><strong>completed:</strong> When the result is up-to-date.</li>
+    <li><strong>incomplete:</strong> When you don't have enough credits to display the result.</li>
+  </ul>
+  If you want to get up-to-date data, you can make a first request to launch the update, and keep polling the URL (for example, every 10 seconds for 1 minute) until the status is completed.
+</aside>
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/gmap/search`
+
+### Query Parameters
+
+| Parameter | Default | Required | Description |
+| --------- | ------- | -------- | ----------- |
+| per_page |  | yes | Number of results per page (1, 10, 25 or 50) |
+| skip_data |  | no | Boolean (false or true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+| cursor |  | no | Cursor pagination |
+| type |  | yes | ID of Gmap type to search for |
+| country_code |  | yes | ISO Country code (FR, US, etc.) |
+| admin1_code |  | no | ID of admin1 location to search for |
+| admin2_code |  | no | ID of admin2 location to search for |
+| city |  | no | ID of city to search for |
+| postal_code |  | no | Postal code to search for |
+| gmap_is_closed |  | no | Boolean (false / true) |
+| gmap_has_website |  | no | Boolean (false / true) |
+| gmap_has_phone |  | no | Boolean (false / true) |
+| gmap_price_range |  | no | Price range, e.g. '$', '$$', '$$$' or '$$$$' |
+| gmap_reviews_count_lte |  | no | Gmap reviews count less or equal than |
+| gmap_reviews_count_lt |  | no | Gmap reviews count less than |
+| gmap_reviews_count_gte |  | no | Gmap reviews count greater or equals than |
+| gmap_reviews_count_gt |  | no | Gmap reviews count greater than |
+| gmap_reviews_rating_lte |  | no | Gmap reviews rating less or equal than |
+| gmap_reviews_rating_lt |  | no | Gmap reviews rating less than |
+| gmap_reviews_rating_gte |  | no | Gmap reviews rating greater or equals than |
+| gmap_reviews_rating_gt |  | no | Gmap reviews rating greater than |
+| gmap_photos_count_lte |  | no | Gmap photos count less or equal than |
+| gmap_photos_count_lt |  | no | Gmap photos count less than |
+| gmap_photos_count_gte |  | no | Gmap photos count greater or equals than |
+| gmap_photos_count_gt |  | no | Gmap photos count greater than |
+| gmap_is_claimed |  | no | Boolean (false / true) |
+| website_has_title |  | no | Boolean (false / true) |
+| website_has_meta_keywords |  | no | Boolean (false / true) |
+| website_has_meta_description |  | no | Boolean (false / true) |
+| website_has_contact_pages |  | no | Boolean (false / true) |
+| website_has_emails |  | no | Boolean (false / true) |
+| website_has_phones |  | no | Boolean (false / true) |
+| website_has_facebook |  | no | Boolean (false / true) |
+| website_has_youtube |  | no | Boolean (false / true) |
+| website_has_twitter |  | no | Boolean (false / true) |
+| website_has_instagram |  | no | Boolean (false / true) |
+| website_has_linkedin |  | no | Boolean (false / true) |
+| website_has_ad_pixels |  | no | Boolean (false / true) |
+
+## Enrich
+
+```php
+$url = 'https://scrap.io/api/v1/gmap/enrich';
+
+$params = [
+  'domain' => 'sugarfishsushi.com'
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/gmap/enrich'
+
+params = {
+  domain: 'sugarfishsushi.com'
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers, query: params)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/gmap/enrich"
+
+params = {
+  "domain": "sugarfishsushi.com"
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, params=params, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl "https://scrap.io/api/v1/gmap/enrich" \
+  -H "Authorization: Bearer xxxxxxxxxx" \
+  -d "domain=sugarfishsushi.com"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/gmap/enrich'
+
+const params = {
+  domain: 'sugarfishsushi.com'
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, { params: params }, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "meta": {
+        "count": "16",
+        "status": "completed",
+        "next_cursor": "eyJnbWFwX3BsYWNlX2lkIjo0NTE0NjQsIl9wb2ludHNUb05leHRJdGVtcyI6dHJ1ZX0",
+        "previous_cursor": null,
+        "per_page": 10,
+        "has_more_pages": true
+    },
+    "data": [
+        {
+            "google_id": "0x89c259a17dedfa2b:0x6f033e0043942344",
+            "name": "SUGARFISH by sushi nozawa",
+            "types": [
+                {
+                    "type": "restaurant",
+                    "deleted": false,
+                    "is_main": true
+                },
+                {
+                    "type": "sushi-restaurant",
+                    "deleted": false,
+                    "is_main": false
+                }
+            ],
+            "is_closed": false,
+            "descriptions": [
+                "SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four \"Trust Me®\" options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter.",
+                "Acclaimed sushi & sake destination",
+                "Celebrated local sushi chain serving traditional rolls & sake in a chic, intimate space."
+            ],
+            "website": "https://sugarfishsushi.com/locations/flatiron",
+            "phone": "+1 347-705-8100",
+            "phone_international": "+13477058100",
+            "timezone": "America/New_York",
+            "location_full_address": "SUGARFISH by sushi nozawa, 33 E 20th St, New York, NY 10003, United States",
+            "location_borough": "Manhattan",
+            "location_street_1": "33 E 20th St",
+            "location_street_2": "33 E 20th St",
+            "location_city": "New York",
+            "location_postal_code": "10003",
+            "location_state": "New York",
+            "location_latitude": "40.739001",
+            "location_longitude": "-73.9888323",
+            "location_country_code": "US",
+            "location_admin1_code": "NY",
+            "location_admin2_code": "061",
+            "link": "https://www.google.com/maps/place/SUGARFISH+by+sushi+nozawa/data=!4m2!3m1!1s0x89c259a17dedfa2b:0x6f033e0043942344!10m1!1e1",
+            "place_id": "ChIJK_rtfaFZwokRRCOUQwA-A28",
+            "owner_name": "SUGARFISH by sushi nozawa",
+            "owner_id": "100376796693654910584",
+            "price_range": "$$$",
+            "reviews_id": "7999305533994836804",
+            "reviews_count": 1401,
+            "reviews_rating": 4.5,
+            "reviews_per_score": {
+                "1": 78,
+                "2": 28,
+                "3": 67,
+                "4": 194,
+                "5": 1034
+            },
+            "photos_count": "1179+",
+            "photos": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "2": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "characteristics": {
+                "service-options": {
+                    "delivery": "offers-delivery",
+                    "takeout": "offers-takeout",
+                    "dine-in": "serves-dine-in"
+                },
+                "health-and-safety": {
+                    "staff-required-to-disinfect-surfaces-between-visits": "staff-required-to-disinfect-surfaces-between-visits"
+                },
+                "highlights": {
+                    "great-tea-selection": "has-great-tea-selection"
+                },
+                "popular-for": {
+                    "lunch": "popular-for-lunch",
+                    "dinner": "popular-for-dinner",
+                    "solo-dining": "good-for-solo-dining"
+                },
+                "accessibility": {
+                    "wheelchair-accessible-entrance": "has-wheelchair-accessible-entrance",
+                    "wheelchair-accessible-parking-lot": "no-wheelchair-accessible-parking-lot"
+                },
+                "offerings": {
+                    "alcohol": "serves-alcohol",
+                    "beer": "serves-beer",
+                    "healthy-options": "serves-healthy-options",
+                    "small-plates": "serves-small-plates",
+                    "wine": "serves-wine"
+                },
+                "dining-options": {
+                    "lunch": "serves-lunch",
+                    "dinner": "serves-dinner",
+                    "seating": "has-seating"
+                },
+                "atmosphere": {
+                    "casual": "casual",
+                    "cozy": "cozy",
+                    "upscale": "upscale"
+                },
+                "crowd": {
+                    "tourists": "popular-with-tourists"
+                },
+                "planning": {
+                    "usually-a-wait": "usually-has-a-wait"
+                },
+                "payments": {
+                    "debit-cards": "accepts-debit-cards"
+                }
+            },
+            "occupancy": {
+                "monday": null,
+                "tuesday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "wednesday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "thursday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-a-little-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-a-little-busy",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                },
+                "friday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-a-little-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-as-busy-as-it-gets",
+                    "9 p.m.": "usually-as-busy-as-it-gets",
+                    "10 p.m.": "usually-a-little-busy",
+                    "11 p.m.": "usually-not-too-busy"
+                },
+                "saturday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "usually-not-too-busy",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-a-little-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-as-busy-as-it-gets",
+                    "7 p.m.": "usually-as-busy-as-it-gets",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-a-little-busy",
+                    "10 p.m.": "usually-a-little-busy",
+                    "11 p.m.": "usually-not-too-busy"
+                },
+                "sunday": {
+                    "6 a.m.": "closed",
+                    "7 a.m.": "closed",
+                    "8 a.m.": "closed",
+                    "9 a.m.": "closed",
+                    "10 a.m.": "closed",
+                    "11 a.m.": "closed",
+                    "12 p.m.": "usually-not-too-busy",
+                    "1 p.m.": "usually-not-too-busy",
+                    "2 p.m.": "usually-a-little-busy",
+                    "3 p.m.": "usually-a-little-busy",
+                    "4 p.m.": "usually-a-little-busy",
+                    "5 p.m.": "usually-a-little-busy",
+                    "6 p.m.": "usually-a-little-busy",
+                    "7 p.m.": "usually-a-little-busy",
+                    "8 p.m.": "usually-a-little-busy",
+                    "9 p.m.": "usually-not-too-busy",
+                    "10 p.m.": "usually-not-too-busy",
+                    "11 p.m.": "closed"
+                }
+            },
+            "is_claimed": true,
+            "working_hours": {
+                "monday": "closed",
+                "tuesday": "1130am-11pm",
+                "wednesday": "1130am-11pm",
+                "thursday": "1130am-11pm",
+                "friday": "1130am-12am",
+                "saturday": "1130am-12am",
+                "sunday": "12-11pm"
+            },
+            "status": "completed",
+            "scraped_at": "2022-07-04T10:24:57.000000Z",
+            "website_data": {
+                "url": "https://sugarfishsushi.com/locations/flatiron",
+                "domain": "sugarfishsushi.com",
+                "is_responding": true,
+                "is_empty": null,
+                "title": "Flatiron – SUGARFISH",
+                "meta_keywords": null,
+                "meta_description": null,
+                "meta_og_title": null,
+                "meta_og_image": null,
+                "meta_generator": "WordPress 5.8.4",
+                "lang": "en",
+                "contact_pages": [
+                    "https://sugarfishsushi.com/contact-us"
+                ],
+                "facebook": [
+                    "https://facebook.com/sugarfishsushi"
+                ],
+                "youtube": null,
+                "twitter": [
+                    "https://twitter.com/sugarfish"
+                ],
+                "instagram": [
+                    "https://instagram.com/sugarfishbynozawa"
+                ],
+                "linkedin": null,
+                "technologies": [
+                    "Apache",
+                    "Google Analytics",
+                    "WordPress",
+                    "PHP",
+                    "MySQL"
+                ],
+                "ad_pixels": [
+                    "Google Tag Manager"
+                ],
+                "emails": [
+                    {
+                        "email": "flatiron@sugarfishsushi.com",
+                        "sources": [
+                            "https://sugarfishsushi.com/locations/flatiron"
+                        ]
+                    },
+                    {
+                        "email": "eat@sugarfishsushi.com",
+                        "sources": [
+                            "https://sugarfishsushi.com/locations/flatiron"
+                        ]
+                    }
+                ],
+                "phones": null,
+                "status": "completed",
+                "scraped_at": "2022-07-04T10:24:53.000000Z"
+            }
+        },
+        ...
+    ]
+}
+```
+
+Enrich domain, URL, email or phone with GMap Place data.
+
+<aside class="notice">
+    If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
+</aside>
+
+<aside class="notice">
+  Status can be either:
+  <ul>
+    <li><strong>updating:</strong> When the result is being updated.</li>
+    <li><strong>completed:</strong> When the result is up-to-date.</li>
+    <li><strong>incomplete:</strong> When you don't have enough credits to display the result.</li>
+  </ul>
+  If you want to get up-to-date data, you can make a first request to launch the update, and keep polling the URL (for example, every 10 seconds for 1 minute) until the status is completed.
+</aside>
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/gmap/enrich`
+
+### Query Parameters
+
+| Parameter | Required | Description |
+| --- | --- | --- |
+| per_page | No | Number of results per page (1, 10, 25 or 50) |
+| skip_data | No | Boolean (false or true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+| cursor | No | Cursor pagination |
+| url | No | Exact URL mentioned on Google Maps |
+| domain | No | Domain mentioned in Google Maps |
+| email | No | Email found on the website of Google Place |
+| phone | No | Phone in international format associated with the Google Place (e.g.: 33139732419) |
+
+<aside class="warning">
+  You have to provide either an url, a domain, an email or a phone. And only one at a time.
+</aside>

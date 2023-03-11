@@ -36,15 +36,13 @@ The API is organized around REST. All requests should be made over SSL. All requ
 
 We also have some specific language examples to make integration easier. You can switch the programming language of the examples with the tabs in the top right.
 
-**Base URL**
-
 The base url for all endpoints is:
 
-`GET https://scrap.io/api/v1/`
+`https://scrap.io/api/v1/`
 
-**Rate limit**
-
-The rate limit is 300 requests per second.
+<aside class="warning">
+  The rate limit is 300 requests per second.
+</aside>
 
 # Authentication
 
@@ -388,7 +386,9 @@ axios.get(url, { params: params }, headers)
 ]
 ```
 
-Search for a Gmap Type and retrieve its id.
+This endpoint allows you to search a Gmap type and get its id. Then you can use it in Gmap search endpoint.
+
+You can search in any language (en and fr for now).
 
 **HTTP Request**
 
@@ -524,7 +524,11 @@ axios.get(url, { params: params }, headers)
 ]
 ```
 
-Search for a location entity (admin1, admin2 or city) and retrieve its id.
+This endpoint allows you to search for locations (admin1, admin2 or city) and retrieve its ids.
+
+You can list all the admin1 areas in one country, all the admin2 areas in one admin1 area, search a city inside a country, etc.
+
+Then, you can use the ID in the gmap search endpoint.
 
 **HTTP Request**
 
@@ -987,7 +991,7 @@ axios.get(url, { params: params }, headers)
 }
 ```
 
-Get data for one google place.
+This endpoint allows you to get all data related to a google place (by google_id or place_id).
 
 <aside class="notice">
   Status can be either:
@@ -1433,7 +1437,9 @@ axios.get(url, { params: params }, headers)
 }
 ```
 
-Search Gmap Places by type and location.
+With this endpoint, you can search all the google places of a specific category in a specific location, and all their details.
+
+We also provide powerful filters that allow you to fine-tune the search according to your needs, and get exactly the results you want. 
 
 <aside class="notice">
     If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
@@ -1899,7 +1905,9 @@ axios.get(url, { params: params }, headers)
 }
 ```
 
-Enrich domain, URL, email or phone with GMap Place data.
+Our API includes a powerful feature that allows you to enrich a domain, URL, email, or phone number with data from Google Maps.
+
+With this endpoint, you can retrieve the google places related to the data provided (domain, url, email, phone), and all their details. 
 
 <aside class="notice">
     If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
@@ -1934,3 +1942,107 @@ Enrich domain, URL, email or phone with GMap Place data.
 <aside class="warning">
   You have to provide either an url, a domain, an email or a phone. And only one at a time.
 </aside>
+
+# Blacklist
+
+Our API includes a feature that allows you to add items to a blacklist by **email**, **domain**, **Google ID**, or **Place ID**. This ensures that these items will not be displayed in future requests and will not be counted towards your credits. 
+
+This feature is particularly useful to avoid re-scraping the same results, and counting your credits again for the same data.
+
+<aside class="warning">
+  You can blacklist up to 1 million items.
+</aside>
+
+## List
+
+```php
+$url = 'https://scrap.io/api/v1/blacklist';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/blacklist'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/blacklist"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl "https://scrap.io/api/v1/blacklist" \
+  -H "Authorization: Bearer xxxxxxxxxx"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/blacklist'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  }).catch((error) => {
+    console.error(error);
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+[
+    {
+        "list": "my-list-1",
+        "nb": 2
+    },
+    {
+        "list": "my-list-2",
+        "nb": 1
+    }
+]
+```
+
+This endpoint allows you to get the list of all your blacklists.
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/blacklist`

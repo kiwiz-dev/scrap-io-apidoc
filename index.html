@@ -346,6 +346,14 @@
               </ul>
           </li>
           <li>
+            <a href="#blacklist" class="toc-h1 toc-link" data-title="Blacklist">Blacklist</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list" class="toc-h2 toc-link" data-title="List">List</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -360,15 +368,13 @@
 
 <p>We also have some specific language examples to make integration easier. You can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p><strong>Base URL</strong></p>
-
 <p>The base url for all endpoints is:</p>
 
-<p><code>GET https://scrap.io/api/v1/</code></p>
+<p><code>https://scrap.io/api/v1/</code></p>
 
-<p><strong>Rate limit</strong></p>
-
-<p>The rate limit is 300 requests per second.</p>
+<aside class="warning">
+  The rate limit is 300 requests per second.
+</aside>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -661,7 +667,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>Search for a Gmap Type and retrieve its id.</p>
+<p>This endpoint allows you to search a Gmap type and get its id. Then you can use it in Gmap search endpoint.</p>
+
+<p>You can search in any language (en and fr for now).</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -788,7 +796,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
-<p>Search for a location entity (admin1, admin2 or city) and retrieve its id.</p>
+<p>This endpoint allows you to search for locations (admin1, admin2 or city) and retrieve its ids.</p>
+
+<p>You can list all the admin1 areas in one country, all the admin2 areas in one admin1 area, search a city inside a country, etc.</p>
+
+<p>Then, you can use the ID in the gmap search endpoint.</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -1263,7 +1275,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Get data for one google place.</p>
+<p>This endpoint allows you to get all data related to a google place (by google_id or place_id).</p>
 
 <aside class="notice">
   Status can be either:
@@ -1711,7 +1723,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Search Gmap Places by type and location.</p>
+<p>With this endpoint, you can search all the google places of a specific category in a specific location, and all their details.</p>
+
+<p>We also provide powerful filters that allow you to fine-tune the search according to your needs, and get exactly the results you want. </p>
 
 <aside class="notice">
     If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
@@ -2354,7 +2368,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Enrich domain, URL, email or phone with GMap Place data.</p>
+<p>Our API includes a powerful feature that allows you to enrich a domain, URL, email, or phone number with data from Google Maps.</p>
+
+<p>With this endpoint, you can retrieve the google places related to the data provided (domain, url, email, phone), and all their details. </p>
 
 <aside class="notice">
     If the there are multiple pages, you can pass the cursor parameter to access next or previous page.
@@ -2421,6 +2437,90 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You have to provide either an url, a domain, an email or a phone. And only one at a time.
 </aside>
+<h1 id='blacklist'>Blacklist</h1>
+<p>Our API includes a feature that allows you to add items to a blacklist by <strong>email</strong>, <strong>domain</strong>, <strong>Google ID</strong>, or <strong>Place ID</strong>. This ensures that these items will not be displayed in future requests and will not be counted towards your credits. </p>
+
+<p>This feature is particularly useful to avoid re-scraping the same results, and counting your credits again for the same data.</p>
+
+<aside class="warning">
+  You can blacklist up to 1 million items.
+</aside>
+<h2 id='list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span><span class="p">;</span>
+
+<span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+<span class="p">];</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+<span class="nb">require</span> <span class="s1">'json'</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklist"</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+<span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklist"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklist</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
+  <span class="p">}).</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The above code returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-list-1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nb"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-list-2"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nb"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you to get the list of all your blacklists.</p>
+
+<p><strong>HTTP Request</strong></p>
+
+<p><code>GET https://scrap.io/api/v1/blacklist</code></p>
 <h1 id='errors'>Errors</h1>
 <p>The Scrap.io API uses the following error codes:</p>
 

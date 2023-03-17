@@ -636,12 +636,10 @@ axios.get(url, { params: params }, headers)
         "types": [
             {
                 "type": "landmark",
-                "deleted": false,
                 "is_main": true
             },
             {
                 "type": "tourist-attraction",
-                "deleted": false,
                 "is_main": false
             }
         ],
@@ -1129,12 +1127,10 @@ axios.get(url, { params: params }, headers)
             "types": [
                 {
                     "type": "restaurant",
-                    "deleted": false,
                     "is_main": true
                 },
                 {
                     "type": "sushi-restaurant",
-                    "deleted": false,
                     "is_main": false
                 }
             ],
@@ -1595,12 +1591,10 @@ axios.get(url, { params: params }, headers)
             "types": [
                 {
                     "type": "restaurant",
-                    "deleted": false,
                     "is_main": true
                 },
                 {
                     "type": "sushi-restaurant",
-                    "deleted": false,
                     "is_main": false
                 }
             ],

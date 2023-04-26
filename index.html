@@ -1755,7 +1755,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>skip_data</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false or true) to indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
+<td>Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
 </tr>
 <tr>
 <td>cursor</td>
@@ -1800,22 +1800,28 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Postal code to search for</td>
 </tr>
 <tr>
+<td>gmap_is_main_site</td>
+<td></td>
+<td>no</td>
+<td>Boolean (0 = false / 1 = true)</td>
+</tr>
+<tr>
 <td>gmap_is_closed</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>gmap_has_website</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>gmap_has_phone</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>gmap_price_range</td>
@@ -1899,79 +1905,79 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>gmap_is_claimed</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_title</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_meta_keywords</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_meta_description</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_contact_pages</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_emails</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_phones</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_facebook</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_youtube</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_twitter</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_instagram</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_linkedin</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 <tr>
 <td>website_has_ad_pixels</td>
 <td></td>
 <td>no</td>
-<td>Boolean (false / true)</td>
+<td>Boolean (0 = false / 1 = true)</td>
 </tr>
 </tbody></table>
 <h2 id='enrich'>Enrich</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span><span class="p">;</span>
@@ -2395,7 +2401,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <tr>
 <td>skip_data</td>
 <td>No</td>
-<td>Boolean (false or true) to indicate whether to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
+<td>Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
 </tr>
 <tr>
 <td>cursor</td>

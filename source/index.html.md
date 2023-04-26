@@ -1450,7 +1450,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | Parameter | Default | Required | Description |
 | --------- | ------- | -------- | ----------- |
 | per_page |  | yes | Number of results per page (1, 10, 25 or 50) |
-| skip_data |  | no | Boolean (false or true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+| skip_data |  | no | Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
 | cursor |  | no | Cursor pagination |
 | type |  | yes | ID of Gmap type to search for |
 | country_code |  | yes | ISO Country code (FR, US, etc.) |
@@ -1458,9 +1458,10 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | admin2_code |  | no | ID of admin2 location to search for |
 | city |  | no | ID of city to search for |
 | postal_code |  | no | Postal code to search for |
-| gmap_is_closed |  | no | Boolean (false / true) |
-| gmap_has_website |  | no | Boolean (false / true) |
-| gmap_has_phone |  | no | Boolean (false / true) |
+| gmap_is_main_site |  | no | Boolean (0 = false / 1 = true) |
+| gmap_is_closed |  | no | Boolean (0 = false / 1 = true) |
+| gmap_has_website |  | no | Boolean (0 = false / 1 = true) |
+| gmap_has_phone |  | no | Boolean (0 = false / 1 = true) |
 | gmap_price_range |  | no | Price range, e.g. '$', '$$', '$$$' or '$$$$' |
 | gmap_reviews_count_lte |  | no | Gmap reviews count less or equal than |
 | gmap_reviews_count_lt |  | no | Gmap reviews count less than |
@@ -1474,19 +1475,19 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | gmap_photos_count_lt |  | no | Gmap photos count less than |
 | gmap_photos_count_gte |  | no | Gmap photos count greater or equals than |
 | gmap_photos_count_gt |  | no | Gmap photos count greater than |
-| gmap_is_claimed |  | no | Boolean (false / true) |
-| website_has_title |  | no | Boolean (false / true) |
-| website_has_meta_keywords |  | no | Boolean (false / true) |
-| website_has_meta_description |  | no | Boolean (false / true) |
-| website_has_contact_pages |  | no | Boolean (false / true) |
-| website_has_emails |  | no | Boolean (false / true) |
-| website_has_phones |  | no | Boolean (false / true) |
-| website_has_facebook |  | no | Boolean (false / true) |
-| website_has_youtube |  | no | Boolean (false / true) |
-| website_has_twitter |  | no | Boolean (false / true) |
-| website_has_instagram |  | no | Boolean (false / true) |
-| website_has_linkedin |  | no | Boolean (false / true) |
-| website_has_ad_pixels |  | no | Boolean (false / true) |
+| gmap_is_claimed |  | no | Boolean (0 = false / 1 = true) |
+| website_has_title |  | no | Boolean (0 = false / 1 = true) |
+| website_has_meta_keywords |  | no | Boolean (0 = false / 1 = true) |
+| website_has_meta_description |  | no | Boolean (0 = false / 1 = true) |
+| website_has_contact_pages |  | no | Boolean (0 = false / 1 = true) |
+| website_has_emails |  | no | Boolean (0 = false / 1 = true) |
+| website_has_phones |  | no | Boolean (0 = false / 1 = true) |
+| website_has_facebook |  | no | Boolean (0 = false / 1 = true) |
+| website_has_youtube |  | no | Boolean (0 = false / 1 = true) |
+| website_has_twitter |  | no | Boolean (0 = false / 1 = true) |
+| website_has_instagram |  | no | Boolean (0 = false / 1 = true) |
+| website_has_linkedin |  | no | Boolean (0 = false / 1 = true) |
+| website_has_ad_pixels |  | no | Boolean (0 = false / 1 = true) |
 
 ## Enrich
 
@@ -1916,7 +1917,7 @@ With this endpoint, you can retrieve the google places related to the data provi
 | Parameter | Required | Description |
 | --- | --- | --- |
 | per_page | No | Number of results per page (1, 10, 25 or 50) |
-| skip_data | No | Boolean (false or true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+| skip_data | No | Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
 | cursor | No | Cursor pagination |
 | url | No | Exact URL mentioned on Google Maps |
 | domain | No | Domain mentioned in Google Maps |

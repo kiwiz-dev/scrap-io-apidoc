@@ -41,7 +41,7 @@ The base url for all endpoints is:
 `https://scrap.io/api/v1/`
 
 <aside class="warning">
-  The rate limit is 300 requests per second.
+  The rate limit is 300 requests per minute.
 </aside>
 
 # Authentication
@@ -1449,7 +1449,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 
 | Parameter | Default | Required | Description |
 | --------- | ------- | -------- | ----------- |
-| per_page |  | yes | Number of results per page (1, 10, 25 or 50) |
+| per_page |  | no | Number of results per page (1, 10, 25 or 50) |
 | skip_data |  | no | Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
 | cursor |  | no | Cursor pagination |
 | type |  | yes | ID of Gmap type to search for |

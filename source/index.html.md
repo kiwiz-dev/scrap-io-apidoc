@@ -887,6 +887,7 @@ axios.get(url, { params: params }, headers)
         },
         "status": "pending",
         "scraped_at": "2022-06-12T12:43:50.000000Z",
+        "first_seen_at": "2021-04-12T16:25:50.000000Z",
         "website_data": {
             "url": "http://www.burjkhalifa.ae",
             "domain": "burjkhalifa.ae",
@@ -1363,6 +1364,7 @@ axios.get(url, { params: params }, headers)
             },
             "status": "completed",
             "scraped_at": "2022-07-04T10:24:57.000000Z",
+            "first_seen_at": "2021-04-12T16:25:50.000000Z",
             "website_data": {
                 "url": "https://sugarfishsushi.com/locations/flatiron",
                 "domain": "sugarfishsushi.com",
@@ -1830,6 +1832,7 @@ axios.get(url, { params: params }, headers)
             },
             "status": "completed",
             "scraped_at": "2022-07-04T10:24:57.000000Z",
+            "first_seen_at": "2021-04-12T16:25:50.000000Z",
             "website_data": {
                 "url": "https://sugarfishsushi.com/locations/flatiron",
                 "domain": "sugarfishsushi.com",

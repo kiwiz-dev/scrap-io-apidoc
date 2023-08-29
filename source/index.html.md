@@ -97,7 +97,7 @@ json = response.json()
 ```
 
 ```shell
-curl "api_endpoint_here" \
+curl -G "api_endpoint_here" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
@@ -179,7 +179,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/subscription" \
+curl -G "https://scrap.io/api/v1/subscription" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
@@ -333,7 +333,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/gmap/types" \
+curl -G "https://scrap.io/api/v1/gmap/types" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "search_term=boulang" \
   -d "locale=fr"
@@ -463,7 +463,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/gmap/locations" \
+curl -G "https://scrap.io/api/v1/gmap/locations" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "country_code=us" \
   -d "type=admin1" \
@@ -598,7 +598,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/gmap/place" \
+curl -G "https://scrap.io/api/v1/gmap/place" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"
 ```
@@ -1081,7 +1081,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/gmap/search" \
+curl -G "https://scrap.io/api/v1/gmap/search" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "country_code=us" \
   -d "admin1_code=NY" \
@@ -1555,7 +1555,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/gmap/enrich" \
+curl -G "https://scrap.io/api/v1/gmap/enrich" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "domain=sugarfishsushi.com"
 ```
@@ -1993,7 +1993,7 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/blacklist" \
+curl -G "https://scrap.io/api/v1/blacklist" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 

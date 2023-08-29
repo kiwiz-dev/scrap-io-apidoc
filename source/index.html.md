@@ -97,7 +97,7 @@ json = response.json()
 ```
 
 ```shell
-curl -G "api_endpoint_here" \
+curl "api_endpoint_here" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
@@ -179,7 +179,7 @@ json = response.json()
 ```
 
 ```shell
-curl -G "https://scrap.io/api/v1/subscription" \
+curl "https://scrap.io/api/v1/subscription" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
@@ -1993,7 +1993,7 @@ json = response.json()
 ```
 
 ```shell
-curl -G "https://scrap.io/api/v1/blacklist" \
+curl "https://scrap.io/api/v1/blacklist" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 

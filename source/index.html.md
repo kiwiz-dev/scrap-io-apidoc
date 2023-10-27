@@ -390,6 +390,7 @@ You can search in any language (en and fr for now).
 
 Parameter | Default | Required | Description
 --------- | ------- | ------- | -----------
+search_term | | no | Term to search for
 locale | en | no | Search locale
 
 

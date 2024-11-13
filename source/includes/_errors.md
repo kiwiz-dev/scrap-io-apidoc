@@ -6,6 +6,7 @@ The Scrap.io API uses the following error codes:
 Error Code | Meaning
 ---------- | -------
 401 | Unauthorized -- Your API key is wrong, or not authorized to access this endpoint.
+403 | Forbidden -- You're not authorized to perform the action.
 404 | Not Found -- The resource was not be found.
 405 | Method Not Allowed -- You tried to access an endpoint with an invalid method.
 422 | Unprocessable entity -- Your request is invalid.

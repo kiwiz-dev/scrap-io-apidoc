@@ -8,7 +8,7 @@ curl --location 'https://scrap-io.test/api/v1/export' \
 ```
 
 ```shell
-curl --location 'https://scrap-io.test/api/v1/export?status=success&orderBy=asc' \
+curl --location 'https://scrap-io.test/api/v1/export?search="export name"&status=success&orderBy=asc' \
 --header 'Authorization: xxxxxxxxxxx'
 ```
 
@@ -77,6 +77,7 @@ This endpoint allows you to get a list of your exports.
 
 | Parameter | Type   | Default | Required | Description                       | Options                                              |
 |-----------|--------|---------|----------|-----------------------------------|------------------------------------------------------|
+| search    | string |         | no       | Search in export name             |                                                      |
 | status    | string |         | no       | Status of the export              | in_progress \ pending \ incomplete \ success \ error |
 | orderBy   | string | desc    | no       | Sort the results by scraping_date | asc \ desc                                           |
 

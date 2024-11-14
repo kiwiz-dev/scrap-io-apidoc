@@ -23,7 +23,7 @@ curl --location 'https://scrap-io.test/api/v1/export?status=success&orderBy=asc'
         "search_params": {...},
         "status": "success",
         "cursor": null,
-        "filename": "exportFileName",
+        "filename": "545faaa388609",
         "advanced_fields": [],
         "exported_lines_limit": 1,
         "exported_columns": [...],
@@ -35,29 +35,31 @@ curl --location 'https://scrap-io.test/api/v1/export?status=success&orderBy=asc'
         "credits_used": 0,
         "export_only_new_email": 0,
         "export_only_new_place": 0,
-        "scraped_at": "2024-11-11T06:13:09.000000Z"
+        "scraped_at": "2024-11-11T06:13:09.000000Z",
+        "download_link": "https://scrap-io.test/app/export/545faaa388609/download/csv"
     },
     {
-    "name": "My export name 2",
-    "country": "FR",
-    "type": "export-type",
-    "search_params": {...},
-    "status": "success",
-    "cursor": null,
-    "filename": "exportFileName2",
-    "advanced_fields": [],
-    "exported_lines_limit": 1,
-    "exported_columns": [...],
-    "prepared_rows_count": 1,
-    "exported_csv_count": 1,
-    "exported_xlsx_count": 1,
-    "is_stopped": false,
-    "has_been_downloaded": false,
-    "credits_used": 0,
-    "export_only_new_email": 0,
-    "export_only_new_place": 0,
-    "scraped_at": "2024-11-11T06:13:09.000000Z"
-}
+        "name": "My export name 2",
+        "country": "FR",
+        "type": "export-type",
+        "search_params": {...},
+        "status": "success",
+        "cursor": null,
+        "filename": "545faaa388608",
+        "advanced_fields": [],
+        "exported_lines_limit": 1,
+        "exported_columns": [...],
+        "prepared_rows_count": 1,
+        "exported_csv_count": 1,
+        "exported_xlsx_count": 1,
+        "is_stopped": false,
+        "has_been_downloaded": false,
+        "credits_used": 0,
+        "export_only_new_email": 0,
+        "export_only_new_place": 0,
+        "scraped_at": "2024-11-11T06:13:09.000000Z",
+        "download_link": "https://scrap-io.test/app/export/545faaa388608/download/csv"
+    }
 ]
 ```
 
@@ -95,7 +97,7 @@ curl --location 'https://scrap-io.test/api/v1/export/1' \
     "search_params": {...},
     "status": "success",
     "cursor": null,
-    "filename": "exportFileName",
+    "filename": "545faaa388609",
     "advanced_fields": [],
     "exported_lines_limit": 1,
     "exported_columns": [...],
@@ -107,7 +109,8 @@ curl --location 'https://scrap-io.test/api/v1/export/1' \
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2024-11-11T06:13:09.000000Z"
+    "scraped_at": "2024-11-11T06:13:09.000000Z",
+    "download_link": "https://scrap-io.test/app/export/545faaa388609/download/csv"
 }
 ```
 
@@ -162,7 +165,7 @@ curl --location 'https://scrap-io.test/api/v1/export/create' \
         },
         "status": "pending",
         "cursor": null,
-        "filename": "545faaa388609f97c26ab73f3dbef7ae3d848e6d276ea75840c4a2799453f4b3",
+        "filename": "545faaa388609",
         "advanced_fields": [],
         "exported_lines_limit": 4,
         "exported_columns": {
@@ -180,7 +183,9 @@ curl --location 'https://scrap-io.test/api/v1/export/create' \
         "credits_used": null,
         "export_only_new_email": 0,
         "export_only_new_place": 0,
-        "scraped_at": "2024-11-14T05:12:05.000000Z"
+        "scraped_at": "2024-11-14T05:12:05.000000Z",
+        "download_link": "https://scrap-io.test/app/export/545faaa388609/download/csv"
+        
     }
 }
 ```

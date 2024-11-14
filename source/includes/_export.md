@@ -1,6 +1,6 @@
 # Export
 
-## List
+## Get all exports
 
 ```shell
 curl --location 'https://scrap-io.test/api/v1/export' \
@@ -78,7 +78,7 @@ This endpoint allows you to get a list of your exports.
 | status    | string |         | no       | Status of the export              | in_progress \ pending \ incomplete \ success \ error |
 | orderBy   | string | desc    | no       | Sort the results by scraping_date | asc \ desc                                           |
 
-## Find
+## Find an export
 
 ```shell
 curl --location 'https://scrap-io.test/api/v1/export/1' \
@@ -117,7 +117,73 @@ This endpoint allows you to get one of your exports.
 
 `GET https://scrap.io/api/v1/export/{id}`
 
-## Create
+## Create an export
+
+```shell
+curl --location 'https://scrap-io.test/api/v1/export/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: xxxxxxxxxxx' \
+--data '{
+    "name": "My export name (1)",
+    "country": "FR",
+    "type": "karaoke-bar",
+    "admin1": "75",
+    "exported_lines_limit": 4,
+    "exportColumns": [
+        "enable_export_column_google_id", 
+        "enable_export_column_name",
+        "enable_export_column_descriptions",
+        "enable_export_column_main_type",
+        "enable_export_column_all_types"
+    ],
+    "filters": {
+        "filterGmapPriceRange": "$$",
+        "filterWebsiteInstagram": "present"
+    }
+}'
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "Export created. Results may take some time to process.",
+    "data": {
+        "id": 1,
+        "name": "My export name (1)",
+        "country": "FR",
+        "type": "karaoke-bar",
+        "search_params": {
+            "type": "karaoke-bar",
+            "country": "FR",
+            "admin1": "75",
+            "website_has_instagram": 1,
+            "gmap_price_range": "$$"
+        },
+        "status": "pending",
+        "cursor": null,
+        "filename": "545faaa388609f97c26ab73f3dbef7ae3d848e6d276ea75840c4a2799453f4b3",
+        "advanced_fields": [],
+        "exported_lines_limit": 4,
+        "exported_columns": {
+            "0": "google_id",
+            "1": "name",
+            "2": "descriptions",
+            "4": "main_type",
+            "5": "all_types"
+        },
+        "prepared_rows_count": 0,
+        "exported_csv_count": 0,
+        "exported_xlsx_count": 0,
+        "is_stopped": false,
+        "has_been_downloaded": false,
+        "credits_used": null,
+        "export_only_new_email": 0,
+        "export_only_new_place": 0,
+        "scraped_at": "2024-11-14T05:12:05.000000Z"
+    }
+}
+```
 
 ### HTTP Request
 
@@ -146,7 +212,7 @@ This endpoint allows you to get one of your exports.
 | export_only_new_place | string | no | on \ null | Export only places not present in previous exports. |
 | export_only_new_email | string | no | on \ null | Export only places with email not already present in previous exports. |
 | filters | object | no | See "Filters" section below | Results filters to apply. |
-| exportColumns | array | no | See "Export columns" section below | Columns to include in the export file. |
+| exportColumns | array | no | See "Export columns" section below | Columns to include in the export file. If not passed, will return all fields. |
 
 **Filters**
 
@@ -218,7 +284,7 @@ This endpoint allows you to get one of your exports.
 | enable_export_column_website_technologies | Website technologies |
 | enable_export_column_website_ad_pixels | Website pixel ad |
 
-## Rename
+## Rename an export
 
 ```shell
 curl --location --request PATCH 'https://scrap-io.test/api/v1/export/1/rename' \
@@ -249,7 +315,7 @@ This endpoint allows you to rename one of your exports.
 |-----------|--------|----------|---------------------------------------------|
 | name      | string | yes      | The new name of the export. Must be unique. |
 
-## Delete
+## Delete exports
 
 ```shell
 curl --location --request DELETE 'https://scrap-io.test/api/v1/export' \

@@ -5,7 +5,7 @@ Our API includes a feature that allows you to add items to a blacklist by **emai
 This feature is particularly useful to avoid re-scraping the same results, and counting your credits again for the same data.
 
 <aside class="warning">
-  You can blacklist up to 1 million items.
+  You can blacklist up to 10 million items.
 </aside>
 
 ## List

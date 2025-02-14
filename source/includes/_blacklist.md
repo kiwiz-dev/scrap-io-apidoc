@@ -204,7 +204,7 @@ axios.post(url, params, headers)
 
 ```json
 {
-    "message": "success"
+    "message": "All 1 entries successfully processed."
 }
 ```
 

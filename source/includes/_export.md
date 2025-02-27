@@ -56,8 +56,9 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl 'https://scrap.io/api/v1/export?status=success&order_by=asc' \
-    -H "Authorization: Bearer xxxxxxxxxxx"
+curl --location --request GET 'https://scrap-io.test/api/v1/exports' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx \'
 ```
 
 <!--  JS code -->
@@ -186,12 +187,12 @@ This endpoint allows you to get a paginated list of your exports.
 
 ### Query parameters
 
-| Parameter | Type          | Default | Required | Description            | Options                                           |
-|-----------|---------------|---------|----------|------------------------|---------------------------------------------------|
-| search    | string        |         | no       | Search in export name  |                                                   |
-| status    | string/array  |         | no       | Status of the export   | in_progress, pending, incomplete, success, error  |
-| orderBy   | string        | desc    | no       | Sort by scraping_date  | asc, desc                                         |
-| page      | integer       | 1       | no       | Get the results for the given page |                                       |
+| Parameter | Type          | Default | Required | Options                                           | Description            |
+|-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
+| search    | string        |         | no       |                                                   | Search in export name  |
+| status    | string/array  |         | no       | in_progress, pending, incomplete, success, error  | Status of the export   |
+| orderBy   | string        | desc    | no       | asc, desc                                         | Sort by scraping_date  |
+| page      | integer       | 1       | no       |                                                   | Get the results for the given page |                                     |
 
 
 ## Find
@@ -250,8 +251,9 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl 'https://scrap.io/api/v1/export/2' \
-    -H "Authorization: Bearer xxxxxxxxxxx"
+curl --location --request GET 'https://scrap-io.test/api/v1/exports/2' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx \'
 ```
 
 <!--  JS code -->
@@ -307,7 +309,7 @@ This endpoint allows you to get one of your exports depending on the id.
 
 ### HTTP Request
 
-`GET https://scrap.io/api/v1/exports/create`
+`GET https://scrap.io/api/v1/exports/{id}`
 
 ## Create
 
@@ -405,22 +407,22 @@ json = response.json()
 ```
 
 ```shell
-curl -X POST "https://scrap.io/api/v1/exports/create" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "type=domain" \
-  -d '{
-        "name": "My export name (1)",
-        "country_code": "FR",
-        "type": "karaoke-bar",
-        "admin1_code": "75",
-        "exported_lines_limit": 4,
-        "exported_columns": [
-            "google_id", 
-            "name"
-        ],
-        "gmap_price_range": "$$",
-        "website_has_instagram": true
-    }'
+curl --location --request POST 'https://scrap-io.test/api/v1/exports/create' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx \'
+--data '{
+    "name": "My export name (1)",
+    "country_code": "FR",
+    "type": "karaoke-bar",
+    "admin1_code": "75",
+    "exported_lines_limit": 4,
+    "exported_columns": [
+        "google_id", 
+        "name"
+    ],
+    "gmap_price_range": "$$",
+    "website_has_instagram": true
+}'
 ```
 
 ```javascript
@@ -450,26 +452,6 @@ axios.post(url, params, headers)
   .then((response) => {
     json = JSON.parse(response.data)  
   });
-```
-
-
-```shell
-curl --location 'https://scrap-io.test/api/v1/exports/create' \
---header 'Content-Type: application/json' \
---header 'Authorization: xxxxxxxxxxx' \
---data '{
-    "name": "My export name (1)",
-    "country_code": "FR",
-    "type": "karaoke-bar",
-    "admin1_code": "75",
-    "exported_lines_limit": 4,
-    "exported_columns": [
-        "google_id", 
-        "name"
-    ],
-    "gmap_price_range": "$$",
-    "website_has_instagram": true
-}'
 ```
 
 > The above code returns JSON structured like this:
@@ -511,13 +493,6 @@ curl --location 'https://scrap-io.test/api/v1/exports/create' \
 
 ### Body parameters
 
-**Important informations**
-
-- Unless otherwise specified, a non-required field will be null by default (even if not passed in parameters).
-- Filters are ignore if not present or null. For example, if website_has_instagram set to true, we'll return results WITH instagram links, if set to false we'll return results WITHOUT instagram links and if not present at all we'll return results WITH or WITHOUT instagram links.
-
-**Parameters**
-
 | Parameter | Type | Required | Options | Description |
 |---|---|---|---|---|
 | name | string | yes if auto_name not present or false |  | The name of the export. Must be unique, min 3 char and max 255 char. |
@@ -526,7 +501,7 @@ curl --location 'https://scrap-io.test/api/v1/exports/create' \
 | country_code | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Country. |
 | admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country. |
 | admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country. |
-| city_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | City. |
+| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City. |
 | exported_lines_limit | integer | no |  | The maximum number of results wanted in the export. |
 | export_only_new_place | boolean | no |  | Export only places not present in previous exports. |
 | export_only_new_email | boolean | no |  | Export only places with email not already present in previous exports. |
@@ -603,3 +578,249 @@ curl --location 'https://scrap-io.test/api/v1/exports/create' \
 | all_linkedin_links | All linkedin links |
 | website_technologies | Website technologies |
 | website_ad_pixels | Website pixel ad |
+
+## Update
+
+```php
+$url = 'https://scrap.io/api/v1/exports/3';
+
+$params = [
+    "name" => "My new export name"
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/exports/3'
+
+params = {
+    name: "My new export name",
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.patch(url, headers: headers, body: params)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/exports/3"
+ 
+params = {
+  "name": "My new export name",
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.patch(url, data=params, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl --location --request PATCH 'https://scrap-io.test/api/v1/exports/3' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx \'
+--data '{
+    "name": "My new export name",
+}'
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/exports/3'
+
+const params = {
+    name: "My new export name",
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.patch(url, params, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "id": 3,
+    "name": "My new export name",
+    "country": "FR",
+    "type": "karaoke-bar",
+    "search_params": {
+        "type": "karaoke-bar",
+        "country": "FR",
+        "admin1": "75"
+    },
+    "status": "pending",
+    "advanced_fields": [],
+    "exported_lines_limit": null,
+    "exported_columns": [
+        "google_id",
+        "name"
+    ],
+    "prepared_rows_count": 10,
+    "exported_csv_count": 10,
+    "exported_xlsx_count": 10,
+    "is_stopped": false,
+    "has_been_downloaded": false,
+    "credits_used": 0,
+    "export_only_new_email": 0,
+    "export_only_new_place": 0,
+    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "download_link": ""
+}
+```
+
+This endpoint allows you to rename one of your exports.
+
+### HTTP Request
+
+`PATCH https://scrap.io/api/v1/exports/{id}`
+
+### Body parameters
+
+| Parameter | Type   | Required | Description                                 |
+|-----------|--------|----------|---------------------------------------------|
+| name      | string | yes      | The name of the export. Must be unique, min 3 char and max 255 char. |
+
+
+## Bulk delete
+
+```php
+$url = 'https://scrap.io/api/v1/exports';
+
+$params = [
+    "export_ids" => [1, 2]
+];
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/exports'
+
+params = {
+    export_ids: [1, 2]
+}
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.delete(url, headers: headers, body: params)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/exports"
+ 
+params = {
+  "export_ids": [1, 2]
+}
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.delete(url, data=params, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl --location --request DELETE 'https://scrap-io.test/api/v1/export' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx \'
+--data '{
+    "ids": [1, 2]
+}'
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/exports'
+
+const params = {
+    export_ids: [1, 2]
+}
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.delete(url, params, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  });
+```
+
+> The above code returns a 202 status code (accepted).
+
+This endpoint allows you to delete one or multiple of your exports.
+
+### HTTP Request
+
+`DELETE https://scrap.io/api/v1/export`
+
+### Body parameters
+
+| Parameter  | Type  | Required | Description                    |
+|------------|-------|----------|--------------------------------|
+| export_ids | array | yes      | A list of export ids to delete |

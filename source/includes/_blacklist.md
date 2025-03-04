@@ -100,6 +100,130 @@ This endpoint allows you to get the list of all your blacklists.
 
 `GET https://scrap.io/api/v1/blacklist`
 
+## Show
+
+```php
+$url = 'https://scrap.io/api/v1/blacklist/my-list';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/blacklist/my-list'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/blacklist/my-list"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl "https://scrap.io/api/v1/blacklist/my-list" \
+  -H "Authorization: Bearer xxxxxxxxxx"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/blacklist/my-list'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "current_page": 1,
+    "data": [
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail@test.com"
+        },
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail2@test.com"
+        },
+    ],
+    "first_page_url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
+    "from": 1,
+    "last_page": 1,
+    "last_page_url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
+    "links": [
+        {
+            "url": null,
+            "label": "&laquo; Previous",
+            "active": false
+        },
+        {
+            "url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
+            "label": "1",
+            "active": true
+        },
+        {
+            "url": null,
+            "label": "Next &raquo;",
+            "active": false
+        }
+    ],
+    "next_page_url": null,
+    "path": "https://scrap.io/api/v1/blacklist/my-list",
+    "per_page": 50,
+    "prev_page_url": null,
+    "to": 3,
+    "total": 3
+}
+```
+
+This endpoint allows you to get a paginated list of all your entries for a specific blackist.
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/blacklist/{list-name}`
+
 ## Add
 
 ```php

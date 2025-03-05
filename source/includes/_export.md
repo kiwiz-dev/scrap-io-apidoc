@@ -81,6 +81,14 @@ axios.get(url, headers)
 
 ```json
 {
+    "meta": {
+        "count": 2,
+        "current_page": 1,
+        "previous_page": null,
+        "next_page": null,
+        "per_page": 25,
+        "has_more_pages": false
+    },
     "data": [
         {
             "id": 1,
@@ -140,38 +148,6 @@ axios.get(url, headers)
             "download_link": "https://scrap.io/app/export/d22e9717f0185d70848d2f7b75b1ced8a339ee4d4be92697f0cb5c4b6911a5f5/download/csv"
         },
     ],
-    "links": {
-        "first": "https://scrap.io/api/v1/exports?page=1",
-        "last": "https://scrap.io/api/v1/exports?page=1",
-        "prev": null,
-        "next": null
-    },
-    "meta": {
-        "current_page": 1,
-        "from": 1,
-        "last_page": 1,
-        "links": [
-            {
-                "url": null,
-                "label": "&laquo; Previous",
-                "active": false
-            },
-            {
-                "url": "https://scrap.io/api/v1/exports?page=1",
-                "label": "1",
-                "active": true
-            },
-            {
-                "url": null,
-                "label": "Next &raquo;",
-                "active": false
-            }
-        ],
-        "path": "https://scrap.io/api/v1/exports",
-        "per_page": 25,
-        "to": 2,
-        "total": 2
-    }
 }
 ```
 

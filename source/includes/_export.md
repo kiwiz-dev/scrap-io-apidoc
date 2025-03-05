@@ -167,7 +167,7 @@ This endpoint allows you to get a paginated list of your exports.
 |-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
 | search    | string        |         | no       |                                                   | Search in export name  |
 | status    | string/array  |         | no       | in_progress, pending, incomplete, success, error  | Status of the export   |
-| orderBy   | string        | desc    | no       | asc, desc                                         | Sort by scraping_date  |
+| order_by   | string        | desc    | no       | asc, desc                                         | Sort by scraping_date  |
 | page      | integer       | 1       | no       |                                                   | Get the results for the given page |
 
 
@@ -777,11 +777,7 @@ const params = {
     export_ids: [1, 2]
 }
 
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.delete(url, params, headers)
+ axios.delete(url, { data: params, headers: { Authorization: 'Bearer xxxxxxxxxx' } })
   .then((response) => {
     json = JSON.parse(response.data)  
   });

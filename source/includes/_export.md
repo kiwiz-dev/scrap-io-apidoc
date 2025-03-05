@@ -58,7 +58,7 @@ json = response.json()
 ```shell
 curl --location --request GET 'https://scrap-io.test/api/v1/exports' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx \'
+--header 'Authorization: Bearer xxxxxxxxxxx'
 ```
 
 <!--  JS code -->
@@ -168,7 +168,7 @@ This endpoint allows you to get a paginated list of your exports.
 | search    | string        |         | no       |                                                   | Search in export name  |
 | status    | string/array  |         | no       | in_progress, pending, incomplete, success, error  | Status of the export   |
 | orderBy   | string        | desc    | no       | asc, desc                                         | Sort by scraping_date  |
-| page      | integer       | 1       | no       |                                                   | Get the results for the given page |                                     |
+| page      | integer       | 1       | no       |                                                   | Get the results for the given page |
 
 
 ## Find
@@ -229,7 +229,7 @@ json = response.json()
 ```shell
 curl --location --request GET 'https://scrap-io.test/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx \'
+--header 'Authorization: Bearer xxxxxxxxxxx'
 ```
 
 <!--  JS code -->
@@ -385,7 +385,7 @@ json = response.json()
 ```shell
 curl --location --request POST 'https://scrap-io.test/api/v1/exports/create' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx \'
+--header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
     "name": "My export name (1)",
     "country_code": "FR",
@@ -465,7 +465,7 @@ axios.post(url, params, headers)
 
 ### HTTP Request
 
-`POST https://scrap.io/api/v1/export/create`
+`POST https://scrap.io/api/v1/exports/create`
 
 ### Body parameters
 
@@ -623,7 +623,7 @@ json = response.json()
 ```shell
 curl --location --request PATCH 'https://scrap-io.test/api/v1/exports/3' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx \'
+--header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
     "name": "My new export name",
 }'
@@ -760,11 +760,11 @@ json = response.json()
 ```
 
 ```shell
-curl --location --request DELETE 'https://scrap-io.test/api/v1/export' \
+curl --location --request DELETE 'https://scrap-io.test/api/v1/exports' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx \'
+--header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
-    "ids": [1, 2]
+    "export_ids": [1, 2]
 }'
 ```
 
@@ -793,7 +793,7 @@ This endpoint allows you to delete one or multiple of your exports.
 
 ### HTTP Request
 
-`DELETE https://scrap.io/api/v1/export`
+`DELETE https://scrap.io/api/v1/exports`
 
 ### Body parameters
 

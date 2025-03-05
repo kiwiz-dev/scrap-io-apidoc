@@ -224,6 +224,12 @@ This endpoint allows you to get a paginated list of all your entries for a speci
 
 `GET https://scrap.io/api/v1/blacklist/{list-name}`
 
+### Query parameters
+
+| Parameter | Type          | Default | Required | Options                                           | Description            |
+|-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
+| page      | integer       | 1       | no       |                                                   | Get the results for the given page |
+
 ## Add
 
 ```php

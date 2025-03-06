@@ -175,7 +175,14 @@ axios.get(url, headers)
 
 ```json
 {
-    "current_page": 1,
+    "meta": {
+        "count": 2,
+        "current_page": 1,
+        "previous_page": null,
+        "next_page": null,
+        "per_page": 50,
+        "has_more_pages": false
+    },
     "data": [
         {
             "list": "my-list",
@@ -188,33 +195,6 @@ axios.get(url, headers)
             "data": "myEmail2@test.com"
         },
     ],
-    "first_page_url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
-    "from": 1,
-    "last_page": 1,
-    "last_page_url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
-    "links": [
-        {
-            "url": null,
-            "label": "&laquo; Previous",
-            "active": false
-        },
-        {
-            "url": "https://scrap.io/api/v1/blacklist/my-list?page=1",
-            "label": "1",
-            "active": true
-        },
-        {
-            "url": null,
-            "label": "Next &raquo;",
-            "active": false
-        }
-    ],
-    "next_page_url": null,
-    "path": "https://scrap.io/api/v1/blacklist/my-list",
-    "per_page": 50,
-    "prev_page_url": null,
-    "to": 3,
-    "total": 3
 }
 ```
 

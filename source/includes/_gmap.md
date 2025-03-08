@@ -1193,7 +1193,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | country_code |  | yes | ISO Country code (FR, US, etc.) |
 | admin1_code |  | no | ID of admin1 location to search for |
 | admin2_code |  | no | ID of admin2 location to search for |
-| city |  | no | ID of city to search for |
+| city |  | no | Name of city to search for |
 | postal_code |  | no | Postal code to search for |
 | gmap_is_main_type |  | no | Boolean (0 = false / 1 = true) |
 | gmap_is_closed |  | no | Boolean (0 = false / 1 = true) |

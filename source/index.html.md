@@ -22,6 +22,7 @@ includes:
   - subscription
   - gmap
   - blacklist
+  - export
   - errors
 
 search: true

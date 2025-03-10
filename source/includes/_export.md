@@ -697,7 +697,7 @@ This endpoint allows you to rename one of your exports.
 ## Bulk delete
 
 ```php
-$url = 'https://scrap.io/api/v1/exports';
+$url = 'https://scrap.io/api/v1/exports/bulk-delete';
 
 $params = [
     "export_ids" => [1, 2]
@@ -709,7 +709,6 @@ $headers = [
 
 $curl = curl_init();
 curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
 curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
 curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -725,7 +724,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/exports'
+url = 'https://scrap.io/api/v1/exports/bulk-delete'
 
 params = {
     export_ids: [1, 2]
@@ -735,7 +734,7 @@ headers = {
   Authorization: 'Bearer xxxxxxxxxx',
 }
 
-response = HTTParty.delete(url, headers: headers, body: params)
+response = HTTParty.post(url, headers: headers, body: params)
 
 json = JSON.parse(response.body)
 ```
@@ -744,7 +743,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/exports"
+url = "https://scrap.io/api/v1/exports/bulk-delete"
  
 params = {
   "export_ids": [1, 2]
@@ -754,13 +753,13 @@ headers = {
   "Authorization": "Bearer xxxxxxxxxx"
 }
 
-response = requests.delete(url, data=params, headers=headers)
+response = requests.post(url, data=params, headers=headers)
  
 json = response.json()
 ```
 
 ```shell
-curl --location --request DELETE 'https://scrap-io.test/api/v1/exports' \
+curl --location --request POST 'https://scrap-io.test/api/v1/exports/bulk-delete' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
@@ -771,13 +770,13 @@ curl --location --request DELETE 'https://scrap-io.test/api/v1/exports' \
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/exports'
+const url = 'https://scrap.io/api/v1/exports/bulk-delete'
 
 const params = {
     export_ids: [1, 2]
 }
 
- axios.delete(url, { data: params, headers: { Authorization: 'Bearer xxxxxxxxxx' } })
+ axios.post(url, { data: params, headers: { Authorization: 'Bearer xxxxxxxxxx' } })
   .then((response) => {
     json = JSON.parse(response.data)  
   });
@@ -789,7 +788,7 @@ This endpoint allows you to delete one or multiple of your exports.
 
 ### HTTP Request
 
-`DELETE https://scrap.io/api/v1/exports`
+`POST https://scrap.io/api/v1/exports/bulk-delete`
 
 ### Body parameters
 

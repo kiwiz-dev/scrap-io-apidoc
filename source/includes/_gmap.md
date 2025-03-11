@@ -738,6 +738,8 @@ Parameter | Default | Required | Description
 google_id | | no | Google id (ex: 0xabc:0xdef)
 place_id | | no |  Place id (ex: ChIabcDeFGhIJkLMnoPqR)
 skip_data | 0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit.
+skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.
+blacklists | Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.
 
 <aside class="warning">
   You have to provide either a google_id or a place_id. And only one at a time.
@@ -1186,8 +1188,10 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 
 | Parameter | Default | Required | Description |
 | --------- | ------- | -------- | ----------- |
-| per_page |  | no | Number of results per page (1, 10, 25 or 50) |
-| skip_data |  | no | Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+| per_page | 10 | no | Number of results per page (1, 10, 25 or 50) |
+| skip_data | 0 | no | Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
+blacklists |Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.|
 | cursor |  | no | Cursor pagination |
 | type |  | yes | ID of Gmap type to search for |
 | country_code |  | yes | ISO Country code (FR, US, etc.) |
@@ -1652,15 +1656,17 @@ With this endpoint, you can retrieve the google places related to the data provi
 
 ### Query Parameters
 
-| Parameter | Required | Description |
-| --- | --- | --- |
-| per_page | No | Number of results per page (1, 10, 25 or 50) |
-| skip_data | No | Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
-| cursor | No | Cursor pagination |
-| url | No | Exact URL mentioned on Google Maps |
-| domain | No | Domain mentioned in Google Maps |
-| email | No | Email found on the website of Google Place |
-| phone | No | Phone in international format associated with the Google Place (e.g.: 33139732419) |
+| Parameter | Default | Required | Description |
+| --------- | ------- | -------- | ----------- |
+| per_page | 10 | No | Number of results per page (1, 10, 25 or 50) |
+| skip_data | 0 | No | Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
+skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
+blacklists |Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.|
+| cursor | | No | Cursor pagination |
+| url | | No | Exact URL mentioned on Google Maps |
+| domain | | No | Domain mentioned in Google Maps |
+| email | | No | Email found on the website of Google Place |
+| phone | | No | Phone in international format associated with the Google Place (e.g.: 33139732419) |
 
 <aside class="warning">
   You have to provide either an url, a domain, an email or a phone. And only one at a time.

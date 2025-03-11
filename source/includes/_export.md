@@ -693,6 +693,92 @@ This endpoint allows you to rename one of your exports.
 |-----------|--------|----------|---------------------------------------------|
 | name      | string | yes      | The name of the export. Must be unique, min 3 char and max 255 char. |
 
+## Delete (one)
+
+<!--  PHP code -->
+```php
+$url = 'https://scrap.io/api/v1/exports/2';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+<!--  RUBY code -->
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/exports/2'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.delete(url, headers: headers)
+
+json = JSON.parse(response.body)
+```
+
+<!--  PYTHON code -->
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/exports/2"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.delete(url, headers=headers)
+ 
+json = response.json()
+```
+
+<!--  SHELL code -->
+```shell
+curl --location --request DELETE 'https://scrap-io.test/api/v1/exports/2' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx'
+```
+
+<!--  JS code -->
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/exports/2'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.delete(url, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  });
+```
+
+> The above code returns a 200 status code (OK).
+
+This endpoint allows you to delete one of your exports.
+
+### HTTP Request
+
+`DELETE https://scrap.io/api/v1/exports/{id}`
+
 
 ## Bulk delete
 

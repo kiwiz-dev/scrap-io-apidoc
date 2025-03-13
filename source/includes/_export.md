@@ -166,7 +166,7 @@ This endpoint allows you to get a paginated list of your exports.
 | Parameter | Type          | Default | Required | Options                                           | Description            |
 |-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
 | search    | string        |         | no       |                                                   | Search in export name  |
-| status    | string/array  |         | no       | in_progress, pending, incomplete, success, error  | Status of the export   |
+| status    | array  |         | no       | preparing-scraping, scraping, preparing-export, exporting-csv, exporting-xlsx, pending, incomplete, success, error  | Status of the export   |
 | order_by   | string        | desc    | no       | asc, desc                                         | Sort by scraping_date  |
 | page      | integer       | 1       | no       |                                                   | Get the results for the given page |
 

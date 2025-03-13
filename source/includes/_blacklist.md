@@ -107,8 +107,7 @@ $url = 'https://scrap.io/api/v1/blacklist/my-list-1';
 
 $params = [
   'type' => 'domain',
-  'data' => 'sugarfishsushi.com'
-  # Or 'data' => ['sugarfishsushi.com', 'sugarfishsushi2.com']
+  'data' => ['sugarfishsushi.com']
 ];
 
 $headers = [
@@ -137,8 +136,7 @@ url = 'https://scrap.io/api/v1/blacklist/my-list-1'
 
 params = {
   type: 'domain',
-  data: 'sugarfishsushi.com'
-  # Or data: ['sugarfishsushi.com', 'sugarfishsushi2.com']
+  data: ['sugarfishsushi.com']
 }
 
 headers = {
@@ -158,8 +156,7 @@ url = "https://scrap.io/api/v1/blacklist/my-list-1"
  
 params = {
   "type": "domain",
-  "data": "sugarfishsushi.com"
-  # Or "data": ['sugarfishsushi.com', 'sugarfishsushi2.com']
+  "data": ['sugarfishsushi.com']
 }
  
 headers = {
@@ -175,8 +172,7 @@ json = response.json()
 curl -X POST "https://scrap.io/api/v1/blacklist/my-list-1" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "type=domain" \
-  -d "data=sugarfishsushi.com"
-  # Or -d "data=['sugarfishsushi.com', 'sugarfishsushi2.com']"
+  -d "data=['sugarfishsushi.com']"
 ```
 
 ```javascript
@@ -186,8 +182,7 @@ const url = 'https://scrap.io/api/v1/blacklist/my-list-1'
 
 const params = {
   type: 'domain',
-  data: 'sugarfishsushi.com'
-  // Or data: ['sugarfishsushi.com', 'sugarfishsushi2.com']
+  data: ['sugarfishsushi.com']
 }
 
 const headers = {
@@ -219,7 +214,7 @@ This endpoint allows you to add data to a blacklist (google_id, place_id, domain
 Parameter | type |  Required | Description
 ---------| ------- | ------- | -----------
 type | string | yes | Type of data to add to the blacklist (google_id,place_id,domain,email)
-data | string or array | yes | Data to add to the blacklist. Must be a string "xxx1" or an array of strings ["xxx1", "xxx2"].
+data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"].
 
 ## Delete
 

@@ -5,7 +5,7 @@ Our API includes a feature that allows you to add items to a blacklist by **emai
 This feature is particularly useful to avoid re-scraping the same results, and counting your credits again for the same data.
 
 <aside class="warning">
-  You can blacklist up to 1 million items.
+  You can blacklist up to 10 million items.
 </aside>
 
 ## List
@@ -99,6 +99,116 @@ This endpoint allows you to get the list of all your blacklists.
 **HTTP Request**
 
 `GET https://scrap.io/api/v1/blacklist`
+
+## Show
+
+```php
+$url = 'https://scrap.io/api/v1/blacklist/my-list';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+$json = json_decode($response);
+```
+
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/blacklist/my-list'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+response = HTTParty.get(url, headers: headers)
+
+json = JSON.parse(response.body)
+```
+
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/blacklist/my-list"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, headers=headers)
+ 
+json = response.json()
+```
+
+```shell
+curl "https://scrap.io/api/v1/blacklist/my-list" \
+  -H "Authorization: Bearer xxxxxxxxxx"
+```
+
+```javascript
+const axios = require('axios')
+
+const url = 'https://scrap.io/api/v1/blacklist/my-list'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+}
+
+axios.get(url, headers)
+  .then((response) => {
+    json = JSON.parse(response.data)  
+  });
+```
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "meta": {
+        "count": 2,
+        "current_page": 1,
+        "previous_page": null,
+        "next_page": null,
+        "per_page": 50,
+        "has_more_pages": false
+    },
+    "data": [
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail@test.com"
+        },
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail2@test.com"
+        },
+    ],
+}
+```
+
+This endpoint allows you to get a paginated list of all your entries for a specific blackist.
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/blacklist/{list-name}`
+
+### Query parameters
+
+| Parameter | Type          | Default | Required | Options                                           | Description            |
+|-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
+| page      | integer       | 1       | no       |                                                   | Get the results for the given page |
 
 ## Add
 
@@ -214,7 +324,7 @@ This endpoint allows you to add data to a blacklist (google_id, place_id, domain
 Parameter | type |  Required | Description
 ---------| ------- | ------- | -----------
 type | string | yes | Type of data to add to the blacklist (google_id,place_id,domain,email)
-data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"].
+data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"] - (limited to 1,000 entries per query).
 
 ## Delete
 

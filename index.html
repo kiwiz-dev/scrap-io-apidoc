@@ -1321,6 +1321,18 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>no</td>
 <td>Boolean (0 = false or 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
 </tr>
+<tr>
+<td>skip_blacklist</td>
+<td>0</td>
+<td>no</td>
+<td>Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.</td>
+</tr>
+<tr>
+<td>blacklists</td>
+<td>Verify all blacklists.</td>
+<td>no</td>
+<td>Array containing blacklist names. When specify, only the given blacklists will be verify.</td>
+</tr>
 </tbody></table>
 
 <aside class="warning">
@@ -1758,15 +1770,27 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </thead><tbody>
 <tr>
 <td>per_page</td>
-<td></td>
+<td>10</td>
 <td>no</td>
 <td>Number of results per page (1, 10, 25 or 50)</td>
 </tr>
 <tr>
 <td>skip_data</td>
-<td></td>
+<td>0</td>
 <td>no</td>
 <td>Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
+</tr>
+<tr>
+<td>skip_blacklist</td>
+<td>0</td>
+<td>no</td>
+<td>Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.</td>
+</tr>
+<tr>
+<td>blacklists</td>
+<td>Verify all blacklists.</td>
+<td>no</td>
+<td>Array containing blacklist names. When specify, only the given blacklists will be verify.</td>
 </tr>
 <tr>
 <td>cursor</td>
@@ -2401,42 +2425,62 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <table><thead>
 <tr>
 <th>Parameter</th>
+<th>Default</th>
 <th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>per_page</td>
+<td>10</td>
 <td>No</td>
 <td>Number of results per page (1, 10, 25 or 50)</td>
 </tr>
 <tr>
 <td>skip_data</td>
+<td>0</td>
 <td>No</td>
 <td>Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
 </tr>
 <tr>
+<td>skip_blacklist</td>
+<td>0</td>
+<td>no</td>
+<td>Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.</td>
+</tr>
+<tr>
+<td>blacklists</td>
+<td>Verify all blacklists.</td>
+<td>no</td>
+<td>Array containing blacklist names. When specify, only the given blacklists will be verify.</td>
+</tr>
+<tr>
 <td>cursor</td>
+<td></td>
 <td>No</td>
 <td>Cursor pagination</td>
 </tr>
 <tr>
 <td>url</td>
+<td></td>
 <td>No</td>
 <td>Exact URL mentioned on Google Maps</td>
 </tr>
 <tr>
 <td>domain</td>
+<td></td>
 <td>No</td>
 <td>Domain mentioned in Google Maps</td>
 </tr>
 <tr>
 <td>email</td>
+<td></td>
 <td>No</td>
 <td>Email found on the website of Google Place</td>
 </tr>
 <tr>
 <td>phone</td>
+<td></td>
 <td>No</td>
 <td>Phone in international format associated with the Google Place (e.g.: 33139732419)</td>
 </tr>

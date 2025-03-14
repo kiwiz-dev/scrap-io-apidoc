@@ -481,7 +481,7 @@ axios.post(url, params, headers)
 | exported_lines_limit | integer | no |  | The maximum number of results wanted in the export. |
 | export_only_new_place | boolean | no |  | Export only places not present in previous exports. |
 | export_only_new_email | boolean | no |  | Export only places with email not already present in previous exports. |
-| exported_columns | array | yes | See "Export columns" section below | Columns to include in the export file. Require at least one column. |
+| exported_columns | array | no | See "Export columns" section below. | Columns to include in the export file. Require at least one column if passed. If no specified, all columns will be exported. |
 | gmap_is_main_type | boolean | no | | Filter by main business type only |
 | gmap_is_closed | boolean | no | | Filter by permanently closed status |
 | gmap_has_website | boolean | no | | Filter by presence of website |
@@ -771,7 +771,13 @@ axios.delete(url, headers)
   });
 ```
 
-> The above code returns a 200 status code (OK).
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "success"
+}
+```
 
 This endpoint allows you to delete one of your exports.
 

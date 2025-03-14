@@ -370,7 +370,7 @@ params = {
         "name"
     ],
     "gmap_price_range": "$$",
-    "website_has_instagram": true
+    "website_has_instagram": True
 }
  
 headers = {

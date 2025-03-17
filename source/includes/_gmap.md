@@ -1186,49 +1186,49 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 
 ### Query Parameters
 
-| Parameter | Default | Required | Description |
-| --------- | ------- | -------- | ----------- |
-| per_page | 10 | no | Number of results per page (1, 10, 25 or 50) |
-| skip_data | 0 | no | Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
-skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
-blacklists |Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.|
-| cursor |  | no | Cursor pagination |
-| type |  | yes | ID of Gmap type to search for |
-| country_code |  | yes | ISO Country code (FR, US, etc.) |
-| admin1_code |  | no | ID of admin1 location to search for |
-| admin2_code |  | no | ID of admin2 location to search for |
-| city |  | no | Name of city to search for |
-| postal_code |  | no | Postal code to search for |
-| gmap_is_main_type |  | no | Boolean (0 = false / 1 = true) |
-| gmap_is_closed |  | no | Boolean (0 = false / 1 = true) |
-| gmap_has_website |  | no | Boolean (0 = false / 1 = true) |
-| gmap_has_phone |  | no | Boolean (0 = false / 1 = true) |
-| gmap_price_range |  | no | Price range, e.g. '$', '$$', '$$$' or '$$$$' |
-| gmap_reviews_count_lte |  | no | Gmap reviews count less or equal than |
-| gmap_reviews_count_lt |  | no | Gmap reviews count less than |
-| gmap_reviews_count_gte |  | no | Gmap reviews count greater or equals than |
-| gmap_reviews_count_gt |  | no | Gmap reviews count greater than |
-| gmap_reviews_rating_lte |  | no | Gmap reviews rating less or equal than |
-| gmap_reviews_rating_lt |  | no | Gmap reviews rating less than |
-| gmap_reviews_rating_gte |  | no | Gmap reviews rating greater or equals than |
-| gmap_reviews_rating_gt |  | no | Gmap reviews rating greater than |
-| gmap_photos_count_lte |  | no | Gmap photos count less or equal than |
-| gmap_photos_count_lt |  | no | Gmap photos count less than |
-| gmap_photos_count_gte |  | no | Gmap photos count greater or equals than |
-| gmap_photos_count_gt |  | no | Gmap photos count greater than |
-| gmap_is_claimed |  | no | Boolean (0 = false / 1 = true) |
-| website_has_title |  | no | Boolean (0 = false / 1 = true) |
-| website_has_meta_keywords |  | no | Boolean (0 = false / 1 = true) |
-| website_has_meta_description |  | no | Boolean (0 = false / 1 = true) |
-| website_has_contact_pages |  | no | Boolean (0 = false / 1 = true) |
-| website_has_emails |  | no | Boolean (0 = false / 1 = true) |
-| website_has_phones |  | no | Boolean (0 = false / 1 = true) |
-| website_has_facebook |  | no | Boolean (0 = false / 1 = true) |
-| website_has_youtube |  | no | Boolean (0 = false / 1 = true) |
-| website_has_twitter |  | no | Boolean (0 = false / 1 = true) |
-| website_has_instagram |  | no | Boolean (0 = false / 1 = true) |
-| website_has_linkedin |  | no | Boolean (0 = false / 1 = true) |
-| website_has_ad_pixels |  | no | Boolean (0 = false / 1 = true) |
+| Parameter | Type | Required | Options | Description |
+|---|---|---|---|---|
+| per_page | integer | no | 1, 10, 25 or 50 | Number of results per page. Default: 10 |
+| skip_data | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. Default: 0 |
+| skip_blacklist | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the verification of potential blacklisted places. Default: 0 |
+| blacklists | array | no | | Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists. |
+| cursor | string | no | | Cursor pagination |
+| type | string | yes | | ID of Gmap type to search for |
+| country_code | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Country. |
+| admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country. |
+| admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country. |
+| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City. |
+| postal_code | string | no | | Postal code to search for |
+| gmap_is_main_type | boolean | no | 0 = false / 1 = true | Filter by main business type only |
+| gmap_is_closed | boolean | no | 0 = false / 1 = true | Filter by permanently closed status |
+| gmap_has_website | boolean | no | 0 = false / 1 = true | Filter by presence of website |
+| gmap_has_phone | boolean | no | 0 = false / 1 = true | Filter by presence of phone number |
+| gmap_is_claimed | boolean | no | 0 = false / 1 = true | Filter by claimed business status |
+| gmap_price_range | string | no | $, $$, $$$, $$$$ | Filter by price level |
+| gmap_reviews_rating_gte | float | no | | Filter by rating greater than or equal to value |
+| gmap_reviews_rating_gt | float | no | | Filter by rating greater than value |
+| gmap_reviews_rating_lte | float | no | | Filter by rating less than or equal to value |
+| gmap_reviews_rating_lt | float | no | | Filter by rating less than value |
+| gmap_reviews_count_gte | integer | no | | Filter by number of reviews greater than or equal to value |
+| gmap_reviews_count_gt | integer | no | | Filter by number of reviews greater than value |
+| gmap_reviews_count_lte | integer | no | | Filter by number of reviews less than or equal to value |
+| gmap_reviews_count_lt | integer | no | | Filter by number of reviews less than value |
+| gmap_photos_count_gte | integer | no | | Filter by number of photos greater than or equal to value |
+| gmap_photos_count_gt | integer | no | | Filter by number of photos greater than value |
+| gmap_photos_count_lte | integer | no | | Filter by number of photos less than or equal to value |
+| gmap_photos_count_lt | integer | no | | Filter by number of photos less than value |
+| website_has_emails | boolean | no | 0 = false / 1 = true | Filter by presence of email addresses on website |
+| website_has_contact_pages | boolean | no | 0 = false / 1 = true | Filter by presence of contact pages |
+| website_has_facebook | boolean | no | 0 = false / 1 = true | Filter by presence of Facebook link |
+| website_has_instagram | boolean | no | 0 = false / 1 = true | Filter by presence of Instagram link |
+| website_has_youtube | boolean | no | 0 = false / 1 = true | Filter by presence of YouTube link |
+| website_has_twitter | boolean | no | 0 = false / 1 = true | Filter by presence of Twitter link |
+| website_has_linkedin | boolean | no | 0 = false / 1 = true | Filter by presence of LinkedIn link |
+| website_has_ad_pixels | boolean | no | 0 = false / 1 = true | Filter by presence of advertising pixels |
+| website_has_title | boolean | no | 0 = false / 1 = true | Filter by presence of title |
+| website_has_meta_keywords | boolean | no | 0 = false / 1 = true | Filter by presence of meta keywords |
+| website_has_meta_description | boolean | no | 0 = false / 1 = true | Filter by presence of meta description |
+| website_has_phones | boolean | no | 0 = false / 1 = true | Filter by presence of phones |
 
 ## Enrich
 

@@ -471,22 +471,22 @@ axios.post(url, params, headers)
 
 | Parameter | Type | Required | Options | Description |
 |---|---|---|---|---|
-| name | string | yes if auto_name not present or false |  | The name of the export. Must be unique, min 3 char and max 255 char. |
-| auto_name | boolean | yes if name not present |  | If set, we'll generate a name for you. |
-| type | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#types) | Type of place. |
-| country_code | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Country. |
-| admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country. |
-| admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country. |
-| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City. |
-| exported_lines_limit | integer | no |  | The maximum number of results wanted in the export. |
-| export_only_new_place | boolean | no |  | Export only places not present in previous exports. |
-| export_only_new_email | boolean | no |  | Export only places with email not already present in previous exports. |
-| exported_columns | array | no | See "Export columns" section below. | Columns to include in the export file. Require at least one column if passed. If no specified, all columns will be exported. |
-| gmap_is_main_type | boolean | no | | Filter by main business type only |
-| gmap_is_closed | boolean | no | | Filter by permanently closed status |
-| gmap_has_website | boolean | no | | Filter by presence of website |
-| gmap_has_phone | boolean | no | | Filter by presence of phone number |
-| gmap_is_claimed | boolean | no | | Filter by claimed business status |
+| name | string | yes if auto_name not present or false |  | The name of the export. Must be unique, min 3 char and max 255 char |
+| auto_name | boolean | yes if name not present | 0 = false / 1 = true | If set, we'll generate a name for you |
+| type | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#types) | Type of place |
+| country_code | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Country |
+| admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country |
+| admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country |
+| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City |
+| exported_lines_limit | integer | no | 0 = false / 1 = true | The maximum number of results wanted in the export |
+| export_only_new_place | boolean | no | 0 = false / 1 = true | Export only places not present in previous exports |
+| export_only_new_email | boolean | no | 0 = false / 1 = true | Export only places with email not already present in previous exports |
+| exported_columns | array | no | See "Export columns" section below. | Columns to include in the export file. Require at least one column if passed. If no specified, all columns will be exported |
+| gmap_is_main_type | boolean | no |0 = false / 1 = true | Filter by main business type only |
+| gmap_is_closed | boolean | no | 0 = false / 1 = true | Filter by permanently closed status |
+| gmap_has_website | boolean | no | 0 = false / 1 = true | Filter by presence of website |
+| gmap_has_phone | boolean | no | 0 = false / 1 = true | Filter by presence of phone number |
+| gmap_is_claimed | boolean | no | 0 = false / 1 = true | Filter by claimed business status |
 | gmap_price_range | string | no | $, $$, $$$, $$$$ | Filter by price level |
 | gmap_reviews_rating_gte | float | no | | Filter by rating greater than or equal to value |
 | gmap_reviews_rating_gt | float | no | | Filter by rating greater than value |
@@ -500,15 +500,14 @@ axios.post(url, params, headers)
 | gmap_photos_count_gt | integer | no | | Filter by number of photos greater than value |
 | gmap_photos_count_lte | integer | no | | Filter by number of photos less than or equal to value |
 | gmap_photos_count_lt | integer | no | | Filter by number of photos less than value |
-| website_has_emails | boolean | no | | Filter by presence of email addresses on website |
-| website_has_contact_pages | boolean | no | | Filter by presence of contact pages |
-| website_has_facebook | boolean | no | | Filter by presence of Facebook link |
-| website_has_instagram | boolean | no | | Filter by presence of Instagram link |
-| website_has_youtube | boolean | no | | Filter by presence of YouTube link |
-| website_has_twitter | boolean | no | | Filter by presence of Twitter link |
-| website_has_linkedin | boolean | no | | Filter by presence of LinkedIn link |
-| website_has_ad_pixels | boolean | no | | Filter by presence of advertising pixels |
-
+| website_has_emails | boolean | no | 0 = false / 1 = true | Filter by presence of email addresses on website |
+| website_has_contact_pages | boolean | no | 0 = false / 1 = true | Filter by presence of contact pages |
+| website_has_facebook | boolean | no | 0 = false / 1 = true | Filter by presence of Facebook link |
+| website_has_instagram | boolean | no | 0 = false / 1 = true | Filter by presence of Instagram link |
+| website_has_youtube | boolean | no | 0 = false / 1 = true | Filter by presence of YouTube link |
+| website_has_twitter | boolean | no | 0 = false / 1 = true | Filter by presence of Twitter link |
+| website_has_linkedin | boolean | no | 0 = false / 1 = true | Filter by presence of LinkedIn link |
+| website_has_ad_pixels | boolean | no | 0 = false / 1 = true | Filter by presence of advertising pixels |
 
 **Export columns**
 
@@ -693,7 +692,7 @@ This endpoint allows you to rename one of your exports.
 |-----------|--------|----------|---------------------------------------------|
 | name      | string | yes      | The name of the export. Must be unique, min 3 char and max 255 char. |
 
-## Delete (one)
+## Delete
 
 <!--  PHP code -->
 ```php

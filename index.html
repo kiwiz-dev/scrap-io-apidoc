@@ -329,19 +329,19 @@
             <a href="#gmap" class="toc-h1 toc-link" data-title="GMap">GMap</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#types" class="toc-h2 toc-link" data-title="Types">Types</a>
+                    <a href="#gmap-types" class="toc-h2 toc-link" data-title="Types">Types</a>
                   </li>
                   <li>
-                    <a href="#locations" class="toc-h2 toc-link" data-title="Locations">Locations</a>
+                    <a href="#gmap-locations" class="toc-h2 toc-link" data-title="Locations">Locations</a>
                   </li>
                   <li>
-                    <a href="#place" class="toc-h2 toc-link" data-title="Place">Place</a>
+                    <a href="#gmap-place" class="toc-h2 toc-link" data-title="Place">Place</a>
                   </li>
                   <li>
-                    <a href="#search" class="toc-h2 toc-link" data-title="Search">Search</a>
+                    <a href="#gmap-search" class="toc-h2 toc-link" data-title="Search">Search</a>
                   </li>
                   <li>
-                    <a href="#enrich" class="toc-h2 toc-link" data-title="Enrich">Enrich</a>
+                    <a href="#gmap-enrich" class="toc-h2 toc-link" data-title="Enrich">Enrich</a>
                   </li>
               </ul>
           </li>
@@ -349,16 +349,16 @@
             <a href="#blacklist" class="toc-h1 toc-link" data-title="Blacklist">Blacklist</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#list" class="toc-h2 toc-link" data-title="List">List</a>
+                    <a href="#blacklist-list" class="toc-h2 toc-link" data-title="List">List</a>
                   </li>
                   <li>
-                    <a href="#show" class="toc-h2 toc-link" data-title="Show">Show</a>
+                    <a href="#blacklist-show" class="toc-h2 toc-link" data-title="Show">Show</a>
                   </li>
                   <li>
-                    <a href="#add" class="toc-h2 toc-link" data-title="Add">Add</a>
+                    <a href="#blacklist-add" class="toc-h2 toc-link" data-title="Add">Add</a>
                   </li>
                   <li>
-                    <a href="#delete" class="toc-h2 toc-link" data-title="Delete">Delete</a>
+                    <a href="#blacklist-delete" class="toc-h2 toc-link" data-title="Delete">Delete</a>
                   </li>
               </ul>
           </li>
@@ -366,19 +366,19 @@
             <a href="#export" class="toc-h1 toc-link" data-title="Export">Export</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#all" class="toc-h2 toc-link" data-title="All">All</a>
+                    <a href="#export-all" class="toc-h2 toc-link" data-title="All">All</a>
                   </li>
                   <li>
-                    <a href="#find" class="toc-h2 toc-link" data-title="Find">Find</a>
+                    <a href="#export-find" class="toc-h2 toc-link" data-title="Find">Find</a>
                   </li>
                   <li>
-                    <a href="#create" class="toc-h2 toc-link" data-title="Create">Create</a>
+                    <a href="#export-create" class="toc-h2 toc-link" data-title="Create">Create</a>
                   </li>
                   <li>
-                    <a href="#update" class="toc-h2 toc-link" data-title="Update">Update</a>
+                    <a href="#export-update" class="toc-h2 toc-link" data-title="Update">Update</a>
                   </li>
                   <li>
-                    <a href="#delete-one" class="toc-h2 toc-link" data-title="Delete (one)">Delete (one)</a>
+                    <a href="#export-delete" class="toc-h2 toc-link" data-title="Delete">Delete</a>
                   </li>
               </ul>
           </li>
@@ -593,7 +593,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/subscription</code></p>
-<h1 id='gmap'>GMap</h1><h2 id='types'>Types</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span><span class="p">;</span>
+<h1 id='gmap'>GMap</h1><h2 id='gmap-types'>Types</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s1">'boulang'</span><span class="p">,</span>
@@ -695,7 +695,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/gmap/types</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='gmap-types-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -717,7 +717,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Search locale</td>
 </tr>
 </tbody></table>
-<h2 id='locations'>Locations</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span><span class="p">;</span>
+<h2 id='gmap-locations'>Locations</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s1">'us'</span><span class="p">,</span>
@@ -830,7 +830,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/gmap/locations</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='gmap-locations-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -870,7 +870,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Term to search for</td>
 </tr>
 </tbody></table>
-<h2 id='place'>Place</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span><span class="p">;</span>
+<h2 id='gmap-place'>Place</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'google_id'</span> <span class="o">=&gt;</span> <span class="s1">'0x3e5f43348a67e24b:0xff45e502e1ceb7e2'</span><span class="p">,</span>
@@ -1314,7 +1314,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/gmap/place</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='gmap-place-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1358,7 +1358,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You have to provide either a google_id or a place_id. And only one at a time.
 </aside>
-<h2 id='search'>Search</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span><span class="p">;</span>
+<h2 id='gmap-search'>Search</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s1">'us'</span><span class="p">,</span>
@@ -1779,263 +1779,305 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/gmap/search</code></p>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='gmap-search-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Default</th>
+<th>Type</th>
 <th>Required</th>
+<th>Options</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>per_page</td>
-<td>10</td>
+<td>integer</td>
 <td>no</td>
-<td>Number of results per page (1, 10, 25 or 50)</td>
+<td>1, 10, 25 or 50</td>
+<td>Number of results per page. Default: 10</td>
 </tr>
 <tr>
 <td>skip_data</td>
-<td>0</td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit.</td>
+<td>0 = false / 1 = true</td>
+<td>Indicate that you want to skip the data part of the response. When the data is skipped, it won&#39;t deduct any export credit. Default: 0</td>
 </tr>
 <tr>
 <td>skip_blacklist</td>
-<td>0</td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.</td>
+<td>0 = false / 1 = true</td>
+<td>Indicate that you want to skip the verification of potential blacklisted places. Default: 0</td>
 </tr>
 <tr>
 <td>blacklists</td>
-<td>Verify all blacklists.</td>
+<td>array</td>
 <td>no</td>
-<td>Array containing blacklist names. When specify, only the given blacklists will be verify.</td>
+<td></td>
+<td>Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists</td>
 </tr>
 <tr>
 <td>cursor</td>
-<td></td>
+<td>string</td>
 <td>no</td>
+<td></td>
 <td>Cursor pagination</td>
 </tr>
 <tr>
 <td>type</td>
-<td></td>
+<td>string</td>
 <td>yes</td>
+<td></td>
 <td>ID of Gmap type to search for</td>
 </tr>
 <tr>
 <td>country_code</td>
-<td></td>
+<td>string</td>
 <td>yes</td>
+<td></td>
 <td>ISO Country code (FR, US, etc.)</td>
 </tr>
 <tr>
 <td>admin1_code</td>
-<td></td>
+<td>string</td>
 <td>no</td>
-<td>ID of admin1 location to search for</td>
+<td>Id from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
+<td>Level 1 division for the country</td>
 </tr>
 <tr>
 <td>admin2_code</td>
-<td></td>
+<td>string</td>
 <td>no</td>
-<td>ID of admin2 location to search for</td>
+<td>Id from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
+<td>Level 2 division for the country</td>
 </tr>
 <tr>
 <td>city</td>
-<td></td>
+<td>string</td>
 <td>no</td>
-<td>Name of city to search for</td>
+<td>Text from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
+<td>City</td>
 </tr>
 <tr>
 <td>postal_code</td>
-<td></td>
+<td>string</td>
 <td>no</td>
+<td></td>
 <td>Postal code to search for</td>
 </tr>
 <tr>
 <td>gmap_is_main_type</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by main business type only</td>
 </tr>
 <tr>
 <td>gmap_is_closed</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by permanently closed status</td>
 </tr>
 <tr>
 <td>gmap_has_website</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of website</td>
 </tr>
 <tr>
 <td>gmap_has_phone</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
-</tr>
-<tr>
-<td>gmap_price_range</td>
-<td></td>
-<td>no</td>
-<td>Price range, e.g. &#39;$&#39;, &#39;$$&#39;, &#39;$$$&#39; or &#39;$$$$&#39;</td>
-</tr>
-<tr>
-<td>gmap_reviews_count_lte</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews count less or equal than</td>
-</tr>
-<tr>
-<td>gmap_reviews_count_lt</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews count less than</td>
-</tr>
-<tr>
-<td>gmap_reviews_count_gte</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews count greater or equals than</td>
-</tr>
-<tr>
-<td>gmap_reviews_count_gt</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews count greater than</td>
-</tr>
-<tr>
-<td>gmap_reviews_rating_lte</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews rating less or equal than</td>
-</tr>
-<tr>
-<td>gmap_reviews_rating_lt</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews rating less than</td>
-</tr>
-<tr>
-<td>gmap_reviews_rating_gte</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews rating greater or equals than</td>
-</tr>
-<tr>
-<td>gmap_reviews_rating_gt</td>
-<td></td>
-<td>no</td>
-<td>Gmap reviews rating greater than</td>
-</tr>
-<tr>
-<td>gmap_photos_count_lte</td>
-<td></td>
-<td>no</td>
-<td>Gmap photos count less or equal than</td>
-</tr>
-<tr>
-<td>gmap_photos_count_lt</td>
-<td></td>
-<td>no</td>
-<td>Gmap photos count less than</td>
-</tr>
-<tr>
-<td>gmap_photos_count_gte</td>
-<td></td>
-<td>no</td>
-<td>Gmap photos count greater or equals than</td>
-</tr>
-<tr>
-<td>gmap_photos_count_gt</td>
-<td></td>
-<td>no</td>
-<td>Gmap photos count greater than</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of phone number</td>
 </tr>
 <tr>
 <td>gmap_is_claimed</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by claimed business status</td>
 </tr>
 <tr>
-<td>website_has_title</td>
-<td></td>
+<td>gmap_price_range</td>
+<td>string</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>$, $$, $$$, $$$$</td>
+<td>Filter by price level</td>
 </tr>
 <tr>
-<td>website_has_meta_keywords</td>
-<td></td>
+<td>gmap_reviews_rating_gte</td>
+<td>float</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td></td>
+<td>Filter by rating greater than or equal to value</td>
 </tr>
 <tr>
-<td>website_has_meta_description</td>
-<td></td>
+<td>gmap_reviews_rating_gt</td>
+<td>float</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td></td>
+<td>Filter by rating greater than value</td>
 </tr>
 <tr>
-<td>website_has_contact_pages</td>
-<td></td>
+<td>gmap_reviews_rating_lte</td>
+<td>float</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td></td>
+<td>Filter by rating less than or equal to value</td>
+</tr>
+<tr>
+<td>gmap_reviews_rating_lt</td>
+<td>float</td>
+<td>no</td>
+<td></td>
+<td>Filter by rating less than value</td>
+</tr>
+<tr>
+<td>gmap_reviews_count_gte</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of reviews greater than or equal to value</td>
+</tr>
+<tr>
+<td>gmap_reviews_count_gt</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of reviews greater than value</td>
+</tr>
+<tr>
+<td>gmap_reviews_count_lte</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of reviews less than or equal to value</td>
+</tr>
+<tr>
+<td>gmap_reviews_count_lt</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of reviews less than value</td>
+</tr>
+<tr>
+<td>gmap_photos_count_gte</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of photos greater than or equal to value</td>
+</tr>
+<tr>
+<td>gmap_photos_count_gt</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of photos greater than value</td>
+</tr>
+<tr>
+<td>gmap_photos_count_lte</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of photos less than or equal to value</td>
+</tr>
+<tr>
+<td>gmap_photos_count_lt</td>
+<td>integer</td>
+<td>no</td>
+<td></td>
+<td>Filter by number of photos less than value</td>
 </tr>
 <tr>
 <td>website_has_emails</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of email addresses on website</td>
 </tr>
 <tr>
-<td>website_has_phones</td>
-<td></td>
+<td>website_has_contact_pages</td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of contact pages</td>
 </tr>
 <tr>
 <td>website_has_facebook</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
-</tr>
-<tr>
-<td>website_has_youtube</td>
-<td></td>
-<td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
-</tr>
-<tr>
-<td>website_has_twitter</td>
-<td></td>
-<td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of Facebook link</td>
 </tr>
 <tr>
 <td>website_has_instagram</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of Instagram link</td>
+</tr>
+<tr>
+<td>website_has_youtube</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of YouTube link</td>
+</tr>
+<tr>
+<td>website_has_twitter</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of Twitter link</td>
 </tr>
 <tr>
 <td>website_has_linkedin</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of LinkedIn link</td>
 </tr>
 <tr>
 <td>website_has_ad_pixels</td>
-<td></td>
+<td>boolean</td>
 <td>no</td>
-<td>Boolean (0 = false / 1 = true)</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of advertising pixels</td>
+</tr>
+<tr>
+<td>website_has_title</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of title</td>
+</tr>
+<tr>
+<td>website_has_meta_keywords</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of meta keywords</td>
+</tr>
+<tr>
+<td>website_has_meta_description</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of meta description</td>
+</tr>
+<tr>
+<td>website_has_phones</td>
+<td>boolean</td>
+<td>no</td>
+<td>0 = false / 1 = true</td>
+<td>Filter by presence of phones</td>
 </tr>
 </tbody></table>
-<h2 id='enrich'>Enrich</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span><span class="p">;</span>
+<h2 id='gmap-enrich'>Enrich</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="s1">'sugarfishsushi.com'</span>
@@ -2441,7 +2483,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/gmap/enrich</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='gmap-enrich-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2517,7 +2559,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You can blacklist up to 10 million items.
 </aside>
-<h2 id='list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span><span class="p">;</span>
+<h2 id='blacklist-list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2591,7 +2633,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/blacklist</code></p>
-<h2 id='show'>Show</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list'</span><span class="p">;</span>
+<h2 id='blacklist-show'>Show</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2677,7 +2719,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/blacklist/{list-name}</code></p>
-<h3 id='query-parameters'>Query parameters</h3>
+<h3 id='blacklist-show-query-parameters'>Query parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2697,7 +2739,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Get the results for the given page</td>
 </tr>
 </tbody></table>
-<h2 id='add'>Add</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
+<h2 id='blacklist-add'>Add</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'domain'</span><span class="p">,</span>
@@ -2788,7 +2830,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>POST https://scrap.io/api/v1/blacklist/{list-name}</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='blacklist-add-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2810,7 +2852,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Data to add to the blacklist. Must be an array of strings [&quot;xxx1&quot;, &quot;xxx2&quot;] - (limited to 1,000 entries per query).</td>
 </tr>
 </tbody></table>
-<h2 id='delete'>Delete</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
+<h2 id='blacklist-delete'>Delete</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2878,7 +2920,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>DELETE https://scrap.io/api/v1/blacklist/{list-name}</code></p>
-<h1 id='export'>Export</h1><h2 id='all'>All</h2>
+<h1 id='export'>Export</h1><h2 id='export-all'>All</h2>
 <!--  PHP code -->
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span><span class="p">;</span>
 
@@ -3022,9 +3064,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   We won't return deleted exports.
 </aside>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='export-all-http-request'>HTTP Request</h3>
 <p><code>GET https://scrap.io/api/v1/exports</code></p>
-<h3 id='query-parameters'>Query parameters</h3>
+<h3 id='export-all-query-parameters'>Query parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3068,7 +3110,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Get the results for the given page</td>
 </tr>
 </tbody></table>
-<h2 id='find'>Find</h2>
+<h2 id='export-find'>Find</h2>
 <!--  PHP code -->
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
 
@@ -3167,9 +3209,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to get one of your exports depending on the id.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='export-find-http-request'>HTTP Request</h3>
 <p><code>GET https://scrap.io/api/v1/exports/{id}</code></p>
-<h2 id='create'>Create</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports'</span><span class="p">;</span>
+<h2 id='export-create'>Create</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"My export name (1)"</span><span class="p">,</span>
@@ -3327,9 +3369,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"download_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre></div><h3 id='export-create-http-request'>HTTP Request</h3>
 <p><code>POST https://scrap.io/api/v1/exports</code></p>
-<h3 id='body-parameters'>Body parameters</h3>
+<h3 id='export-create-body-parameters'>Body parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3344,111 +3386,111 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>string</td>
 <td>yes if auto_name not present or false</td>
 <td></td>
-<td>The name of the export. Must be unique, min 3 char and max 255 char.</td>
+<td>The name of the export. Must be unique, min 3 char and max 255 char</td>
 </tr>
 <tr>
 <td>auto_name</td>
 <td>boolean</td>
 <td>yes if name not present</td>
-<td></td>
-<td>If set, we&#39;ll generate a name for you.</td>
+<td>0 = false / 1 = true</td>
+<td>If set, we&#39;ll generate a name for you</td>
 </tr>
 <tr>
 <td>type</td>
 <td>string</td>
 <td>yes</td>
 <td>Id from this <a href="https://apidoc.scrap.io/#types">endpoint</a></td>
-<td>Type of place.</td>
+<td>Type of place</td>
 </tr>
 <tr>
 <td>country_code</td>
 <td>string</td>
 <td>yes</td>
-<td>Id from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
-<td>Country.</td>
+<td></td>
+<td>ISO Country code (FR, US, etc.)</td>
 </tr>
 <tr>
 <td>admin1_code</td>
 <td>string</td>
 <td>no</td>
 <td>Id from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
-<td>Level 1 division for the country.</td>
+<td>Level 1 division for the country</td>
 </tr>
 <tr>
 <td>admin2_code</td>
 <td>string</td>
 <td>no</td>
 <td>Id from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
-<td>Level 2 division for the country.</td>
+<td>Level 2 division for the country</td>
 </tr>
 <tr>
 <td>city</td>
 <td>string</td>
 <td>no</td>
 <td>Text from this <a href="https://apidoc.scrap.io/#locations">endpoint</a></td>
-<td>City.</td>
+<td>City</td>
 </tr>
 <tr>
 <td>exported_lines_limit</td>
 <td>integer</td>
 <td>no</td>
-<td></td>
-<td>The maximum number of results wanted in the export.</td>
+<td>0 = false / 1 = true</td>
+<td>The maximum number of results wanted in the export</td>
 </tr>
 <tr>
 <td>export_only_new_place</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
-<td>Export only places not present in previous exports.</td>
+<td>0 = false / 1 = true</td>
+<td>Export only places not present in previous exports</td>
 </tr>
 <tr>
 <td>export_only_new_email</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
-<td>Export only places with email not already present in previous exports.</td>
+<td>0 = false / 1 = true</td>
+<td>Export only places with email not already present in previous exports</td>
 </tr>
 <tr>
 <td>exported_columns</td>
 <td>array</td>
 <td>no</td>
 <td>See &quot;Export columns&quot; section below.</td>
-<td>Columns to include in the export file. Require at least one column if passed. If no specified, all columns will be exported.</td>
+<td>Columns to include in the export file. Require at least one column if passed. If no specified, all columns will be exported</td>
 </tr>
 <tr>
 <td>gmap_is_main_type</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by main business type only</td>
 </tr>
 <tr>
 <td>gmap_is_closed</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by permanently closed status</td>
 </tr>
 <tr>
 <td>gmap_has_website</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of website</td>
 </tr>
 <tr>
 <td>gmap_has_phone</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of phone number</td>
 </tr>
 <tr>
 <td>gmap_is_claimed</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by claimed business status</td>
 </tr>
 <tr>
@@ -3546,56 +3588,56 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>website_has_emails</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of email addresses on website</td>
 </tr>
 <tr>
 <td>website_has_contact_pages</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of contact pages</td>
 </tr>
 <tr>
 <td>website_has_facebook</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of Facebook link</td>
 </tr>
 <tr>
 <td>website_has_instagram</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of Instagram link</td>
 </tr>
 <tr>
 <td>website_has_youtube</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of YouTube link</td>
 </tr>
 <tr>
 <td>website_has_twitter</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of Twitter link</td>
 </tr>
 <tr>
 <td>website_has_linkedin</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of LinkedIn link</td>
 </tr>
 <tr>
 <td>website_has_ad_pixels</td>
 <td>boolean</td>
 <td>no</td>
-<td></td>
+<td>0 = false / 1 = true</td>
 <td>Filter by presence of advertising pixels</td>
 </tr>
 </tbody></table>
@@ -3769,7 +3811,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Website pixel ad</td>
 </tr>
 </tbody></table>
-<h2 id='update'>Update</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/3'</span><span class="p">;</span>
+<h2 id='export-update'>Update</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/3'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"My new export name"</span>
@@ -3879,9 +3921,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to rename one of your exports.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='export-update-http-request'>HTTP Request</h3>
 <p><code>PATCH https://scrap.io/api/v1/exports/{id}</code></p>
-<h3 id='body-parameters-2'>Body parameters</h3>
+<h3 id='export-update-body-parameters'>Body parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3897,7 +3939,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>The name of the export. Must be unique, min 3 char and max 255 char.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-one'>Delete (one)</h2>
+<h2 id='export-delete'>Delete</h2>
 <!--  PHP code -->
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
 
@@ -3972,7 +4014,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to delete one of your exports.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='export-delete-http-request'>HTTP Request</h3>
 <p><code>DELETE https://scrap.io/api/v1/exports/{id}</code></p>
 <h1 id='errors'>Errors</h1>
 <p>The Scrap.io API uses the following error codes:</p>

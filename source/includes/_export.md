@@ -153,10 +153,6 @@ axios.get(url, headers)
 
 This endpoint allows you to get a paginated list of your exports.
 
-<aside class="warning">
-  We won't return deleted exports.
-</aside>
-
 ### HTTP Request
 
 `GET https://scrap.io/api/v1/exports`
@@ -474,7 +470,7 @@ axios.post(url, params, headers)
 | name | string | yes if auto_name not present or false |  | The name of the export. Must be unique, min 3 char and max 255 char |
 | auto_name | boolean | yes if name not present | 0 = false / 1 = true | If set, we'll generate a name for you |
 | type | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#types) | Type of place |
-| country_code | string | yes |  | ISO Country code (FR, US, etc.) |
+| country_code | string | yes |  | 2 letters (ISO 3166-1 alpha-2) country code (FR, US, etc.) |
 | admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country |
 | admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country |
 | city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City |

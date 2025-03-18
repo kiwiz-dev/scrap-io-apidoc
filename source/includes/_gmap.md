@@ -1194,7 +1194,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | blacklists | array | no | | Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists |
 | cursor | string | no | | Cursor pagination |
 | type | string | yes | | ID of Gmap type to search for |
-| country_code | string | yes |  | ISO Country code (FR, US, etc.) |
+| country_code | string | yes |  | 2 letters (ISO 3166-1 alpha-2) country code (FR, US, etc.) |
 | admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country |
 | admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country |
 | city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City |

@@ -1191,13 +1191,13 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | per_page | integer | no | 1, 10, 25 or 50 | Number of results per page. Default: 10 |
 | skip_data | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. Default: 0 |
 | skip_blacklist | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the verification of potential blacklisted places. Default: 0 |
-| blacklists | array | no | | Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists. |
+| blacklists | array | no | | Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists |
 | cursor | string | no | | Cursor pagination |
 | type | string | yes | | ID of Gmap type to search for |
-| country_code | string | yes | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Country. |
-| admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country. |
-| admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country. |
-| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City. |
+| country_code | string | yes |  | ISO Country code (FR, US, etc.) |
+| admin1_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 1 division for the country |
+| admin2_code | string | no | Id from this [endpoint](https://apidoc.scrap.io/#locations) | Level 2 division for the country |
+| city | string | no | Text from this [endpoint](https://apidoc.scrap.io/#locations) | City |
 | postal_code | string | no | | Postal code to search for |
 | gmap_is_main_type | boolean | no | 0 = false / 1 = true | Filter by main business type only |
 | gmap_is_closed | boolean | no | 0 = false / 1 = true | Filter by permanently closed status |

@@ -739,7 +739,7 @@ google_id | | no | Google id (ex: 0xabc:0xdef)
 place_id | | no |  Place id (ex: ChIabcDeFGhIJkLMnoPqR)
 skip_data | 0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit.
 skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.
-blacklists | Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.
+blacklists | Verify all blacklists. | no | Array containing blacklist names. When specified, only the given blacklists will be verified.
 
 <aside class="warning">
   You have to provide either a google_id or a place_id. And only one at a time.
@@ -1191,7 +1191,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 | per_page | integer | no | 1, 10, 25 or 50 | Number of results per page. Default: 10 |
 | skip_data | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the data part of the response. When the data is skipped, it won't deduct any export credit. Default: 0 |
 | skip_blacklist | boolean | no | 0 = false / 1 = true | Indicate that you want to skip the verification of potential blacklisted places. Default: 0 |
-| blacklists | array | no | | Array containing blacklist names. When specify, only the given blacklists will be verify. Default: Verify all blacklists |
+| blacklists | array | no | | Array containing blacklist names. When specified, only the given blacklists will be verified. Default: Verify all blacklists |
 | cursor | string | no | | Cursor pagination |
 | type | string | yes | | ID of Gmap type to search for |
 | country_code | string | yes |  | 2 letters (ISO 3166-1 alpha-2) country code (FR, US, etc.) |
@@ -1661,7 +1661,7 @@ With this endpoint, you can retrieve the google places related to the data provi
 | per_page | 10 | No | Number of results per page (1, 10, 25 or 50) |
 | skip_data | 0 | No | Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
 skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
-blacklists |Verify all blacklists. | no | Array containing blacklist names. When specify, only the given blacklists will be verify.|
+blacklists | Verify all blacklists. | no | Array containing blacklist names. When specified, only the given blacklists will be verified.|
 | cursor | | No | Cursor pagination |
 | url | | No | Exact URL mentioned on Google Maps |
 | domain | | No | Domain mentioned in Google Maps |

@@ -363,7 +363,7 @@ axios.get(url, headers)
 
 > The above code downloads the file.
 
-This endpoint allows you to download one of your exports file depending on the id.
+This endpoint allows you to download an export based on its id.
 
 ### HTTP Request
 

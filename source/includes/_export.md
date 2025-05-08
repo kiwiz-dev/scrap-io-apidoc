@@ -117,7 +117,6 @@ axios.get(url, headers)
             "export_only_new_email": 0,
             "export_only_new_place": 0,
             "scraped_at": "2025-02-16T09:47:39.000000Z",
-            "download_link": "https://scrap.io/app/export/6cedca670e0fd1809aca1b32df32e4c2f10b9ec6ef2f9c5e2a7b80508fdc6a7a/download/csv"
         },
         {
             "id": 2,
@@ -145,7 +144,6 @@ axios.get(url, headers)
             "export_only_new_email": 0,
             "export_only_new_place": 0,
             "scraped_at": "2025-02-19T07:04:09.000000Z",
-            "download_link": "https://scrap.io/app/export/d22e9717f0185d70848d2f7b75b1ced8a339ee4d4be92697f0cb5c4b6911a5f5/download/csv"
         },
     ],
 }
@@ -273,7 +271,6 @@ axios.get(url, headers)
     "export_only_new_email": 0,
     "export_only_new_place": 0,
     "scraped_at": "2025-02-19T07:04:09.000000Z",
-    "download_link": "https://scrap-io.test/app/export/d22e9717f0185d70848d2f7b75b1ced8a339ee4d4be92697f0cb5c4b6911a5f5/download/csv"
 }
 ```
 
@@ -282,6 +279,101 @@ This endpoint allows you to get one of your exports depending on the id.
 ### HTTP Request
 
 `GET https://scrap.io/api/v1/exports/{id}`
+
+## Download
+
+<!--  PHP code -->
+```php
+$url = 'https://scrap.io/api/v1/exports/2/download?type=csv';
+
+$headers = [
+  'Authorization: Bearer xxxxxxxxxx'
+];
+
+$curl = curl_init();
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+file_put_contents('the-filename-you-want.csv', $response);
+```
+
+<!--  RUBY code -->
+```ruby
+require 'httparty'
+require 'json'
+
+url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
+
+headers = {
+  Authorization: 'Bearer xxxxxxxxxx',
+}
+
+File.open('the-filename-you-want.csv', 'wb') do |file|
+  file.write HTTParty.get(url, headers: headers).body
+end
+```
+
+<!--  PYTHON code -->
+```python
+import requests
+import json
+ 
+url = "https://scrap.io/api/v1/exports/2/download?type=csv"
+ 
+headers = {
+  "Authorization": "Bearer xxxxxxxxxx"
+}
+
+response = requests.get(url, headers=headers)
+ 
+with open('the-filename-you-want.csv', 'wb') as f:
+    f.write(response.content)
+```
+
+<!--  SHELL code -->
+```shell
+curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?type=csv' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer xxxxxxxxxxx' \
+-o the-filename-you-want.csv # This flag allows to directly download the file instead of just returning the content.
+```
+
+<!--  JS code -->
+```javascript
+const axios = require('axios')
+const fs = require('fs');
+
+const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
+
+const headers = {
+  headers: { Authorization: 'Bearer xxxxxxxxxx' },
+  responseType: 'stream'
+}
+
+axios.get(url, headers)
+  .then((response) => {
+    response.data.pipe(fs.createWriteStream('the-filename-you-want.csv'))
+  });
+```
+
+> The above code downloads the file.
+
+This endpoint allows you to download an export based on its id.
+
+### HTTP Request
+
+`GET https://scrap.io/api/v1/exports/{id}/download`
+
+### Query parameters
+
+| Parameter | Type | Required | Options | Description |
+|-----------|------|----------|---------|-------------|
+| type | string | yes |csv, xlsx | Type of the file you want to download. |
 
 ## Create
 
@@ -455,7 +547,6 @@ axios.post(url, params, headers)
     "export_only_new_email": 0,
     "export_only_new_place": 0,
     "scraped_at": "2025-02-19T07:04:09.000000Z",
-    "download_link": ""
 }
 ```
 
@@ -672,7 +763,6 @@ axios.patch(url, params, headers)
     "export_only_new_email": 0,
     "export_only_new_place": 0,
     "scraped_at": "2025-02-19T07:04:09.000000Z",
-    "download_link": ""
 }
 ```
 

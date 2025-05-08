@@ -9,6 +9,7 @@ Error Code | Meaning
 404 | Not Found -- The resource was not be found.
 405 | Method Not Allowed -- You tried to access an endpoint with an invalid method.
 422 | Unprocessable entity -- Your request is invalid.
+423 | Locked -- The resource cannot be accessed.
 429 | Too Many Requests -- You're making too many resquests! Slow down!
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.

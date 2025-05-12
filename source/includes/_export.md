@@ -56,7 +56,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports' \
+curl --location --request GET 'https://scrap.io/api/v1/exports' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
@@ -221,7 +221,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports/2' \
+curl --location --request GET 'https://scrap.io/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
@@ -287,6 +287,7 @@ This endpoint allows you to get one of your exports depending on the id.
 $url = 'https://scrap.io/api/v1/exports/2/download?type=csv';
 
 $headers = [
+  'Content-Type: application/json',
   'Authorization: Bearer xxxxxxxxxx'
 ];
 
@@ -296,10 +297,9 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 $response = curl_exec($curl);
-
 curl_close($curl);
 
-file_put_contents('the-filename-you-want.csv', $response);
+$json = json_decode($response);
 ```
 
 <!--  RUBY code -->
@@ -310,12 +310,12 @@ require 'json'
 url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
 
 headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
+  'Content-Type' => 'application/json',
+  'Authorization' => 'Bearer xxxxxxxxxx'
 }
 
-File.open('the-filename-you-want.csv', 'wb') do |file|
-  file.write HTTParty.get(url, headers: headers).body
-end
+response = HTTParty.get(url, headers: headers)
+json = JSON.parse(response.body)
 ```
 
 <!--  PYTHON code -->
@@ -326,21 +326,19 @@ import json
 url = "https://scrap.io/api/v1/exports/2/download?type=csv"
  
 headers = {
+  "Content-Type": "application/json",
   "Authorization": "Bearer xxxxxxxxxx"
 }
 
 response = requests.get(url, headers=headers)
- 
-with open('the-filename-you-want.csv', 'wb') as f:
-    f.write(response.content)
+json = response.json()
 ```
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?type=csv' \
+curl --location --request GET 'https://scrap.io/api/v1/exports/2/download?type=csv' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx' \
--o the-filename-you-want.csv # This flag allows to directly download the file instead of just returning the content.
+--header 'Authorization: Bearer xxxxxxxxxxx'
 ```
 
 <!--  JS code -->
@@ -351,19 +349,27 @@ const fs = require('fs');
 const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
 
 const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-  responseType: 'stream'
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer xxxxxxxxxx' 
+  }
 }
 
 axios.get(url, headers)
   .then((response) => {
-    response.data.pipe(fs.createWriteStream('the-filename-you-want.csv'))
+    json = JSON.parse(response.data)  
   });
 ```
 
-> The above code downloads the file.
+> The above code returns JSON structured like this:
 
-This endpoint allows you to download an export based on its id.
+```json
+{
+    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things",
+}
+```
+
+This endpoint allows you to get a temporary url to download an export file based on the export id. The link is valid for 5 minutes.
 
 ### HTTP Request
 
@@ -471,7 +477,7 @@ json = response.json()
 ```
 
 ```shell
-curl --location --request POST 'https://scrap-io.test/api/v1/exports' \
+curl --location --request POST 'https://scrap.io/api/v1/exports' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
@@ -707,7 +713,7 @@ json = response.json()
 ```
 
 ```shell
-curl --location --request PATCH 'https://scrap-io.test/api/v1/exports/3' \
+curl --location --request PATCH 'https://scrap.io/api/v1/exports/3' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
@@ -835,7 +841,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request DELETE 'https://scrap-io.test/api/v1/exports/2' \
+curl --location --request DELETE 'https://scrap.io/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```

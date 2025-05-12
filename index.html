@@ -2971,7 +2971,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap-io.test/api/v1/exports'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 </code></pre></div>
@@ -3155,7 +3155,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap-io.test/api/v1/exports/2'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 </code></pre></div>
@@ -3212,6 +3212,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
 <span class="p">];</span>
 
@@ -3221,10 +3222,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
-
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 
-<span class="nb">file_put_contents</span><span class="p">(</span><span class="s1">'the-filename-you-want.csv'</span><span class="p">,</span> <span class="nv">$response</span><span class="p">);</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
 </code></pre></div>
 <!--  RUBY code -->
 <div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
@@ -3233,12 +3233,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span>
 <span class="p">}</span>
 
-<span class="no">File</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span><span class="s1">'the-filename-you-want.csv'</span><span class="p">,</span> <span class="s1">'wb'</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">file</span><span class="o">|</span>
-  <span class="n">file</span><span class="p">.</span><span class="nf">write</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">).</span><span class="nf">body</span>
-<span class="k">end</span>
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
+<span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 </code></pre></div>
 <!--  PYTHON code -->
 <div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
@@ -3247,19 +3247,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports/2/download?type=csv"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
   <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">'the-filename-you-want.csv'</span><span class="p">,</span> <span class="s">'wb'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">)</span>
+<span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap-io.test/api/v1/exports/2/download?type=csv'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span> <span class="se">\</span>
-<span class="nt">-o</span> the-filename-you-want.csv <span class="c"># This flag allows to directly download the file instead of just returning the content.</span>
+<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 </code></pre></div>
 <!--  JS code -->
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
@@ -3268,20 +3266,25 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports/2/download?type=csv</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-  <span class="na">responseType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">stream</span><span class="dl">'</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> 
+  <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">fs</span><span class="p">.</span><span class="nx">createWriteStream</span><span class="p">(</span><span class="dl">'</span><span class="s1">the-filename-you-want.csv</span><span class="dl">'</span><span class="p">))</span>
+    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
   <span class="p">});</span>
 </code></pre></div>
 <blockquote>
-<p>The above code downloads the file.</p>
+<p>The above code returns JSON structured like this:</p>
 </blockquote>
-
-<p>This endpoint allows you to download an export based on its id.</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://scrap-io.s3.amazonaws.com/some-other-url-things"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint allows you to get a temporary url to download an export file based on the export id. The link is valid for 5 minutes.</p>
 <h3 id='export-download-http-request'>HTTP Request</h3>
 <p><code>GET https://scrap.io/api/v1/exports/{id}/download</code></p>
 <h3 id='export-download-query-parameters'>Query parameters</h3>
@@ -3386,7 +3389,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://scrap-io.test/api/v1/exports'</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://scrap.io/api/v1/exports'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 <span class="nt">--data</span> <span class="s1">'{
@@ -3955,7 +3958,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://scrap-io.test/api/v1/exports/3'</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://scrap.io/api/v1/exports/3'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 <span class="nt">--data</span> <span class="s1">'{
@@ -4077,7 +4080,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
 </code></pre></div>
 <!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://scrap-io.test/api/v1/exports/2'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
 <span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
 </code></pre></div>

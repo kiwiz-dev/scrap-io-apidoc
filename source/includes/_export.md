@@ -56,7 +56,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports' \
+curl --location --request GET 'https://scrap.io/api/v1/exports' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
@@ -221,7 +221,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports/2' \
+curl --location --request GET 'https://scrap.io/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
@@ -284,7 +284,7 @@ This endpoint allows you to get one of your exports depending on the id.
 
 <!--  PHP code -->
 ```php
-$url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv';
+$url = 'https://scrap.io/api/v1/exports/2/download?type=csv';
 
 $headers = [
   'Content-Type: application/json',
@@ -307,7 +307,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
+url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
 
 headers = {
   'Content-Type' => 'application/json',
@@ -323,7 +323,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap-io.test/api/v1/exports/2/download?type=csv"
+url = "https://scrap.io/api/v1/exports/2/download?type=csv"
  
 headers = {
   "Content-Type": "application/json",
@@ -336,7 +336,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?type=csv' \
+curl --location --request GET 'https://scrap.io/api/v1/exports/2/download?type=csv' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
@@ -346,7 +346,7 @@ curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?t
 const axios = require('axios')
 const fs = require('fs');
 
-const url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
+const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
 
 const headers = {
   headers: { 
@@ -477,7 +477,7 @@ json = response.json()
 ```
 
 ```shell
-curl --location --request POST 'https://scrap-io.test/api/v1/exports' \
+curl --location --request POST 'https://scrap.io/api/v1/exports' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
@@ -713,7 +713,7 @@ json = response.json()
 ```
 
 ```shell
-curl --location --request PATCH 'https://scrap-io.test/api/v1/exports/3' \
+curl --location --request PATCH 'https://scrap.io/api/v1/exports/3' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 --data '{
@@ -841,7 +841,7 @@ json = response.json()
 
 <!--  SHELL code -->
 ```shell
-curl --location --request DELETE 'https://scrap-io.test/api/v1/exports/2' \
+curl --location --request DELETE 'https://scrap.io/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```

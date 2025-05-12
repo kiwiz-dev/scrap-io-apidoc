@@ -284,9 +284,11 @@ This endpoint allows you to get one of your exports depending on the id.
 
 <!--  PHP code -->
 ```php
-$url = 'https://scrap.io/api/v1/exports/2/download?type=csv';
+// First, get the download url
+$url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv';
 
 $headers = [
+  'Content-Type: application/json',
   'Authorization: Bearer xxxxxxxxxx'
 ];
 
@@ -296,10 +298,13 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 $response = curl_exec($curl);
-
 curl_close($curl);
 
-file_put_contents('the-filename-you-want.csv', $response);
+$downloadUrl = json_decode($response, true)['download_url'];
+
+// Second, download the file
+$fileContent = file_get_contents($downloadUrl);
+file_put_contents('the-filename-you-want.csv', $fileContent);
 ```
 
 <!--  RUBY code -->
@@ -307,14 +312,20 @@ file_put_contents('the-filename-you-want.csv', $response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
+# First, get the download url
+url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
 
 headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
+  'Content-Type' => 'application/json',
+  'Authorization' => 'Bearer xxxxxxxxxx'
 }
 
+response = HTTParty.get(url, headers: headers)
+download_url = JSON.parse(response.body)['download_url']
+
+# Second, download the file
 File.open('the-filename-you-want.csv', 'wb') do |file|
-  file.write HTTParty.get(url, headers: headers).body
+  file.write HTTParty.get(download_url).body
 end
 ```
 
@@ -323,24 +334,32 @@ end
 import requests
 import json
  
-url = "https://scrap.io/api/v1/exports/2/download?type=csv"
+# First, get the download url
+url = "https://scrap-io.test/api/v1/exports/2/download?type=csv"
  
 headers = {
+  "Content-Type": "application/json",
   "Authorization": "Bearer xxxxxxxxxx"
 }
 
 response = requests.get(url, headers=headers)
+download_url = response.json()['download_url']
  
+# Second, download the file
+file_response = requests.get(download_url)
 with open('the-filename-you-want.csv', 'wb') as f:
-    f.write(response.content)
+    f.write(file_response.content)
 ```
 
 <!--  SHELL code -->
 ```shell
+# First, get the download url
 curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?type=csv' \
 --header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx' \
--o the-filename-you-want.csv # This flag allows to directly download the file instead of just returning the content.
+--header 'Authorization: Bearer xxxxxxxxxxx'
+
+# Second, download the first
+curl 'https://url-from-previous-endpoint-response' -o the-filename-you-want.csv
 ```
 
 <!--  JS code -->
@@ -348,22 +367,39 @@ curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?t
 const axios = require('axios')
 const fs = require('fs');
 
-const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
+// First, get the download url
+const url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
 
 const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-  responseType: 'stream'
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer xxxxxxxxxx' 
+  }
 }
 
 axios.get(url, headers)
   .then((response) => {
-    response.data.pipe(fs.createWriteStream('the-filename-you-want.csv'))
+    const downloadUrl = response.data.download_url;
+    
+    // Second, download the file
+    return axios.get(downloadUrl, { responseType: 'stream' });
+  })
+  .then((response) => {
+    response.data.pipe(fs.createWriteStream('the-filename-you-want.csv'));
   });
 ```
 
-> The above code downloads the file.
+> The first code returns JSON structured like this:
 
-This endpoint allows you to download an export based on its id.
+```json
+{
+    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things",
+}
+```
+
+> The second allows to download the file thanks to the retrieved url.
+
+This endpoint allows you to get a temporary url to download an export file based on the export id. The link is valid for 5 minutes.
 
 ### HTTP Request
 

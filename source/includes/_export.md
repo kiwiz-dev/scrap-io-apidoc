@@ -284,7 +284,6 @@ This endpoint allows you to get one of your exports depending on the id.
 
 <!--  PHP code -->
 ```php
-// First, get the download url
 $url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv';
 
 $headers = [
@@ -300,11 +299,7 @@ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($curl);
 curl_close($curl);
 
-$downloadUrl = json_decode($response, true)['download_url'];
-
-// Second, download the file
-$fileContent = file_get_contents($downloadUrl);
-file_put_contents('the-filename-you-want.csv', $fileContent);
+$json = json_decode($response);
 ```
 
 <!--  RUBY code -->
@@ -312,7 +307,6 @@ file_put_contents('the-filename-you-want.csv', $fileContent);
 require 'httparty'
 require 'json'
 
-# First, get the download url
 url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
 
 headers = {
@@ -321,12 +315,7 @@ headers = {
 }
 
 response = HTTParty.get(url, headers: headers)
-download_url = JSON.parse(response.body)['download_url']
-
-# Second, download the file
-File.open('the-filename-you-want.csv', 'wb') do |file|
-  file.write HTTParty.get(download_url).body
-end
+json = JSON.parse(response.body)
 ```
 
 <!--  PYTHON code -->
@@ -334,7 +323,6 @@ end
 import requests
 import json
  
-# First, get the download url
 url = "https://scrap-io.test/api/v1/exports/2/download?type=csv"
  
 headers = {
@@ -343,23 +331,14 @@ headers = {
 }
 
 response = requests.get(url, headers=headers)
-download_url = response.json()['download_url']
- 
-# Second, download the file
-file_response = requests.get(download_url)
-with open('the-filename-you-want.csv', 'wb') as f:
-    f.write(file_response.content)
+json = response.json()
 ```
 
 <!--  SHELL code -->
 ```shell
-# First, get the download url
 curl --location --request GET 'https://scrap-io.test/api/v1/exports/2/download?type=csv' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
-
-# Second, download the first
-curl 'https://url-from-previous-endpoint-response' -o the-filename-you-want.csv
 ```
 
 <!--  JS code -->
@@ -367,7 +346,6 @@ curl 'https://url-from-previous-endpoint-response' -o the-filename-you-want.csv
 const axios = require('axios')
 const fs = require('fs');
 
-// First, get the download url
 const url = 'https://scrap-io.test/api/v1/exports/2/download?type=csv'
 
 const headers = {
@@ -379,25 +357,17 @@ const headers = {
 
 axios.get(url, headers)
   .then((response) => {
-    const downloadUrl = response.data.download_url;
-    
-    // Second, download the file
-    return axios.get(downloadUrl, { responseType: 'stream' });
-  })
-  .then((response) => {
-    response.data.pipe(fs.createWriteStream('the-filename-you-want.csv'));
+    json = JSON.parse(response.data)  
   });
 ```
 
-> The first code returns JSON structured like this:
+> The above code returns JSON structured like this:
 
 ```json
 {
     "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things",
 }
 ```
-
-> The second allows to download the file thanks to the retrieved url.
 
 This endpoint allows you to get a temporary url to download an export file based on the export id. The link is valid for 5 minutes.
 

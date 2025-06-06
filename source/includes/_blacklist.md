@@ -11,7 +11,7 @@ This feature is particularly useful to avoid re-scraping the same results, and c
 ## List
 
 ```php
-$url = 'https://scrap.io/api/v1/blacklist';
+$url = 'https://scrap.io/api/v1/blacklists';
 
 $headers = [
   'Authorization: Bearer xxxxxxxxxx'
@@ -33,7 +33,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/blacklist'
+url = 'https://scrap.io/api/v1/blacklists'
 
 headers = {
   Authorization: 'Bearer xxxxxxxxxx',
@@ -48,7 +48,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/blacklist"
+url = "https://scrap.io/api/v1/blacklists"
  
 headers = {
   "Authorization": "Bearer xxxxxxxxxx"
@@ -60,14 +60,14 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/blacklist" \
+curl "https://scrap.io/api/v1/blacklists" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/blacklist'
+const url = 'https://scrap.io/api/v1/blacklists'
 
 const headers = {
   headers: { Authorization: 'Bearer xxxxxxxxxx' },
@@ -98,12 +98,12 @@ This endpoint allows you to get the list of all your blacklists.
 
 **HTTP Request**
 
-`GET https://scrap.io/api/v1/blacklist`
+`GET https://scrap.io/api/v1/blacklists`
 
 ## Show
 
 ```php
-$url = 'https://scrap.io/api/v1/blacklist/my-list';
+$url = 'https://scrap.io/api/v1/blacklists/my-list';
 
 $headers = [
   'Authorization: Bearer xxxxxxxxxx'
@@ -125,7 +125,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/blacklist/my-list'
+url = 'https://scrap.io/api/v1/blacklists/my-list'
 
 headers = {
   Authorization: 'Bearer xxxxxxxxxx',
@@ -140,7 +140,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/blacklist/my-list"
+url = "https://scrap.io/api/v1/blacklists/my-list"
  
 headers = {
   "Authorization": "Bearer xxxxxxxxxx"
@@ -152,14 +152,14 @@ json = response.json()
 ```
 
 ```shell
-curl "https://scrap.io/api/v1/blacklist/my-list" \
+curl "https://scrap.io/api/v1/blacklists/my-list" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/blacklist/my-list'
+const url = 'https://scrap.io/api/v1/blacklists/my-list'
 
 const headers = {
   headers: { Authorization: 'Bearer xxxxxxxxxx' },
@@ -202,7 +202,7 @@ This endpoint allows you to get a paginated list of all your entries for a speci
 
 **HTTP Request**
 
-`GET https://scrap.io/api/v1/blacklist/{list-name}`
+`GET https://scrap.io/api/v1/blacklists/{list-name}`
 
 ### Query parameters
 
@@ -213,7 +213,7 @@ This endpoint allows you to get a paginated list of all your entries for a speci
 ## Add
 
 ```php
-$url = 'https://scrap.io/api/v1/blacklist/my-list-1';
+$url = 'https://scrap.io/api/v1/blacklists/my-list-1';
 
 $params = [
   'type' => 'domain',
@@ -242,7 +242,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+url = 'https://scrap.io/api/v1/blacklists/my-list-1'
 
 params = {
   type: 'domain',
@@ -262,7 +262,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/blacklist/my-list-1"
+url = "https://scrap.io/api/v1/blacklists/my-list-1"
  
 params = {
   "type": "domain",
@@ -279,7 +279,7 @@ json = response.json()
 ```
 
 ```shell
-curl -X POST "https://scrap.io/api/v1/blacklist/my-list-1" \
+curl -X POST "https://scrap.io/api/v1/blacklists/my-list-1" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "type=domain" \
   -d "data=['sugarfishsushi.com']"
@@ -288,7 +288,7 @@ curl -X POST "https://scrap.io/api/v1/blacklist/my-list-1" \
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+const url = 'https://scrap.io/api/v1/blacklists/my-list-1'
 
 const params = {
   type: 'domain',
@@ -317,7 +317,7 @@ This endpoint allows you to add data to a blacklist (google_id, place_id, domain
 
 **HTTP Request**
 
-`POST https://scrap.io/api/v1/blacklist/{list-name}`
+`POST https://scrap.io/api/v1/blacklists/{list-name}`
 
 ### Query Parameters
 
@@ -329,7 +329,7 @@ data | array | yes | Data to add to the blacklist. Must be an array of strings [
 ## Delete
 
 ```php
-$url = 'https://scrap.io/api/v1/blacklist/my-list-1';
+$url = 'https://scrap.io/api/v1/blacklists/my-list-1';
 
 $headers = [
   'Authorization: Bearer xxxxxxxxxx'
@@ -352,7 +352,7 @@ $json = json_decode($response);
 require 'httparty'
 require 'json'
 
-url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+url = 'https://scrap.io/api/v1/blacklists/my-list-1'
 
 headers = {
   Authorization: 'Bearer xxxxxxxxxx',
@@ -367,7 +367,7 @@ json = JSON.parse(response.body)
 import requests
 import json
  
-url = "https://scrap.io/api/v1/blacklist/my-list-1"
+url = "https://scrap.io/api/v1/blacklists/my-list-1"
  
 headers = {
   "Authorization": "Bearer xxxxxxxxxx"
@@ -379,14 +379,14 @@ json = response.json()
 ```
 
 ```shell
-curl -X DELETE "https://scrap.io/api/v1/blacklist/my-list-1" \
+curl -X DELETE "https://scrap.io/api/v1/blacklists/my-list-1" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
 ```javascript
 const axios = require('axios')
 
-const url = 'https://scrap.io/api/v1/blacklist/my-list-1'
+const url = 'https://scrap.io/api/v1/blacklists/my-list-1'
 
 const headers = {
   headers: { Authorization: 'Bearer xxxxxxxxxx' },
@@ -410,4 +410,4 @@ This endpoint allows you to delete a list.
 
 **HTTP Request**
 
-`DELETE https://scrap.io/api/v1/blacklist/{list-name}`
+`DELETE https://scrap.io/api/v1/blacklists/{list-name}`

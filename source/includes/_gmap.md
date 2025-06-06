@@ -1,9 +1,5 @@
 # GMap
 
-<aside class="warning">
-  We've changed our endpoints! Don't worry, old endpoints are still available for now but don't forget to update them.
-</aside>
-
 ## Types
 
 ```php

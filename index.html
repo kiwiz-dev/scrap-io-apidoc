@@ -2562,7 +2562,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You can blacklist up to 10 million items.
 </aside>
-<h2 id='blacklist-list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span><span class="p">;</span>
+<h2 id='blacklist-list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2581,7 +2581,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
@@ -2593,7 +2593,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklist"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
@@ -2602,11 +2602,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklist"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklists"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklist</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
@@ -2635,8 +2635,8 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <p><strong>HTTP Request</strong></p>
 
-<p><code>GET https://scrap.io/api/v1/blacklist</code></p>
-<h2 id='blacklist-show'>Show</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list'</span><span class="p">;</span>
+<p><code>GET https://scrap.io/api/v1/blacklists</code></p>
+<h2 id='blacklist-show'>Show</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2655,7 +2655,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
@@ -2667,7 +2667,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklist/my-list"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
@@ -2676,11 +2676,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklist/my-list"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklists/my-list"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklist/my-list</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
@@ -2721,7 +2721,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <p><strong>HTTP Request</strong></p>
 
-<p><code>GET https://scrap.io/api/v1/blacklist/{list-name}</code></p>
+<p><code>GET https://scrap.io/api/v1/blacklists/{list-name}</code></p>
 <h3 id='blacklist-show-query-parameters'>Query parameters</h3>
 <table><thead>
 <tr>
@@ -2742,7 +2742,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Get the results for the given page</td>
 </tr>
 </tbody></table>
-<h2 id='blacklist-add'>Add</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
+<h2 id='blacklist-add'>Add</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'domain'</span><span class="p">,</span>
@@ -2768,7 +2768,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="ss">type: </span><span class="s1">'domain'</span><span class="p">,</span>
@@ -2785,7 +2785,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklist/my-list-1"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list-1"</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"type"</span><span class="p">:</span> <span class="s">"domain"</span><span class="p">,</span>
@@ -2799,13 +2799,13 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://scrap.io/api/v1/blacklist/my-list-1"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://scrap.io/api/v1/blacklists/my-list-1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"type=domain"</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s2">"data=['sugarfishsushi.com']"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklist/my-list-1</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list-1</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">domain</span><span class="dl">'</span><span class="p">,</span>
@@ -2832,7 +2832,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <p><strong>HTTP Request</strong></p>
 
-<p><code>POST https://scrap.io/api/v1/blacklist/{list-name}</code></p>
+<p><code>POST https://scrap.io/api/v1/blacklists/{list-name}</code></p>
 <h3 id='blacklist-add-query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2855,7 +2855,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Data to add to the blacklist. Must be an array of strings [&quot;xxx1&quot;, &quot;xxx2&quot;] - (limited to 1,000 entries per query).</td>
 </tr>
 </tbody></table>
-<h2 id='blacklist-delete'>Delete</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span><span class="p">;</span>
+<h2 id='blacklist-delete'>Delete</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
   <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
@@ -2875,7 +2875,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklist/my-list-1'</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
@@ -2887,7 +2887,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklist/my-list-1"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list-1"</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
@@ -2896,11 +2896,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://scrap.io/api/v1/blacklist/my-list-1"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://scrap.io/api/v1/blacklists/my-list-1"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklist/my-list-1</span><span class="dl">'</span>
+<span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list-1</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
@@ -2922,7 +2922,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <p><strong>HTTP Request</strong></p>
 
-<p><code>DELETE https://scrap.io/api/v1/blacklist/{list-name}</code></p>
+<p><code>DELETE https://scrap.io/api/v1/blacklists/{list-name}</code></p>
 <h1 id='export'>Export</h1><h2 id='export-all'>All</h2>
 <!--  PHP code -->
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span><span class="p">;</span>

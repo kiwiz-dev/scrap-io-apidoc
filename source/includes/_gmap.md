@@ -416,6 +416,7 @@ axios.get(url, { params: params }, headers)
             "4": 10414,
             "5": 88563
         },
+        "reviews_tags": [],
         "photos_count": "377083+",
         "photos": {
             "0": "https://lh5.googleusercontent.com/p/AF1QipOCRDiPjJ0c7WKYsuiOF9WkCiXv8cQNp_YeLEZo",
@@ -610,6 +611,10 @@ axios.get(url, { params: params }, headers)
                 "3 AM": "usually-not-busy"
             }
         },
+        "booking_links": [],
+        "order_links": [],
+        "offerings_link": null,
+        "hotel_infos": null,
         "is_claimed": true,
         "working_hours": {
             "monday": "open-24-hours",
@@ -913,6 +918,18 @@ axios.get(url, { params: params }, headers)
                 "4": 194,
                 "5": 1034
             },
+            "reviews_tags": {
+                "tip": 70,
+                "omakase": 69,
+                "albacore": 21,
+                "mouth": 14,
+                "ponzu": 13,
+                "blue-crab": 8,
+                "sea-bass": 7,
+                "coast": 7,
+                "crab-roll": 6,
+                "sushi-and-sashimi": 6
+            },
             "photos_count": "1179+",
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
@@ -1089,6 +1106,12 @@ axios.get(url, { params: params }, headers)
                     "11 p.m.": "closed"
                 }
             },
+            "booking_links": [],
+            "order_links": [
+                "https://www.google.com/viewer/chooseprovider?mid=/g/11c56cgphb&g2lbs=AO8LyOKFr5BBg_kYcb_LdPYeo2xJmrGxpa1WR_B7hqwF59aSlxjIB8LZJpEM0U91gNqAm2fArHJ1J1NQ8TP5t0aN2Rrm_KIgHIazPta3OCVm9jbgyJFHkWQ%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=Zcd9aI-2FpKmptQP1szNwAg&ei=Zcd9aI-2FpKmptQP1szNwAg&fo_s=OA,SOE&opi=79508299&orderType=2&ebb=1&cs=0&foub=mcpp"
+            ],
+            "offerings_link": "http://places.singleplatform.com/sugarfish-by-sushi-nozawa-4/menu?ref=google",
+            "hotel_infos": null,
             "is_claimed": true,
             "working_hours": {
                 "monday": "closed",
@@ -1383,6 +1406,18 @@ axios.get(url, { params: params }, headers)
                 "4": 194,
                 "5": 1034
             },
+            "reviews_tags": {
+                "tip": 70,
+                "omakase": 69,
+                "albacore": 21,
+                "mouth": 14,
+                "ponzu": 13,
+                "blue-crab": 8,
+                "sea-bass": 7,
+                "coast": 7,
+                "crab-roll": 6,
+                "sushi-and-sashimi": 6
+            },
             "photos_count": "1179+",
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
@@ -1559,6 +1594,12 @@ axios.get(url, { params: params }, headers)
                     "11 p.m.": "closed"
                 }
             },
+            "booking_links": [],
+            "order_links": [
+                "https://www.google.com/viewer/chooseprovider?mid=/g/11c56cgphb&g2lbs=AO8LyOKFr5BBg_kYcb_LdPYeo2xJmrGxpa1WR_B7hqwF59aSlxjIB8LZJpEM0U91gNqAm2fArHJ1J1NQ8TP5t0aN2Rrm_KIgHIazPta3OCVm9jbgyJFHkWQ%3D&hl=en-US&gl=us&fo_m=MfohQo559jFvMUOzJVpjPL1YMfZ3bInYwBDuMfaXTPp5KXh-&utm_source=tactile&gei=Zcd9aI-2FpKmptQP1szNwAg&ei=Zcd9aI-2FpKmptQP1szNwAg&fo_s=OA,SOE&opi=79508299&orderType=2&ebb=1&cs=0&foub=mcpp"
+            ],
+            "offerings_link": "http://places.singleplatform.com/sugarfish-by-sushi-nozawa-4/menu?ref=google",
+            "hotel_infos": null,
             "is_claimed": true,
             "working_hours": {
                 "monday": "closed",

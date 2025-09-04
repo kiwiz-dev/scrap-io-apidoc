@@ -1701,9 +1701,10 @@ With this endpoint, you can retrieve the google places related to the data provi
 | --------- | ------- | -------- | ----------- |
 | per_page | 10 | No | Number of results per page (1, 10, 25 or 50) |
 | skip_data | 0 | No | Boolean (0 = false / 1 = true) to indicate whether to skip the data part of the response. When the data is skipped, it won't deduct any export credit. |
-skip_blacklist |0 | no | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
-blacklists | Verify all blacklists. | no | Array containing blacklist names. When specified, only the given blacklists will be verified.|
+skip_blacklist |0 | No | Boolean (0 = false or 1 = true) to indicate that you want to skip the verification of potential blacklisted places.|
+blacklists | Verify all blacklists. | No | Array containing blacklist names. When specified, only the given blacklists will be verified.|
 | cursor | | No | Cursor pagination |
+| country_code | | No | 2 letters (ISO 3166-1 alpha-2) country code (FR, US, etc.) |
 | url | | No | Exact URL mentioned on Google Maps |
 | domain | | No | Domain mentioned in Google Maps |
 | email | | No | Email found on the website of Google Place |

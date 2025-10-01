@@ -381,6 +381,7 @@ axios.get(url, { params: params }, headers)
             }
         ],
         "is_closed": false,
+        "is_temporarily_closed": false,
         "descriptions": [
             "160-story skyscraper & observation deck",
             "Spired 828-meter skyscraper with a viewing deck, restaurant, hotel and offices and 11-hectare park."
@@ -405,7 +406,14 @@ axios.get(url, { params: params }, headers)
         "place_id": "ChIJS-JnijRDXz4R4rfO4QLlRf8",
         "owner_name": "Burj Khalifa",
         "owner_id": "104965669872746574451",
-        "price_range": null,
+        "price_range": "$$$",
+        "business_reported_price_range": null,
+        "customer_reported_price_range": "50-60",
+        "customer_reported_price_range_detailed": {
+            "40-50": 30,
+            "50-60": 50,
+            "60-70": 7,
+        },
         "reviews_id": "-52384020103776286",
         "reviews_count": 106266,
         "reviews_rating": 4.7,
@@ -417,6 +425,36 @@ axios.get(url, { params: params }, headers)
             "5": 88563
         },
         "reviews_tags": [],
+        "reviews_highlighted": [
+            {
+                "link": "https://www.google.com/maps/reviews/data=xx123",
+                "rating": 5,
+                "publication_date": "2025-01-25T00:00:00.000000Z",
+                "author": {
+                    "name": "John Doe",
+                    "profile_link": "https://www.google.com/maps/contrib/xx123"
+                },
+                "comment": "A nice comment about this place.",
+                "detailed_experience": [
+                    {
+                        "subject": "GUIDED_DINING_SERVICE_ASPECT",
+                        "type": "rating",
+                        "answer": 5
+                    },
+                    {
+                        "subject": "GUIDED_DINING_PRICE_RANGE",
+                        "type": "select-one",
+                        "answer": {
+                            "key": "E:EUR_50_TO_60",
+                            "label": "€50–60"
+                        }
+                    },
+                ],
+                "photos": [
+                    "https://lh5.googleusercontent.com/p/xx123"
+                ]
+            }
+        ],
         "photos_count": "377083+",
         "photos": {
             "0": "https://lh5.googleusercontent.com/p/AF1QipOCRDiPjJ0c7WKYsuiOF9WkCiXv8cQNp_YeLEZo",
@@ -882,6 +920,7 @@ axios.get(url, { params: params }, headers)
                 }
             ],
             "is_closed": false,
+            "is_temporarily_closed": false,
             "descriptions": [
                 "SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four \"Trust Me®\" options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter.",
                 "Acclaimed sushi & sake destination",
@@ -908,6 +947,13 @@ axios.get(url, { params: params }, headers)
             "owner_name": "SUGARFISH by sushi nozawa",
             "owner_id": "100376796693654910584",
             "price_range": "$$$",
+            "business_reported_price_range": null,
+            "customer_reported_price_range": "50-60",
+            "customer_reported_price_range_detailed": {
+                "40-50": 30,
+                "50-60": 50,
+                "60-70": 7,
+            },
             "reviews_id": "7999305533994836804",
             "reviews_count": 1401,
             "reviews_rating": 4.5,
@@ -930,6 +976,36 @@ axios.get(url, { params: params }, headers)
                 "crab-roll": 6,
                 "sushi-and-sashimi": 6
             },
+            "reviews_highlighted": [
+                {
+                    "link": "https://www.google.com/maps/reviews/data=xx123",
+                    "rating": 5,
+                    "publication_date": "2025-01-25T00:00:00.000000Z",
+                    "author": {
+                        "name": "John Doe",
+                        "profile_link": "https://www.google.com/maps/contrib/xx123"
+                    },
+                    "comment": "A nice comment about this place.",
+                    "detailed_experience": [
+                        {
+                            "subject": "GUIDED_DINING_SERVICE_ASPECT",
+                            "type": "rating",
+                            "answer": 5
+                        },
+                        {
+                            "subject": "GUIDED_DINING_PRICE_RANGE",
+                            "type": "select-one",
+                            "answer": {
+                                "key": "E:EUR_50_TO_60",
+                                "label": "€50–60"
+                            }
+                        },
+                    ],
+                    "photos": [
+                        "https://lh5.googleusercontent.com/p/xx123"
+                    ]
+                }
+            ],
             "photos_count": "1179+",
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
@@ -1370,6 +1446,7 @@ axios.get(url, { params: params }, headers)
                 }
             ],
             "is_closed": false,
+            "is_temporarily_closed": false,
             "descriptions": [
                 "SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four \"Trust Me®\" options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter.",
                 "Acclaimed sushi & sake destination",
@@ -1396,6 +1473,14 @@ axios.get(url, { params: params }, headers)
             "owner_name": "SUGARFISH by sushi nozawa",
             "owner_id": "100376796693654910584",
             "price_range": "$$$",
+            "business_reported_price_range": null,
+            "customer_reported_price_range": "50-60",
+            "customer_reported_price_range_detailed": {
+                "40-50": 30,
+                "50-60": 50,
+                "60-70": 7,
+            },
+            "customer_reported_price_range_currency": "EUR",
             "reviews_id": "7999305533994836804",
             "reviews_count": 1401,
             "reviews_rating": 4.5,
@@ -1418,6 +1503,36 @@ axios.get(url, { params: params }, headers)
                 "crab-roll": 6,
                 "sushi-and-sashimi": 6
             },
+            "reviews_highlighted": [
+                {
+                    "link": "https://www.google.com/maps/reviews/data=xx123",
+                    "rating": 5,
+                    "publication_date": "2025-01-25T00:00:00.000000Z",
+                    "author": {
+                        "name": "John Doe",
+                        "profile_link": "https://www.google.com/maps/contrib/xx123"
+                    },
+                    "comment": "A nice comment about this place.",
+                    "detailed_experience": [
+                        {
+                            "subject": "GUIDED_DINING_SERVICE_ASPECT",
+                            "type": "rating",
+                            "answer": 5
+                        },
+                        {
+                            "subject": "GUIDED_DINING_PRICE_RANGE",
+                            "type": "select-one",
+                            "answer": {
+                                "key": "E:EUR_50_TO_60",
+                                "label": "€50–60"
+                            }
+                        },
+                    ],
+                    "photos": [
+                        "https://lh5.googleusercontent.com/p/xx123"
+                    ]
+                }
+            ],
             "photos_count": "1179+",
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",

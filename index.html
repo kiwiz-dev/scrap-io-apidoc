@@ -969,6 +969,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="p">}</span><span class="w">
         </span><span class="p">],</span><span class="w">
         </span><span class="nl">"is_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"is_temporarily_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"descriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="s2">"160-story skyscraper &amp; observation deck"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"Spired 828-meter skyscraper with a viewing deck, restaurant, hotel and offices and 11-hectare park."</span><span class="w">
@@ -993,7 +994,14 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
         </span><span class="nl">"place_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ChIJS-JnijRDXz4R4rfO4QLlRf8"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Burj Khalifa"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104965669872746574451"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"price_range"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$$$"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"business_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"customer_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50-60"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"customer_reported_price_range_detailed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"40-50"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"50-60"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"60-70"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reviews_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-52384020103776286"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reviews_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">106266</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reviews_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w">
@@ -1005,6 +1013,36 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"5"</span><span class="p">:</span><span class="w"> </span><span class="mi">88563</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reviews_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"reviews_highlighted"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/reviews/data=xx123"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"publication_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-25T00:00:00.000000Z"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/contrib/xx123"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A nice comment about this place."</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"detailed_experience"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_SERVICE_ASPECT"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_PRICE_RANGE"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select-one"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E:EUR_50_TO_60"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€50–60"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"https://lh5.googleusercontent.com/p/xx123"</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"photos_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"377083+"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lh5.googleusercontent.com/p/AF1QipOCRDiPjJ0c7WKYsuiOF9WkCiXv8cQNp_YeLEZo"</span><span class="p">,</span><span class="w">
@@ -1482,6 +1520,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"is_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_temporarily_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"descriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four </span><span class="se">\"</span><span class="s2">Trust Me®</span><span class="se">\"</span><span class="s2"> options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter."</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Acclaimed sushi &amp; sake destination"</span><span class="p">,</span><span class="w">
@@ -1508,6 +1547,13 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUGARFISH by sushi nozawa"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100376796693654910584"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$$$"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"business_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"customer_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50-60"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"customer_reported_price_range_detailed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"40-50"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"50-60"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"60-70"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
             </span><span class="nl">"reviews_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7999305533994836804"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reviews_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1401</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reviews_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
@@ -1530,6 +1576,36 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="nl">"crab-roll"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"sushi-and-sashimi"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"reviews_highlighted"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/reviews/data=xx123"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"publication_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-25T00:00:00.000000Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/contrib/xx123"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A nice comment about this place."</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"detailed_experience"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_SERVICE_ASPECT"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_PRICE_RANGE"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select-one"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E:EUR_50_TO_60"</span><span class="p">,</span><span class="w">
+                                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€50–60"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"https://lh5.googleusercontent.com/p/xx123"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nl">"photos_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1179+"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE"</span><span class="p">,</span><span class="w">
@@ -2204,6 +2280,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"is_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"is_temporarily_closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
             </span><span class="nl">"descriptions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"SUGARFISH, a food-centric full-service restaurant, features a unique omakase-style service based on Nozawa’s 50 plus years of experience in Japan and the US. The menu features only tradition-based sushi of the highest quality, offered in four </span><span class="se">\"</span><span class="s2">Trust Me®</span><span class="se">\"</span><span class="s2"> options, as well as an array of a la carte sashimi, sushi, and hand rolls made with carefully sourced fish, warm and loosely-packed rice, and crisp nori. SUGARFISH has locations in Los Angeles and New York City. For more information follow SUGARFISH on Instagram, Facebook and Twitter."</span><span class="p">,</span><span class="w">
                 </span><span class="s2">"Acclaimed sushi &amp; sake destination"</span><span class="p">,</span><span class="w">
@@ -2230,6 +2307,14 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"owner_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SUGARFISH by sushi nozawa"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"owner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100376796693654910584"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$$$"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"business_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"customer_reported_price_range"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50-60"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"customer_reported_price_range_detailed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"40-50"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"50-60"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"60-70"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"customer_reported_price_range_currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reviews_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7999305533994836804"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reviews_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1401</span><span class="p">,</span><span class="w">
             </span><span class="nl">"reviews_rating"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
@@ -2252,6 +2337,36 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="nl">"crab-roll"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"sushi-and-sashimi"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
             </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"reviews_highlighted"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/reviews/data=xx123"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"publication_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-01-25T00:00:00.000000Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"profile_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/contrib/xx123"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A nice comment about this place."</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"detailed_experience"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_SERVICE_ASPECT"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"subject"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GUIDED_DINING_PRICE_RANGE"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"select-one"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"answer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                                </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E:EUR_50_TO_60"</span><span class="p">,</span><span class="w">
+                                </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€50–60"</span><span class="w">
+                            </span><span class="p">}</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="s2">"https://lh5.googleusercontent.com/p/xx123"</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nl">"photos_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1179+"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"0"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE"</span><span class="p">,</span><span class="w">

@@ -11,5 +11,5 @@ The base url for all endpoints is:
 `https://scrap.io/api/v1/`
 
 <aside class="warning">
-  The rate limit is 300 requests per minute.
+  The rate limit is 60 requests per minute.
 </aside>

@@ -324,7 +324,7 @@ This endpoint allows you to add data to a blacklist (google_id, place_id, domain
 Parameter | type |  Required | Description
 ---------| ------- | ------- | -----------
 type | string | yes | Type of data to add to the blacklist (google_id,place_id,domain,email)
-data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"] - (limited to 1,000 entries per query).
+data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"] - (limited to 100 entries per query).
 
 ## Delete
 

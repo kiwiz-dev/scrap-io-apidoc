@@ -402,8 +402,13 @@ axios.get(url, { params: params }, headers)
         "location_country_code": "AE",
         "location_admin1_code": "03",
         "location_admin2_code": null,
+        "other_places_at_this_location": [
+            "0x89c111a17dedfa2b:0x6f033e0043942344"
+        ],
         "link": "https://www.google.com/maps/place/Burj+Khalifa/data=!4m2!3m1!1s0x3e5f43348a67e24b:0xff45e502e1ceb7e2!10m1!1e1",
         "place_id": "ChIJS-JnijRDXz4R4rfO4QLlRf8",
+        "cid": "7387561024624476541",
+        "mid": "/g/11bwy_wz12",
         "owner_name": "Burj Khalifa",
         "owner_id": "104965669872746574451",
         "price_range": "$$$",
@@ -459,6 +464,14 @@ axios.get(url, { params: params }, headers)
         "photos": {
             "0": "https://lh5.googleusercontent.com/p/AF1QipOCRDiPjJ0c7WKYsuiOF9WkCiXv8cQNp_YeLEZo",
             "2": "https://lh5.googleusercontent.com/p/AF1QipPEPJrgd49pNpmeBF3tvZTgut9SZ_q3K5tK1lDz"
+        },
+        "photos_menu": {
+            "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+            "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+        },
+        "photos_360": {
+            "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+            "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
         },
         "characteristics": {
             "accessibility": {
@@ -942,8 +955,13 @@ axios.get(url, { params: params }, headers)
             "location_country_code": "US",
             "location_admin1_code": "NY",
             "location_admin2_code": "061",
+            "other_places_at_this_location": [
+                "0x89c111a17dedfa2b:0x6f033e0043942344"
+            ],
             "link": "https://www.google.com/maps/place/SUGARFISH+by+sushi+nozawa/data=!4m2!3m1!1s0x89c259a17dedfa2b:0x6f033e0043942344!10m1!1e1",
             "place_id": "ChIJK_rtfaFZwokRRCOUQwA-A28",
+            "cid": "7387561024624476541",
+            "mid": "/g/11bwy_wz12",
             "owner_name": "SUGARFISH by sushi nozawa",
             "owner_id": "100376796693654910584",
             "price_range": "$$$",
@@ -1009,7 +1027,15 @@ axios.get(url, { params: params }, headers)
             "photos_count": "1179+",
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
-                "2": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+                "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "photos_menu": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "photos_360": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
             },
             "characteristics": {
                 "service-options": {
@@ -1468,8 +1494,13 @@ axios.get(url, { params: params }, headers)
             "location_country_code": "US",
             "location_admin1_code": "NY",
             "location_admin2_code": "061",
+            "other_places_at_this_location": [
+                "0x89c111a17dedfa2b:0x6f033e0043942344"
+            ],
             "link": "https://www.google.com/maps/place/SUGARFISH+by+sushi+nozawa/data=!4m2!3m1!1s0x89c259a17dedfa2b:0x6f033e0043942344!10m1!1e1",
             "place_id": "ChIJK_rtfaFZwokRRCOUQwA-A28",
+            "cid": "7387561024624476541",
+            "mid": "/g/11bwy_wz12",
             "owner_name": "SUGARFISH by sushi nozawa",
             "owner_id": "100376796693654910584",
             "price_range": "$$$",
@@ -1537,6 +1568,14 @@ axios.get(url, { params: params }, headers)
             "photos": {
                 "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
                 "2": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "photos_menu": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
+            },
+            "photos_360": {
+                "0": "https://lh5.googleusercontent.com/p/AF1QipND93_nJUKC8a41_q3hsBPb4-PAtQbV-rvH0riE",
+                "1": "https://lh5.googleusercontent.com/p/AF1QipOnX8thoIENmUO6Soi9ev88XaSHO0bVZQVcWFNC"
             },
             "characteristics": {
                 "service-options": {

@@ -60,4 +60,6 @@ set :port, 4567
 
 helpers do
   require './lib/toc_data.rb'
+  require './lib/preview-helpers/response-preview-helpers.rb'
+  require './lib/preview-helpers/request-preview-helpers.rb'
 end

@@ -1,30 +1,10 @@
 # GMap
 
 ## Types
-
-```php
-$url = 'https://scrap.io/api/v1/gmap/types';
-
-$params = [
+<%= php_preview('https://scrap.io/api/v1/gmap/types', nil, "[
   'search_term' => 'boulang',
   'locale' => 'fr'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
+]") %>
 
 ```ruby
 require 'httparty'
@@ -130,30 +110,11 @@ locale | en | no | Search locale
 
 ## Locations
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/locations';
-
-$params = [
+<%= php_preview('https://scrap.io/api/v1/gmap/locations', nil, "[
   'country_code' => 'us',
   'type' => 'admin1',
   'search_term' => 'New',
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
+]") %>
 
 ```ruby
 require 'httparty'
@@ -271,28 +232,9 @@ search_term | | no | Term to search for
 
 ## Place
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/place';
-
-$params = [
+<%= php_preview('https://scrap.io/api/v1/gmap/place', nil, "[
   'google_id' => '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
+]") %>
 
 ```ruby
 require 'httparty'
@@ -803,31 +745,12 @@ blacklists | Verify all blacklists. | no | Array containing blacklist names. Whe
 
 ## Search
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/search';
-
-$params = [
+<%= php_preview('https://scrap.io/api/v1/gmap/search', nil, "[
   'country_code' => 'us',
   'admin1_code' => 'NY',
   'city' => 'New York',
   'type' => 'restaurant'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
+]") %>
 
 ```ruby
 require 'httparty'
@@ -1357,28 +1280,9 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 
 ## Enrich
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/enrich';
-
-$params = [
+<%= php_preview('https://scrap.io/api/v1/gmap/enrich', nil, "[
   'domain' => 'sugarfishsushi.com'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
+]") %>
 
 ```ruby
 require 'httparty'

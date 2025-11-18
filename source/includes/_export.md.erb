@@ -2,23 +2,7 @@
 
 ## All
 
-<%= php_preview('https://scrap.io/api/v1/exports?status=success&order_by=asc') %>
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports?status=success&order_by=asc'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports?status=success&order_by=asc') %>
 
 <!--  PYTHON code -->
 ```python
@@ -149,23 +133,7 @@ This endpoint allows you to get a paginated list of your exports.
 
 ## Find
 
-<%= php_preview('https://scrap.io/api/v1/exports/2') %>
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2') %>
 
 <!--  PYTHON code -->
 ```python
@@ -246,23 +214,7 @@ This endpoint allows you to get one of your exports depending on the id.
 
 ## Download
 
-<%= php_preview('https://scrap.io/api/v1/exports/2/download?type=csv', nil, nil, ["'Content-Type: application/json'"]) %>
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Authorization' => 'Bearer xxxxxxxxxx'
-}
-
-response = HTTParty.get(url, headers: headers)
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2/download?type=csv', 'get', nil, ["'Content-Type' => 'application/json'"]) %>
 
 <!--  PYTHON code -->
 ```python
@@ -329,7 +281,7 @@ This endpoint allows you to get a temporary url to download an export file based
 
 ## Create
 
-<%= php_preview('https://scrap.io/api/v1/exports', 'POST', "[
+<%= generate_all_previews('https://scrap.io/api/v1/exports', 'post', {
     'name' => 'My export name (1)',
     'country_code' => 'FR',
     'type' => 'karaoke-bar',
@@ -341,36 +293,7 @@ This endpoint allows you to get a temporary url to download an export file based
     ],
     'gmap_price_range' => '$$',
     'website_has_instagram' => true
-]") %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports'
-
-params = {
-    name: "My export name (1)",
-    country_code: "FR",
-    type: "karaoke-bar",
-    admin1_code: "75",
-    exported_lines_limit: 4,
-    exported_columns: [
-        "google_id", 
-        "name"
-    ],
-    gmap_price_range: "$$",
-    website_has_instagram: true
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.post(url, headers: headers, body: params)
-
-json = JSON.parse(response.body)
-```
+}) %>
 
 ```python
 import requests
@@ -574,28 +497,9 @@ axios.post(url, params, headers)
 
 ## Update
 
-<%= php_preview('https://scrap.io/api/v1/exports/3', 'PATCH', "[
+<%= generate_all_previews('https://scrap.io/api/v1/exports/3', 'patch', {
     'name' => 'My new export name'
-]") %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/3'
-
-params = {
-    name: "My new export name",
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.patch(url, headers: headers, body: params)
-
-json = JSON.parse(response.body)
-```
+}) %>
 
 ```python
 import requests
@@ -690,23 +594,7 @@ This endpoint allows you to rename one of your exports.
 
 ## Delete
 
-<%= php_preview('https://scrap.io/api/v1/exports/2', 'DELETE') %>
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.delete(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2', 'delete') %>
 
 <!--  PYTHON code -->
 ```python

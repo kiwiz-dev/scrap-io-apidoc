@@ -10,22 +10,7 @@ This feature is particularly useful to avoid re-scraping the same results, and c
 
 ## List
 
-<%= php_preview('https://scrap.io/api/v1/blacklists') %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/blacklists'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists') %>
 
 ```python
 import requests
@@ -85,22 +70,7 @@ This endpoint allows you to get the list of all your blacklists.
 
 ## Show
 
-<%= php_preview('https://scrap.io/api/v1/blacklists/my-list') %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/blacklists/my-list'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list') %>
 
 ```python
 import requests
@@ -178,30 +148,10 @@ This endpoint allows you to get a paginated list of all your entries for a speci
 
 ## Add
 
-<%= php_preview('https://scrap.io/api/v1/blacklists/my-list-1', 'POST', "[
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'post', {
   'type' => 'domain',
   'data' => ['sugarfishsushi.com']
-]") %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/blacklists/my-list-1'
-
-params = {
-  type: 'domain',
-  data: ['sugarfishsushi.com']
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.post(url, headers: headers, body: params)
-
-json = JSON.parse(response.body)
-```
+}) %>
 
 ```python
 import requests
@@ -273,22 +223,7 @@ data | array | yes | Data to add to the blacklist. Must be an array of strings [
 
 ## Delete
 
-<%= php_preview('https://scrap.io/api/v1/blacklists/my-list-1', 'DELETE') %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/blacklists/my-list-1'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.delete(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'delete') %>
 
 ```python
 import requests

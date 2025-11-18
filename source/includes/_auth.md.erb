@@ -2,21 +2,7 @@
 
 > To authorize, use this code:
 
-<%= php_preview('api_endpoint_here') %>
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'api_endpoint_here'
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
+<%= generate_all_previews('api_endpoint_here') %>
 
 ```python
 import requests

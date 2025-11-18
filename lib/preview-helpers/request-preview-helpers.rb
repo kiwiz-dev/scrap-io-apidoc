@@ -1,24 +1,43 @@
-def shell_preview
+def generate_all_previews(url, method = 'get', params = nil, headers = [])
+    output = ""
+    output << shell_preview(url, method, params, headers) + "\n\n"
+    output << php_preview(url, method.upcase, params, headers) + "\n\n"
+    output << ruby_preview(url, method.downcase, params, headers) + "\n\n"
+    output << python_preview(url, method, params, headers) + "\n\n"
+    output << javascript_preview(url, method, params, headers)
+    output
 end
 
-def php_preview(url, method = nil, params = nil, headers = [])
+def shell_preview(url, method = nil, params = nil, headers = [])
+    ""
+end
+
+def php_preview(url, method = GET, params = nil, headers = [])
     text = []
     text << "$url = '#{url}';"
     text << ""
     text << "$headers = ["
-    text << "  'Authorization: Bearer xxxxxxxxxx'"
+    text << "  'Authorization: Bearer xxxxxxxxxx',"
 
     for header in headers do
-        text << "  #{header}"
+        text << "  #{header},"
     end
 
     text << "];"
     text << ""
-    text << "$params = #{params};" if params
-    text << "" if params
+    if params
+        text << "params = ["
+
+            params.each do |key, value|
+                text << "  '#{key}' => #{value.inspect},"
+            end
+
+        text << "]"
+    end
+
     text << "$curl = curl_init();"
 
-    if method != "POST" && params
+    if method == "GET" && params
         text << "curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));"
     else
         text << "curl_setopt($curl, CURLOPT_URL, $url);"
@@ -45,11 +64,49 @@ def php_preview(url, method = nil, params = nil, headers = [])
     "```php\n#{text.join("\n")}\n```"
 end
 
-def ruby_preview
+def ruby_preview(url, method = 'get', params = nil, headers = [])
+    text = []
+
+    text << "require 'httparty'"
+    text << "require 'json'"
+    text << ""
+    text << "url = '#{url}'"
+    text << ""
+    text << "headers = {"
+    text << "  'Authorization' => 'Bearer xxxxxxxxxx',"
+
+    for header in headers do
+        text << "  #{header},"
+    end
+
+    text << "}"
+    text << ""
+
+    if params
+        text << "params = {"
+
+            params.each do |key, value|
+                text << "  '#{key}' => #{value.inspect},"
+            end
+
+        text << "}"
+        text << ""
+        text << "response = HTTParty.#{method}(url, headers: headers, body: params)" if method != 'get'
+        text << "response = HTTParty.#{method}(url, headers: headers, query: params)" if method == 'get'
+    else
+        text << "response = HTTParty.#{method}(url, headers: headers)"
+    end
+
+    text << ""
+    text << "json = JSON.parse(response.body)"
+
+    "```ruby\n#{text.join("\n")}\n```"
 end
 
-def python_preview
+def python_preview(url, method = nil, params = nil, headers = [])
+    ""
 end
 
-def javascript_preview
+def javascript_preview(url, method = nil, params = nil, headers = [])
+    ""
 end

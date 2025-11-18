@@ -9,21 +9,6 @@ curl "api_endpoint_here" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'api_endpoint_here'
-
-const headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-};
-
-axios.get(url, { headers })
-  .then((response) => {
-    const json = response.data;
-  });
-```
-
 > Make sure to replace `xxxxxxxxxx` with your API key.
 
 Scrap.io uses API keys to allow access to the API. You can create a new API key in your [security options](https://scrap.io/app/user/security/api-token).

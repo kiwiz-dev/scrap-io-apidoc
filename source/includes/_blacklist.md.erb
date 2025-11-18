@@ -17,21 +17,6 @@ curl "https://scrap.io/api/v1/blacklists" \
   -H "Authorization: Bearer xxxxxxxxxx"
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/blacklists'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -60,21 +45,6 @@ This endpoint allows you to get the list of all your blacklists.
 ```shell
 curl "https://scrap.io/api/v1/blacklists/my-list" \
   -H "Authorization: Bearer xxxxxxxxxx"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/blacklists/my-list'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:
@@ -130,26 +100,6 @@ curl -X POST "https://scrap.io/api/v1/blacklists/my-list-1" \
   -d "data=['sugarfishsushi.com']"
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/blacklists/my-list-1'
-
-const params = {
-  type: 'domain',
-  data: ['sugarfishsushi.com']
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.post(url, params, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -178,21 +128,6 @@ data | array | yes | Data to add to the blacklist. Must be an array of strings [
 ```shell
 curl -X DELETE "https://scrap.io/api/v1/blacklists/my-list-1" \
   -H "Authorization: Bearer xxxxxxxxxx"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/blacklists/my-list-1'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.delete(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:

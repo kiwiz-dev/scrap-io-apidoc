@@ -11,22 +11,6 @@ curl --location --request GET 'https://scrap.io/api/v1/exports' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
 
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports?status=success&order_by=asc'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -126,22 +110,6 @@ curl --location --request GET 'https://scrap.io/api/v1/exports/2' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
 ```
 
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/2'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -189,26 +157,6 @@ This endpoint allows you to get one of your exports depending on the id.
 curl --location --request GET 'https://scrap.io/api/v1/exports/2/download?type=csv' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-const fs = require('fs');
-
-const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
-
-const headers = {
-  headers: { 
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer xxxxxxxxxx' 
-  }
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:
@@ -264,35 +212,6 @@ curl --location --request POST 'https://scrap.io/api/v1/exports' \
     "gmap_price_range": "$$",
     "website_has_instagram": true
 }'
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports'
-
-const params = {
-    name: "My export name (1)",
-    country_code: "FR",
-    type: "karaoke-bar",
-    admin1_code: "75",
-    exported_lines_limit: 4,
-    exported_columns: [
-        "google_id", 
-        "name"
-    ],
-    gmap_price_range: "$$",
-    website_has_instagram: true
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.post(url, params, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:
@@ -433,25 +352,6 @@ curl --location --request PATCH 'https://scrap.io/api/v1/exports/3' \
 }'
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/3'
-
-const params = {
-    name: "My new export name",
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.patch(url, params, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -505,22 +405,6 @@ This endpoint allows you to rename one of your exports.
 curl --location --request DELETE 'https://scrap.io/api/v1/exports/2' \
 --header 'Content-Type: application/json' \
 --header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/2'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.delete(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:

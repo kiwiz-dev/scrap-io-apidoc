@@ -106,42 +106,80 @@ end
 def python_preview(url, method = 'get', params = nil, headers = [])
     text = []
 
-        text << "import requests"
-        text << "import json"
-        text << ""
-        
-        text << "url = '#{url}'"
-        text << ""
-        
-        text << "headers = {"
-        text << "'Authorization': 'Bearer xxxxxxxxxx'"
+    text << "import requests"
+    text << "import json"
+    text << ""
+    
+    text << "url = '#{url}'"
+    text << ""
+    
+    text << "headers = {"
+    text << "'Authorization': 'Bearer xxxxxxxxxx'"
 
-        headers.each do |key, value|
-            text << "  '#{key}': '#{value}',"
-        end if headers
+    headers.each do |key, value|
+        text << "  '#{key}': '#{value}',"
+    end if headers
+
+    text << "}"
+    text << ""
+
+    if params
+        text << "params = {"
+
+            params.each do |key, value|
+                text << "  \"#{key}\": #{value.inspect},"
+            end
 
         text << "}"
         text << ""
+    end
 
-        if params
-            text << "params = {"
-
-                params.each do |key, value|
-                    text << "  \"#{key}\": #{value.inspect},"
-                end
-
-            text << "}"
-            text << ""
-        end
-
-        text << "response = requests.#{method}(url, headers=headers)" if !params
-        text << "response = requests.#{method}(url, data=params, headers=headers)" if params
-        
-        text << "json = response.json()"
+    text << "response = requests.#{method}(url, headers=headers)" if !params
+    text << "response = requests.#{method}(url, data=params, headers=headers)" if params
+    
+    text << "json = response.json()"
 
     "```python\n#{text.join("\n")}\n```"
 end
 
 def javascript_preview(url, method = nil, params = nil, headers = [])
-    ""
+    text = []
+
+    text << "const axios = require('axios')"
+    text << ""
+    text << "const url = '#{url}'"
+    text << ""
+    text << "const headers = {"
+    text << "  Authorization: 'Bearer xxxxxxxxxx',"
+
+    headers.each do |key, value|
+        text << "  #{key}: '#{value}',"
+    end if headers
+
+    text << "};"
+    text << ""
+    if params
+
+        text << "const params = {"
+
+            params.each do |key, value|
+                text << "  #{key}: #{value.inspect},"
+            end
+
+        text << "}"
+
+        if method == 'post' || method == 'patch'
+            text << "axios.#{method}(url, params, { headers: headers })"
+        else
+            text << "axios.#{method}(url, { params: params, headers: headers })"
+        end
+    else
+        text << "axios.#{method}(url, { headers: headers })"
+    end
+    text << ".then((response) => {"
+    text << "    const json = response.data;"
+    text << "    console.log(json);"
+    text << "});"
+
+    "```javascript\n#{text.join("\n")}\n```"
 end

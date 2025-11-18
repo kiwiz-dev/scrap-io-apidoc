@@ -13,26 +13,6 @@ curl -G "https://scrap.io/api/v1/gmap/types" \
   -d "locale=fr"
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/types'
-
-const params = {
-  search_term: 'boulang',
-  locale: 'fr'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -82,27 +62,6 @@ curl -G "https://scrap.io/api/v1/gmap/locations" \
   -d "country_code=us" \
   -d "type=admin1" \
   -d "search_term=New"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/locations'
-
-const params = {
-  country_code: 'us',
-  type: 'admin1',
-  search_term: 'New',
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:
@@ -158,25 +117,6 @@ search_term | | no | Term to search for
 curl -G "https://scrap.io/api/v1/gmap/place" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/place'
-
-const params = {
-  google_id: '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:
@@ -641,28 +581,6 @@ curl -G "https://scrap.io/api/v1/gmap/search" \
   -d "type=restaurant"
 ```
 
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/search'
-
-const params = {
-  country_code: 'us',
-  admin1_code: 'NY',
-  city: 'New York',
-  type: 'restaurant'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -1124,25 +1042,6 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 curl -G "https://scrap.io/api/v1/gmap/enrich" \
   -H "Authorization: Bearer xxxxxxxxxx" \
   -d "domain=sugarfishsushi.com"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/enrich'
-
-const params = {
-  domain: 'sugarfishsushi.com'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
 ```
 
 > The above code returns JSON structured like this:

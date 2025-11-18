@@ -12,11 +12,6 @@ This feature is particularly useful to avoid re-scraping the same results, and c
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists') %>
 
-```shell
-curl "https://scrap.io/api/v1/blacklists" \
-  -H "Authorization: Bearer xxxxxxxxxx"
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -41,11 +36,6 @@ This endpoint allows you to get the list of all your blacklists.
 ## Show
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list') %>
-
-```shell
-curl "https://scrap.io/api/v1/blacklists/my-list" \
-  -H "Authorization: Bearer xxxxxxxxxx"
-```
 
 > The above code returns JSON structured like this:
 
@@ -93,13 +83,6 @@ This endpoint allows you to get a paginated list of all your entries for a speci
   'data' => ['sugarfishsushi.com']
 }) %>
 
-```shell
-curl -X POST "https://scrap.io/api/v1/blacklists/my-list-1" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "type=domain" \
-  -d "data=['sugarfishsushi.com']"
-```
-
 > The above code returns JSON structured like this:
 
 ```json
@@ -124,11 +107,6 @@ data | array | yes | Data to add to the blacklist. Must be an array of strings [
 ## Delete
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'delete') %>
-
-```shell
-curl -X DELETE "https://scrap.io/api/v1/blacklists/my-list-1" \
-  -H "Authorization: Bearer xxxxxxxxxx"
-```
 
 > The above code returns JSON structured like this:
 

@@ -1,6 +1,6 @@
 def generate_all_previews(url, method = 'get', params = nil, headers = nil)
     output = ""
-    output << shell_preview(url, method, params, headers) + "\n\n"
+    output << shell_preview(url, method.upcase, params, headers) + "\n\n"
     output << php_preview(url, method.upcase, params, headers) + "\n\n"
     output << ruby_preview(url, method.downcase, params, headers) + "\n\n"
     output << python_preview(url, method, params, headers) + "\n\n"
@@ -8,8 +8,37 @@ def generate_all_previews(url, method = 'get', params = nil, headers = nil)
     output
 end
 
-def shell_preview(url, method = nil, params = nil, headers = nil)
-    ""
+def shell_preview(url, method = 'GET', params = nil, headers = nil)
+    text = []
+
+    text << "curl -X #{method} '#{url}' \\"
+    text << "    -H 'Authorization: Bearer xxxxxxxxxx' \\"
+
+    if headers
+        headers.each do |key, value|
+            text << "    -H '#{key}: #{value}' \\"
+        end
+    end
+
+    if params && method == 'GET'
+        params.each do |key, value|
+            text << "    -d \"#{key}=#{value}\" \\"
+        end
+    elsif params
+        text << "    -d '{"
+
+        params.each_with_index do |(key, value), index|
+            comma = index < params.size - 1 ? "," : ""
+            text << "        \"#{key}\": #{value.inspect}#{comma}"
+        end
+
+        text << "    }' \\"
+    end
+
+    # Remove the trailing backslash from the last line
+    text[-1] = text[-1].chomp(" \\")
+
+    "```shell\n#{text.join("\n")}\n```"
 end
 
 def php_preview(url, method = 'GET', params = nil, headers = nil)

@@ -4,21 +4,6 @@
 
 <%= generate_all_previews('api_endpoint_here') %>
 
-```python
-import requests
-import json
- 
-url = "api_endpoint_here"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.post(url, headers=headers)
- 
-json = response.json()
-```
-
 ```shell
 curl "api_endpoint_here" \
   -H "Authorization: Bearer xxxxxxxxxx"

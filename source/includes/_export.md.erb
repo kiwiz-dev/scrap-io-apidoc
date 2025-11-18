@@ -4,22 +4,6 @@
 
 <%= generate_all_previews('https://scrap.io/api/v1/exports?status=success&order_by=asc') %>
 
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports?status=success&order_by=asc"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
-
 <!--  SHELL code -->
 ```shell
 curl --location --request GET 'https://scrap.io/api/v1/exports' \
@@ -135,22 +119,6 @@ This endpoint allows you to get a paginated list of your exports.
 
 <%= generate_all_previews('https://scrap.io/api/v1/exports/2') %>
 
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
-
 <!--  SHELL code -->
 ```shell
 curl --location --request GET 'https://scrap.io/api/v1/exports/2' \
@@ -214,23 +182,7 @@ This endpoint allows you to get one of your exports depending on the id.
 
 ## Download
 
-<%= generate_all_previews('https://scrap.io/api/v1/exports/2/download?type=csv', 'get', nil, ["'Content-Type' => 'application/json'"]) %>
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2/download?type=csv"
- 
-headers = {
-  "Content-Type": "application/json",
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
-json = response.json()
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2/download?type=csv', 'get', nil, {'Content-Type' => 'application/json'}) %>
 
 <!--  SHELL code -->
 ```shell
@@ -294,35 +246,6 @@ This endpoint allows you to get a temporary url to download an export file based
     'gmap_price_range' => '$$',
     'website_has_instagram' => true
 }) %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports"
- 
-params = {
-  "name": "My export name (1)",
-    "country_code": "FR",
-    "type": "karaoke-bar",
-    "admin1_code": "75",
-    "exported_lines_limit": 4,
-    "exported_columns": [
-        "google_id", 
-        "name"
-    ],
-    "gmap_price_range": "$$",
-    "website_has_instagram": True
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.post(url, data=params, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl --location --request POST 'https://scrap.io/api/v1/exports' \
@@ -501,25 +424,6 @@ axios.post(url, params, headers)
     'name' => 'My new export name'
 }) %>
 
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/3"
- 
-params = {
-  "name": "My new export name",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.patch(url, data=params, headers=headers)
- 
-json = response.json()
-```
-
 ```shell
 curl --location --request PATCH 'https://scrap.io/api/v1/exports/3' \
 --header 'Content-Type: application/json' \
@@ -595,22 +499,6 @@ This endpoint allows you to rename one of your exports.
 ## Delete
 
 <%= generate_all_previews('https://scrap.io/api/v1/exports/2', 'delete') %>
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.delete(url, headers=headers)
- 
-json = response.json()
-```
 
 <!--  SHELL code -->
 ```shell

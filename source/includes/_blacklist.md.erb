@@ -12,21 +12,6 @@ This feature is particularly useful to avoid re-scraping the same results, and c
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists') %>
 
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/blacklists"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
-
 ```shell
 curl "https://scrap.io/api/v1/blacklists" \
   -H "Authorization: Bearer xxxxxxxxxx"
@@ -71,21 +56,6 @@ This endpoint allows you to get the list of all your blacklists.
 ## Show
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list') %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/blacklists/my-list"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl "https://scrap.io/api/v1/blacklists/my-list" \
@@ -153,26 +123,6 @@ This endpoint allows you to get a paginated list of all your entries for a speci
   'data' => ['sugarfishsushi.com']
 }) %>
 
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/blacklists/my-list-1"
- 
-params = {
-  "type": "domain",
-  "data": ['sugarfishsushi.com']
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.post(url, data=params, headers=headers)
- 
-json = response.json()
-```
-
 ```shell
 curl -X POST "https://scrap.io/api/v1/blacklists/my-list-1" \
   -H "Authorization: Bearer xxxxxxxxxx" \
@@ -224,21 +174,6 @@ data | array | yes | Data to add to the blacklist. Must be an array of strings [
 ## Delete
 
 <%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'delete') %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/blacklists/my-list-1"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.delete(url, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl -X DELETE "https://scrap.io/api/v1/blacklists/my-list-1" \

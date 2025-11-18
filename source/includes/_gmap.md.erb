@@ -6,26 +6,6 @@
   'locale' => 'fr'
 }) %>
 
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/types"
-
-params = {
-  "search_term": "boulang",
-  "locale": "fr"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
 ```shell
 curl -G "https://scrap.io/api/v1/gmap/types" \
   -H "Authorization: Bearer xxxxxxxxxx" \
@@ -95,27 +75,6 @@ locale | en | no | Search locale
   'type' => 'admin1',
   'search_term' => 'New',
 }) %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/locations"
-
-params = {
-  "country_code": "us",
-  "type": "admin1",
-  "search_term": "New",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl -G "https://scrap.io/api/v1/gmap/locations" \
@@ -194,25 +153,6 @@ search_term | | no | Term to search for
 <%= generate_all_previews('https://scrap.io/api/v1/gmap/place', 'get', {
   'google_id' => '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
 }) %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/place"
-
-params = {
-  "google_id": "0x3e5f43348a67e24b:0xff45e502e1ceb7e2",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl -G "https://scrap.io/api/v1/gmap/place" \
@@ -691,28 +631,6 @@ blacklists | Verify all blacklists. | no | Array containing blacklist names. Whe
   'city' => 'New York',
   'type' => 'restaurant'
 }) %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/search"
-
-params = {
-  "country_code": "us",
-  "admin1_code": "NY",
-  "city": "New York",
-  "type": "restaurant"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl -G "https://scrap.io/api/v1/gmap/search" \
@@ -1201,25 +1119,6 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 <%= generate_all_previews('https://scrap.io/api/v1/gmap/enrich', 'get', {
   'domain' => 'sugarfishsushi.com'
 }) %>
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/enrich"
-
-params = {
-  "domain": "sugarfishsushi.com"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
 
 ```shell
 curl -G "https://scrap.io/api/v1/gmap/enrich" \

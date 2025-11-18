@@ -1,4 +1,4 @@
-def generate_all_previews(url, method = 'get', params = nil, headers = [])
+def generate_all_previews(url, method = 'get', params = nil, headers = nil)
     output = ""
     output << shell_preview(url, method, params, headers) + "\n\n"
     output << php_preview(url, method.upcase, params, headers) + "\n\n"
@@ -8,20 +8,20 @@ def generate_all_previews(url, method = 'get', params = nil, headers = [])
     output
 end
 
-def shell_preview(url, method = nil, params = nil, headers = [])
+def shell_preview(url, method = nil, params = nil, headers = nil)
     ""
 end
 
-def php_preview(url, method = GET, params = nil, headers = [])
+def php_preview(url, method = 'GET', params = nil, headers = nil)
     text = []
     text << "$url = '#{url}';"
     text << ""
     text << "$headers = ["
     text << "  'Authorization: Bearer xxxxxxxxxx',"
 
-    for header in headers do
-        text << "  #{header},"
-    end
+    headers.each do |key, value|
+        text << "  '#{key}: #{value}',"
+    end if headers
 
     text << "];"
     text << ""
@@ -75,9 +75,9 @@ def ruby_preview(url, method = 'get', params = nil, headers = [])
     text << "headers = {"
     text << "  'Authorization' => 'Bearer xxxxxxxxxx',"
 
-    for header in headers do
-        text << "  #{header},"
-    end
+    headers.each do |key, value|
+        text << "  '#{key}' => #{value.inspect},"
+    end if headers
 
     text << "}"
     text << ""
@@ -103,8 +103,43 @@ def ruby_preview(url, method = 'get', params = nil, headers = [])
     "```ruby\n#{text.join("\n")}\n```"
 end
 
-def python_preview(url, method = nil, params = nil, headers = [])
-    ""
+def python_preview(url, method = 'get', params = nil, headers = [])
+    text = []
+
+        text << "import requests"
+        text << "import json"
+        text << ""
+        
+        text << "url = '#{url}'"
+        text << ""
+        
+        text << "headers = {"
+        text << "'Authorization': 'Bearer xxxxxxxxxx'"
+
+        headers.each do |key, value|
+            text << "  '#{key}': '#{value}',"
+        end if headers
+
+        text << "}"
+        text << ""
+
+        if params
+            text << "params = {"
+
+                params.each do |key, value|
+                    text << "  \"#{key}\": #{value.inspect},"
+                end
+
+            text << "}"
+            text << ""
+        end
+
+        text << "response = requests.#{method}(url, headers=headers)" if !params
+        text << "response = requests.#{method}(url, data=params, headers=headers)" if params
+        
+        text << "json = response.json()"
+
+    "```python\n#{text.join("\n")}\n```"
 end
 
 def javascript_preview(url, method = nil, params = nil, headers = [])

@@ -14,6 +14,10 @@ def shell_preview(url, method = 'GET', params = nil, headers = nil)
     text << "curl -X #{method} '#{url}' \\"
     text << "    -H 'Authorization: Bearer xxxxxxxxxx' \\"
 
+    if params && method != 'GET'
+        text << "    -H 'Content-Type: application/json' \\"
+    end
+
     if headers
         headers.each do |key, value|
             text << "    -H '#{key}: #{value}' \\"
@@ -55,30 +59,25 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
     text << "];"
     text << ""
     if params
-        text << "params = ["
+        text << "$params = ["
 
             params.each do |key, value|
                 text << "  '#{key}' => #{value.inspect},"
             end
 
-        text << "]"
+        text << "];"
+        text << ""
     end
 
     text << "$curl = curl_init();"
 
-    if method == "GET" && params
+    if method == 'GET' && params
         text << "curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));"
     else
         text << "curl_setopt($curl, CURLOPT_URL, $url);"
-    end
-    
-    if method == "POST"
-        text << "curl_setopt($curl, CURLOPT_POST, true);"
-        text << "curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));"
-    end
-
-    if method == "PATCH" || method == "DELETE"
-        text << "curl_setopt($curl, CURLOPT_CUSTOMREQUEST, '#{method}');"
+        text << "curl_setopt($curl, CURLOPT_POST, true);" if method == "POST"
+        text << "curl_setopt($curl, CURLOPT_CUSTOMREQUEST, '#{method}');" if method == "PATCH" || method == 'DELETE'
+        text << "curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));" if params
     end
     
     text << "curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);"
@@ -163,9 +162,13 @@ def python_preview(url, method = 'get', params = nil, headers = [])
         text << ""
     end
 
-    text << "response = requests.#{method}(url, headers=headers)" if !params
-    text << "response = requests.#{method}(url, data=params, headers=headers)" if params
-    
+    if params
+        text << "response = requests.#{method}(url, params=params, headers=headers)" if method == 'get'
+        text << "response = requests.#{method}(url, data=params, headers=headers)" if method != 'get'
+    else
+        text << "response = requests.#{method}(url, headers=headers)"
+    end
+
     text << "json = response.json()"
 
     "```python\n#{text.join("\n")}\n```"
@@ -207,7 +210,6 @@ def javascript_preview(url, method = nil, params = nil, headers = [])
     end
     text << ".then((response) => {"
     text << "    const json = response.data;"
-    text << "    console.log(json);"
     text << "});"
 
     "```javascript\n#{text.join("\n")}\n```"

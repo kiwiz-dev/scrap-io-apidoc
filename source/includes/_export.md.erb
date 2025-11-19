@@ -23,13 +23,14 @@
             "country": "FR",
             "type": "boat-rental-service",
             "search_params": {
-                "type": "boat-rental-service",
+                "types": [
+                    "boat-rental-service"
+                ],
                 "country": "FR",
                 "admin1": "93",
                 "city": "Beaulieu-sur-Mer"
             },
             "status": "success",
-            "advanced_fields": [],
             "exported_lines_limit": null,
             "exported_columns": [
                 "google_id",
@@ -72,7 +73,7 @@
             "export_only_new_place": 0,
             "scraped_at": "2025-02-19T07:04:09.000000Z",
         },
-    ],
+    ]
 }
 ```
 
@@ -105,12 +106,13 @@ This endpoint allows you to get a paginated list of your exports.
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "success",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -124,7 +126,7 @@ This endpoint allows you to get a paginated list of your exports.
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 
@@ -142,7 +144,7 @@ This endpoint allows you to get one of your exports depending on the id.
 
 ```json
 {
-    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things",
+    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things"
 }
 ```
 
@@ -183,12 +185,13 @@ This endpoint allows you to get a temporary url to download an export file based
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "pending",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -202,7 +205,7 @@ This endpoint allows you to get a temporary url to download an export file based
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 
@@ -312,12 +315,13 @@ This endpoint allows you to get a temporary url to download an export file based
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "pending",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -331,7 +335,7 @@ This endpoint allows you to get a temporary url to download an export file based
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 

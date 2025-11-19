@@ -170,7 +170,10 @@ search_term | | no | Term to search for
             "4": 10414,
             "5": 88563
         },
-        "reviews_tags": [],
+        "reviews_tags": {
+            "clean": 54,
+            "amazing": 100
+        },
         "reviews_highlighted": [
             {
                 "link": "https://www.google.com/maps/reviews/data=xx123",
@@ -507,7 +510,8 @@ search_term | | no | Term to search for
             ],
             "status": "completed",
             "scraped_at": "2022-06-12T12:48:07.000000Z"
-        }
+        },
+        "blacklisted": false
     }
 }
 ```
@@ -929,7 +933,7 @@ blacklists | Verify all blacklists. | no | Array containing blacklist names. Whe
                 "scraped_at": "2022-07-04T10:24:53.000000Z"
             }
         },
-        ...
+        "blacklisted": false
     ]
 }
 ```
@@ -1387,7 +1391,7 @@ We also provide powerful filters that allow you to fine-tune the search accordin
                 "scraped_at": "2022-07-04T10:24:53.000000Z"
             }
         },
-        ...
+        "blacklisted": false
     ]
 }
 ```

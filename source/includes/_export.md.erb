@@ -2,80 +2,7 @@
 
 ## All
 
-<!--  PHP code -->
-```php
-$url = 'https://scrap.io/api/v1/exports?status=success&order_by=asc';
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports?status=success&order_by=asc'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports?status=success&order_by=asc"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
-
-<!--  SHELL code -->
-```shell
-curl --location --request GET 'https://scrap.io/api/v1/exports' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports?status=success&order_by=asc'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports?status=success&order_by=asc') %>
 
 > The above code returns JSON structured like this:
 
@@ -96,13 +23,14 @@ axios.get(url, headers)
             "country": "FR",
             "type": "boat-rental-service",
             "search_params": {
-                "type": "boat-rental-service",
+                "types": [
+                    "boat-rental-service"
+                ],
                 "country": "FR",
                 "admin1": "93",
                 "city": "Beaulieu-sur-Mer"
             },
             "status": "success",
-            "advanced_fields": [],
             "exported_lines_limit": null,
             "exported_columns": [
                 "google_id",
@@ -145,7 +73,7 @@ axios.get(url, headers)
             "export_only_new_place": 0,
             "scraped_at": "2025-02-19T07:04:09.000000Z",
         },
-    ],
+    ]
 }
 ```
 
@@ -167,80 +95,7 @@ This endpoint allows you to get a paginated list of your exports.
 
 ## Find
 
-<!--  PHP code -->
-```php
-$url = 'https://scrap.io/api/v1/exports/2';
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
- 
-json = response.json()
-```
-
-<!--  SHELL code -->
-```shell
-curl --location --request GET 'https://scrap.io/api/v1/exports/2' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/2'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2') %>
 
 > The above code returns JSON structured like this:
 
@@ -251,12 +106,13 @@ axios.get(url, headers)
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "success",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -270,7 +126,7 @@ axios.get(url, headers)
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 
@@ -282,90 +138,13 @@ This endpoint allows you to get one of your exports depending on the id.
 
 ## Download
 
-<!--  PHP code -->
-```php
-$url = 'https://scrap.io/api/v1/exports/2/download?type=csv';
-
-$headers = [
-  'Content-Type: application/json',
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
-
-headers = {
-  'Content-Type' => 'application/json',
-  'Authorization' => 'Bearer xxxxxxxxxx'
-}
-
-response = HTTParty.get(url, headers: headers)
-json = JSON.parse(response.body)
-```
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2/download?type=csv"
- 
-headers = {
-  "Content-Type": "application/json",
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, headers=headers)
-json = response.json()
-```
-
-<!--  SHELL code -->
-```shell
-curl --location --request GET 'https://scrap.io/api/v1/exports/2/download?type=csv' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-const fs = require('fs');
-
-const url = 'https://scrap.io/api/v1/exports/2/download?type=csv'
-
-const headers = {
-  headers: { 
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer xxxxxxxxxx' 
-  }
-}
-
-axios.get(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2/download?type=csv', 'get', nil, {'Content-Type' => 'application/json'}) %>
 
 > The above code returns JSON structured like this:
 
 ```json
 {
-    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things",
+    "download_url": "https://scrap-io.s3.amazonaws.com/some-other-url-things"
 }
 ```
 
@@ -383,146 +162,19 @@ This endpoint allows you to get a temporary url to download an export file based
 
 ## Create
 
-```php
-$url = 'https://scrap.io/api/v1/exports';
-
-$params = [
-    "name" => "My export name (1)",
-    "country_code" => "FR",
-    "type" => "karaoke-bar",
-    "admin1_code" => "75",
-    "exported_lines_limit" => 4,
-    "exported_columns" => [
-        "google_id", 
-        "name"
+<%= generate_all_previews('https://scrap.io/api/v1/exports', 'post', {
+    'name' => 'My export name (1)',
+    'country_code' => 'FR',
+    'type' => 'karaoke-bar',
+    'admin1_code' => '75',
+    'exported_lines_limit' => 4,
+    'exported_columns' => [
+        'google_id', 
+        'name'
     ],
-    "gmap_price_range" => "$$",
-    "website_has_instagram" => true
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports'
-
-params = {
-    name: "My export name (1)",
-    country_code: "FR",
-    type: "karaoke-bar",
-    admin1_code: "75",
-    exported_lines_limit: 4,
-    exported_columns: [
-        "google_id", 
-        "name"
-    ],
-    gmap_price_range: "$$",
-    website_has_instagram: true
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.post(url, headers: headers, body: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports"
- 
-params = {
-  "name": "My export name (1)",
-    "country_code": "FR",
-    "type": "karaoke-bar",
-    "admin1_code": "75",
-    "exported_lines_limit": 4,
-    "exported_columns": [
-        "google_id", 
-        "name"
-    ],
-    "gmap_price_range": "$$",
-    "website_has_instagram": True
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.post(url, data=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl --location --request POST 'https://scrap.io/api/v1/exports' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
---data '{
-    "name": "My export name (1)",
-    "country_code": "FR",
-    "type": "karaoke-bar",
-    "admin1_code": "75",
-    "exported_lines_limit": 4,
-    "exported_columns": [
-        "google_id", 
-        "name"
-    ],
-    "gmap_price_range": "$$",
-    "website_has_instagram": true
-}'
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports'
-
-const params = {
-    name: "My export name (1)",
-    country_code: "FR",
-    type: "karaoke-bar",
-    admin1_code: "75",
-    exported_lines_limit: 4,
-    exported_columns: [
-        "google_id", 
-        "name"
-    ],
-    gmap_price_range: "$$",
-    website_has_instagram: true
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.post(url, params, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+    'gmap_price_range' => '$$',
+    'website_has_instagram' => true
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -533,12 +185,13 @@ axios.post(url, params, headers)
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "pending",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -552,7 +205,7 @@ axios.post(url, params, headers)
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 
@@ -649,96 +302,9 @@ axios.post(url, params, headers)
 
 ## Update
 
-```php
-$url = 'https://scrap.io/api/v1/exports/3';
-
-$params = [
-    "name" => "My new export name"
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
-curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/3'
-
-params = {
-    name: "My new export name",
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.patch(url, headers: headers, body: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/3"
- 
-params = {
-  "name": "My new export name",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.patch(url, data=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl --location --request PATCH 'https://scrap.io/api/v1/exports/3' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
---data '{
-    "name": "My new export name",
-}'
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/3'
-
-const params = {
-    name: "My new export name",
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.patch(url, params, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/3', 'patch', {
+    'name' => 'My new export name'
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -749,12 +315,13 @@ axios.patch(url, params, headers)
     "country": "FR",
     "type": "karaoke-bar",
     "search_params": {
-        "type": "karaoke-bar",
+        "type": [
+            "karaoke-bar"
+        ],
         "country": "FR",
         "admin1": "75"
     },
     "status": "pending",
-    "advanced_fields": [],
     "exported_lines_limit": null,
     "exported_columns": [
         "google_id",
@@ -768,7 +335,7 @@ axios.patch(url, params, headers)
     "credits_used": 0,
     "export_only_new_email": 0,
     "export_only_new_place": 0,
-    "scraped_at": "2025-02-19T07:04:09.000000Z",
+    "scraped_at": "2025-02-19T07:04:09.000000Z"
 }
 ```
 
@@ -786,81 +353,7 @@ This endpoint allows you to rename one of your exports.
 
 ## Delete
 
-<!--  PHP code -->
-```php
-$url = 'https://scrap.io/api/v1/exports/2';
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-<!--  RUBY code -->
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/exports/2'
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.delete(url, headers: headers)
-
-json = JSON.parse(response.body)
-```
-
-<!--  PYTHON code -->
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/exports/2"
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.delete(url, headers=headers)
- 
-json = response.json()
-```
-
-<!--  SHELL code -->
-```shell
-curl --location --request DELETE 'https://scrap.io/api/v1/exports/2' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer xxxxxxxxxxx'
-```
-
-<!--  JS code -->
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/exports/2'
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.delete(url, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+<%= generate_all_previews('https://scrap.io/api/v1/exports/2', 'delete') %>
 
 > The above code returns JSON structured like this:
 

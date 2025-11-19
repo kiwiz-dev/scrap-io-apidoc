@@ -1,97 +1,10 @@
 # GMap
 
 ## Types
-
-```php
-$url = 'https://scrap.io/api/v1/gmap/types';
-
-$params = [
+<%= generate_all_previews('https://scrap.io/api/v1/gmap/types', 'get', {
   'search_term' => 'boulang',
   'locale' => 'fr'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/gmap/types'
-
-params = {
-  search_term: 'boulang',
-  locale: 'fr'
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers, query: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/types"
-
-params = {
-  "search_term": "boulang",
-  "locale": "fr"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl -G "https://scrap.io/api/v1/gmap/types" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "search_term=boulang" \
-  -d "locale=fr"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/types'
-
-const params = {
-  search_term: 'boulang',
-  locale: 'fr'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -130,101 +43,11 @@ locale | en | no | Search locale
 
 ## Locations
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/locations';
-
-$params = [
+<%= generate_all_previews('https://scrap.io/api/v1/gmap/locations', 'get', {
   'country_code' => 'us',
   'type' => 'admin1',
   'search_term' => 'New',
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/gmap/locations'
-
-params = {
-  country_code: 'us',
-  type: 'admin1',
-  search_term: 'New',
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers, query: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/locations"
-
-params = {
-  "country_code": "us",
-  "type": "admin1",
-  "search_term": "New",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl -G "https://scrap.io/api/v1/gmap/locations" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "country_code=us" \
-  -d "type=admin1" \
-  -d "search_term=New"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/locations'
-
-const params = {
-  country_code: 'us',
-  type: 'admin1',
-  search_term: 'New',
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -271,91 +94,9 @@ search_term | | no | Term to search for
 
 ## Place
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/place';
-
-$params = [
+<%= generate_all_previews('https://scrap.io/api/v1/gmap/place', 'get', {
   'google_id' => '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/gmap/place'
-
-params = {
-  google_id: '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers, query: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/place"
-
-params = {
-  "google_id": "0x3e5f43348a67e24b:0xff45e502e1ceb7e2",
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl -G "https://scrap.io/api/v1/gmap/place" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/place'
-
-const params = {
-  google_id: '0x3e5f43348a67e24b:0xff45e502e1ceb7e2',
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -429,7 +170,10 @@ axios.get(url, { params: params }, headers)
             "4": 10414,
             "5": 88563
         },
-        "reviews_tags": [],
+        "reviews_tags": {
+            "clean": 54,
+            "amazing": 100
+        },
         "reviews_highlighted": [
             {
                 "link": "https://www.google.com/maps/reviews/data=xx123",
@@ -766,7 +510,8 @@ axios.get(url, { params: params }, headers)
             ],
             "status": "completed",
             "scraped_at": "2022-06-12T12:48:07.000000Z"
-        }
+        },
+        "blacklisted": false
     }
 }
 ```
@@ -803,106 +548,12 @@ blacklists | Verify all blacklists. | no | Array containing blacklist names. Whe
 
 ## Search
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/search';
-
-$params = [
+<%= generate_all_previews('https://scrap.io/api/v1/gmap/search', 'get', {
   'country_code' => 'us',
   'admin1_code' => 'NY',
   'city' => 'New York',
   'type' => 'restaurant'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/gmap/search'
-
-params = {
-  country_code: 'us',
-  admin1_code: 'NY',
-  city: 'New York',
-  type: 'restaurant'
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers, query: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/search"
-
-params = {
-  "country_code": "us",
-  "admin1_code": "NY",
-  "city": "New York",
-  "type": "restaurant"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl -G "https://scrap.io/api/v1/gmap/search" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "country_code=us" \
-  -d "admin1_code=NY" \
-  -d "city=New York" \
-  -d "type=restaurant"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/search'
-
-const params = {
-  country_code: 'us',
-  admin1_code: 'NY',
-  city: 'New York',
-  type: 'restaurant'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -1282,7 +933,7 @@ axios.get(url, { params: params }, headers)
                 "scraped_at": "2022-07-04T10:24:53.000000Z"
             }
         },
-        ...
+        "blacklisted": false
     ]
 }
 ```
@@ -1357,91 +1008,9 @@ We also provide powerful filters that allow you to fine-tune the search accordin
 
 ## Enrich
 
-```php
-$url = 'https://scrap.io/api/v1/gmap/enrich';
-
-$params = [
+<%= generate_all_previews('https://scrap.io/api/v1/gmap/enrich', 'get', {
   'domain' => 'sugarfishsushi.com'
-];
-
-$headers = [
-  'Authorization: Bearer xxxxxxxxxx'
-];
-
-$curl = curl_init();
-curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));
-curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-$response = curl_exec($curl);
-
-curl_close($curl);
-
-$json = json_decode($response);
-```
-
-```ruby
-require 'httparty'
-require 'json'
-
-url = 'https://scrap.io/api/v1/gmap/enrich'
-
-params = {
-  domain: 'sugarfishsushi.com'
-}
-
-headers = {
-  Authorization: 'Bearer xxxxxxxxxx',
-}
-
-response = HTTParty.get(url, headers: headers, query: params)
-
-json = JSON.parse(response.body)
-```
-
-```python
-import requests
-import json
- 
-url = "https://scrap.io/api/v1/gmap/enrich"
-
-params = {
-  "domain": "sugarfishsushi.com"
-}
- 
-headers = {
-  "Authorization": "Bearer xxxxxxxxxx"
-}
-
-response = requests.get(url, params=params, headers=headers)
- 
-json = response.json()
-```
-
-```shell
-curl -G "https://scrap.io/api/v1/gmap/enrich" \
-  -H "Authorization: Bearer xxxxxxxxxx" \
-  -d "domain=sugarfishsushi.com"
-```
-
-```javascript
-const axios = require('axios')
-
-const url = 'https://scrap.io/api/v1/gmap/enrich'
-
-const params = {
-  domain: 'sugarfishsushi.com'
-}
-
-const headers = {
-  headers: { Authorization: 'Bearer xxxxxxxxxx' },
-}
-
-axios.get(url, { params: params }, headers)
-  .then((response) => {
-    json = JSON.parse(response.data)  
-  });
-```
+}) %>
 
 > The above code returns JSON structured like this:
 
@@ -1822,7 +1391,7 @@ axios.get(url, { params: params }, headers)
                 "scraped_at": "2022-07-04T10:24:53.000000Z"
             }
         },
-        ...
+        "blacklisted": false
     ]
 }
 ```

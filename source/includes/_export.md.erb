@@ -78,7 +78,7 @@
             "export_only_new_email": 0,
             "export_only_new_place": 0,
             "scraped_at": "2025-02-19T07:04:09.000000Z"
-        },
+        }
     ]
 }
 ```
@@ -110,11 +110,11 @@ This endpoint allows you to get a paginated list of your exports.
     "id": 2,
     "name": "Bar karaoké - France - Nouvelle-Aquitaine",
     "country": "FR",
-    "type": [
+    "types": [
         "karaoke-bar"
     ],
     "search_params": {
-        "type": [
+        "types": [
             "karaoke-bar"
         ],
         "country": "FR",
@@ -173,9 +173,7 @@ This endpoint allows you to get a temporary url to download an export file based
 <%= generate_all_previews('https://scrap.io/api/v1/exports', 'post', {
     'name' => 'My export name (1)',
     'country_code' => 'FR',
-    "type": [
-        "karaoke-bar"
-    ],
+    "type" => "karaoke-bar",
     'admin1_code' => '75',
     'exported_lines_limit' => 4,
     'exported_columns' => [

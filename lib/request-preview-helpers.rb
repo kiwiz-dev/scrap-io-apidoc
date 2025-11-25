@@ -150,7 +150,7 @@ def python_preview(url, method = 'get', params = nil, headers = [])
     text << ""
     
     text << "headers = {"
-    text << "'Authorization': 'Bearer xxxxxxxxxx'," 
+    text << "  'Authorization': 'Bearer xxxxxxxxxx',"
 
     if params && method != 'get'
         text << "  'Content-Type': 'application/json',"
@@ -197,7 +197,7 @@ def javascript_preview(url, method = 'get', params = nil, headers = [])
     text << "  Authorization: 'Bearer xxxxxxxxxx',"
 
     if params && method != 'get'
-        text << "  Content-Type => 'application/json',"
+        text << "  Content-Type: 'application/json',"
     end
 
     headers.each do |key, value|

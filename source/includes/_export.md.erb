@@ -21,7 +21,9 @@
             "id": 1,
             "name": "My first export",
             "country": "FR",
-            "type": "boat-rental-service",
+            "types": [
+                "boat-rental-service"
+            ],
             "search_params": {
                 "types": [
                     "boat-rental-service"
@@ -44,15 +46,19 @@
             "credits_used": 0,
             "export_only_new_email": 0,
             "export_only_new_place": 0,
-            "scraped_at": "2025-02-16T09:47:39.000000Z",
+            "scraped_at": "2025-02-16T09:47:39.000000Z"
         },
         {
             "id": 2,
             "name": "Bar karaoké - France - Nouvelle-Aquitaine",
             "country": "FR",
-            "type": "karaoke-bar",
+            "types": [
+                "karaoke-bar"
+            ],
             "search_params": {
-                "type": "karaoke-bar",
+                "types": [
+                    "karaoke-bar"
+                ],
                 "country": "FR",
                 "admin1": "75"
             },
@@ -71,7 +77,7 @@
             "credits_used": 0,
             "export_only_new_email": 0,
             "export_only_new_place": 0,
-            "scraped_at": "2025-02-19T07:04:09.000000Z",
+            "scraped_at": "2025-02-19T07:04:09.000000Z"
         },
     ]
 }
@@ -104,7 +110,9 @@ This endpoint allows you to get a paginated list of your exports.
     "id": 2,
     "name": "Bar karaoké - France - Nouvelle-Aquitaine",
     "country": "FR",
-    "type": "karaoke-bar",
+    "type": [
+        "karaoke-bar"
+    ],
     "search_params": {
         "type": [
             "karaoke-bar"
@@ -165,7 +173,9 @@ This endpoint allows you to get a temporary url to download an export file based
 <%= generate_all_previews('https://scrap.io/api/v1/exports', 'post', {
     'name' => 'My export name (1)',
     'country_code' => 'FR',
-    'type' => 'karaoke-bar',
+    "type": [
+        "karaoke-bar"
+    ],
     'admin1_code' => '75',
     'exported_lines_limit' => 4,
     'exported_columns' => [
@@ -183,9 +193,11 @@ This endpoint allows you to get a temporary url to download an export file based
     "id": 3,
     "name": "My export name (1)",
     "country": "FR",
-    "type": "karaoke-bar",
+    "types": [
+        "karaoke-bar"
+    ],
     "search_params": {
-        "type": [
+        "types": [
             "karaoke-bar"
         ],
         "country": "FR",
@@ -313,9 +325,11 @@ This endpoint allows you to get a temporary url to download an export file based
     "id": 3,
     "name": "My new export name",
     "country": "FR",
-    "type": "karaoke-bar",
+    "types": [
+        "karaoke-bar"
+    ],
     "search_params": {
-        "type": [
+        "types": [
             "karaoke-bar"
         ],
         "country": "FR",

@@ -19,7 +19,7 @@ def shell_preview(url, method = 'GET', params = nil, headers = nil)
 
     text << "    -H 'Authorization: Bearer xxxxxxxxxx' \\"
 
-    if params && method != 'GET'
+    if params && method != 'GET' && method != 'delete'
         text << "    -H 'Content-Type: application/json' \\"
     end
 
@@ -109,7 +109,7 @@ def ruby_preview(url, method = 'get', params = nil, headers = nil)
     text << "headers = {"
     text << "  'Authorization' => 'Bearer xxxxxxxxxx',"
 
-    if params && method != 'get'
+    if params && method != 'get' && method != 'delete'
         text << "  'Content-Type' => 'application/json',"
     end
 
@@ -129,8 +129,8 @@ def ruby_preview(url, method = 'get', params = nil, headers = nil)
 
         text << "}"
         text << ""
-        text << "response = HTTParty.#{method}(url, headers: headers, body: params.to_json)" if method != 'get'
-        text << "response = HTTParty.#{method}(url, headers: headers, query: params)" if method == 'get'
+        text << "response = HTTParty.#{method}(url, headers: headers, body: params.to_json)" if method != 'get' && method != 'delete'
+        text << "response = HTTParty.#{method}(url, headers: headers, query: params)" if method == 'get' || method == 'delete'
     else
         text << "response = HTTParty.#{method}(url, headers: headers)"
     end
@@ -154,7 +154,7 @@ def python_preview(url, method = 'get', params = nil, headers = nil)
     text << "headers = {"
     text << "  'Authorization': 'Bearer xxxxxxxxxx',"
 
-    if params && method != 'get'
+    if params && method != 'get' && method != 'delete'
         text << "  'Content-Type': 'application/json',"
     end
 
@@ -177,8 +177,8 @@ def python_preview(url, method = 'get', params = nil, headers = nil)
     end
 
     if params
-        text << "response = requests.#{method}(url, params=params, headers=headers)" if method == 'get'
-        text << "response = requests.#{method}(url, json=params, headers=headers)" if method != 'get'
+        text << "response = requests.#{method}(url, params=params, headers=headers)" if method == 'get' || method == 'delete'
+        text << "response = requests.#{method}(url, json=params, headers=headers)" if method != 'get' && method != 'delete'
     else
         text << "response = requests.#{method}(url, headers=headers)"
     end
@@ -198,7 +198,7 @@ def javascript_preview(url, method = 'get', params = nil, headers = nil)
     text << "const headers = {"
     text << "  'Authorization': 'Bearer xxxxxxxxxx',"
 
-    if params && method != 'get'
+    if params && method != 'get' && method != 'delete'
         text << "  'Content-Type': 'application/json',"
     end
 

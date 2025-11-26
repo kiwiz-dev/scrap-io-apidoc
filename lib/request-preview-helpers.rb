@@ -213,15 +213,16 @@ def javascript_preview(url, method = 'get', params = nil, headers = nil)
         text << "const params = {"
 
         params.each do |key, value|
-            text << "  #{key}: #{value.inspect},"
+            text << "  '#{key}': #{value.inspect},"
         end
 
         text << "}"
+        text << ""
 
-        if method == 'post' || method == 'patch'
-            text << "axios.#{method}(url, params, { headers: headers })"
-        else
+        if method == 'get' || method == 'delete'
             text << "axios.#{method}(url, { params: params, headers: headers })"
+        else
+            text << "axios.#{method}(url, params, { headers: headers })"
         end
     else
         text << "axios.#{method}(url, { headers: headers })"

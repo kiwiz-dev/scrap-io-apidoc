@@ -11,7 +11,12 @@ end
 def shell_preview(url, method = 'GET', params = nil, headers = nil)
     text = []
 
-    text << "curl -X #{method} '#{url}' \\"
+    if method == 'GET'
+        text << "curl -G '#{url}' \\"
+    else
+        text << "curl -X #{method} '#{url}' \\"
+    end
+
     text << "    -H 'Authorization: Bearer xxxxxxxxxx' \\"
 
     if params && method != 'GET'
@@ -24,7 +29,7 @@ def shell_preview(url, method = 'GET', params = nil, headers = nil)
         end
     end
 
-    if params && method == 'GET'
+    if params && (method == 'GET' || method == 'DELETE')
         params.each do |key, value|
             text << "    -d \"#{key}=#{value}\" \\"
         end
@@ -52,7 +57,7 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
     text << "$headers = ["
     text << "  'Authorization: Bearer xxxxxxxxxx',"
 
-    if params && method != 'GET'
+    if params && method != 'GET' && method != 'DELETE'
         text << "  'Content-Type: application/json',"
     end
 
@@ -65,9 +70,9 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
     if params
         text << "$params = ["
 
-            params.each do |key, value|
-                text << "  '#{key}' => #{value.inspect},"
-            end
+        params.each do |key, value|
+            text << "  '#{key}' => #{value.inspect},"
+        end
 
         text << "];"
         text << ""
@@ -75,15 +80,12 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
 
     text << "$curl = curl_init();"
 
-    if method == 'GET' && params
-        text << "curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));"
-    else
-        text << "curl_setopt($curl, CURLOPT_URL, $url);"
-        text << "curl_setopt($curl, CURLOPT_POST, true);" if method == "POST"
-        text << "curl_setopt($curl, CURLOPT_CUSTOMREQUEST, '#{method}');" if method == "PATCH" || method == 'DELETE'
-        text << "curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));" if params
-    end
-    
+    text << "curl_setopt($curl, CURLOPT_URL, $url);" if ! params
+    text << "curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));" if params && (method == 'GET' || method == 'DELETE')
+    text << "curl_setopt($curl, CURLOPT_POST, true);" if method == "POST"
+    text << "curl_setopt($curl, CURLOPT_CUSTOMREQUEST, '#{method}');" if method != 'GET' && method != 'POST'
+    text << "curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($params));" if params && method != 'GET' && method != 'DELETE'
+
     text << "curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);"
     text << "curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);"
     text << ""
@@ -96,7 +98,7 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
     "```php\n#{text.join("\n")}\n```"
 end
 
-def ruby_preview(url, method = 'get', params = nil, headers = [])
+def ruby_preview(url, method = 'get', params = nil, headers = nil)
     text = []
 
     text << "require 'httparty'"
@@ -121,9 +123,9 @@ def ruby_preview(url, method = 'get', params = nil, headers = [])
     if params
         text << "params = {"
 
-            params.each do |key, value|
-                text << "  '#{key}' => #{value.inspect},"
-            end
+        params.each do |key, value|
+            text << "  '#{key}' => #{value.inspect},"
+        end
 
         text << "}"
         text << ""
@@ -139,7 +141,7 @@ def ruby_preview(url, method = 'get', params = nil, headers = [])
     "```ruby\n#{text.join("\n")}\n```"
 end
 
-def python_preview(url, method = 'get', params = nil, headers = [])
+def python_preview(url, method = 'get', params = nil, headers = nil)
     text = []
 
     text << "import requests"
@@ -166,9 +168,9 @@ def python_preview(url, method = 'get', params = nil, headers = [])
     if params
         text << "params = {"
 
-            params.each do |key, value|
-                text << "  \"#{key}\": #{value.inspect},"
-            end
+        params.each do |key, value|
+            text << "  \"#{key}\": #{value.inspect},"
+        end
 
         text << "}"
         text << ""
@@ -186,7 +188,7 @@ def python_preview(url, method = 'get', params = nil, headers = [])
     "```python\n#{text.join("\n")}\n```"
 end
 
-def javascript_preview(url, method = 'get', params = nil, headers = [])
+def javascript_preview(url, method = 'get', params = nil, headers = nil)
     text = []
 
     text << "const axios = require('axios')"
@@ -194,14 +196,14 @@ def javascript_preview(url, method = 'get', params = nil, headers = [])
     text << "const url = '#{url}'"
     text << ""
     text << "const headers = {"
-    text << "  Authorization: 'Bearer xxxxxxxxxx',"
+    text << "  'Authorization': 'Bearer xxxxxxxxxx',"
 
     if params && method != 'get'
-        text << "  Content-Type: 'application/json',"
+        text << "  'Content-Type': 'application/json',"
     end
 
     headers.each do |key, value|
-        text << "  #{key}: '#{value}',"
+        text << "  '#{key}': '#{value}',"
     end if headers
 
     text << "};"
@@ -210,9 +212,9 @@ def javascript_preview(url, method = 'get', params = nil, headers = [])
 
         text << "const params = {"
 
-            params.each do |key, value|
-                text << "  #{key}: #{value.inspect},"
-            end
+        params.each do |key, value|
+            text << "  #{key}: #{value.inspect},"
+        end
 
         text << "}"
 

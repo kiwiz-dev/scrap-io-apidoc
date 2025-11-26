@@ -19,7 +19,7 @@ def shell_preview(url, method = 'GET', params = nil, headers = nil)
 
     text << "    -H 'Authorization: Bearer xxxxxxxxxx' \\"
 
-    if params && method != 'GET' && method != 'delete'
+    if params && method != 'GET' && method != 'DELETE'
         text << "    -H 'Content-Type: application/json' \\"
     end
 
@@ -80,7 +80,7 @@ def php_preview(url, method = 'GET', params = nil, headers = nil)
 
     text << "$curl = curl_init();"
 
-    text << "curl_setopt($curl, CURLOPT_URL, $url);" if ! params
+    text << "curl_setopt($curl, CURLOPT_URL, $url);" if !params
     text << "curl_setopt($curl, CURLOPT_URL, $url . '?' . http_build_query($params));" if params && (method == 'GET' || method == 'DELETE')
     text << "curl_setopt($curl, CURLOPT_POST, true);" if method == "POST"
     text << "curl_setopt($curl, CURLOPT_CUSTOMREQUEST, '#{method}');" if method != 'GET' && method != 'POST'

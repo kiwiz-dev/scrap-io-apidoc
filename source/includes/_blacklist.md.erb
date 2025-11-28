@@ -1,0 +1,123 @@
+# Blacklist
+
+Our API includes a feature that allows you to add items to a blacklist by **email**, **domain**, **Google ID**, or **Place ID**. This ensures that these items will not be displayed in future requests and will not be counted towards your credits. 
+
+This feature is particularly useful to avoid re-scraping the same results, and counting your credits again for the same data.
+
+<aside class="warning">
+  You can blacklist up to 10 million items.
+</aside>
+
+## List
+
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists') %>
+
+> The above code returns JSON structured like this:
+
+```json
+[
+    {
+        "list": "my-list-1",
+        "nb": 2
+    },
+    {
+        "list": "my-list-2",
+        "nb": 1
+    }
+]
+```
+
+This endpoint allows you to get the list of all your blacklists.
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/blacklists`
+
+## Show
+
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list') %>
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "meta": {
+        "count": 2,
+        "current_page": 1,
+        "previous_page": null,
+        "next_page": null,
+        "per_page": 50,
+        "has_more_pages": false
+    },
+    "data": [
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail@test.com"
+        },
+        {
+            "list": "my-list",
+            "type": "email",
+            "data": "myEmail2@test.com"
+        }
+    ]
+}
+```
+
+This endpoint allows you to get a paginated list of all your entries for a specific blacklist.
+
+**HTTP Request**
+
+`GET https://scrap.io/api/v1/blacklists/{list-name}`
+
+### Query parameters
+
+| Parameter | Type          | Default | Required | Options                                           | Description            |
+|-----------|---------------|---------|----------|---------------------------------------------------|------------------------|
+| page      | integer       | 1       | no       |                                                   | Get the results for the given page |
+
+## Add
+
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'post', {
+  'type' => 'domain',
+  'data' => ['sugarfishsushi.com']
+}) %>
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "All 1 entries successfully processed."
+}
+```
+
+This endpoint allows you to add data to a blacklist (google_id, place_id, domain or email).
+
+**HTTP Request**
+
+`POST https://scrap.io/api/v1/blacklists/{list-name}`
+
+### Body Parameters
+
+Parameter | type |  Required | Description
+---------| ------- | ------- | -----------
+type | string | yes | Type of data to add to the blacklist (google_id,place_id,domain,email)
+data | array | yes | Data to add to the blacklist. Must be an array of strings ["xxx1", "xxx2"] - (limited to 100 entries per query).
+
+## Delete
+
+<%= generate_all_previews('https://scrap.io/api/v1/blacklists/my-list-1', 'delete') %>
+
+> The above code returns JSON structured like this:
+
+```json
+{
+    "message": "success"
+}
+```
+
+This endpoint allows you to delete a list.
+
+**HTTP Request**
+
+`DELETE https://scrap.io/api/v1/blacklists/{list-name}`

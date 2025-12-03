@@ -411,10 +411,12 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'api_endpoint_here'</span><span class="p">;</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'api_endpoint_here'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'api_endpoint_here'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -431,8 +433,9 @@
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'api_endpoint_here'</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
@@ -441,29 +444,26 @@
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"api_endpoint_here"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'api_endpoint_here'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">api_endpoint_here</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-  <span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>xxxxxxxxxx</code> with your API key.</p>
@@ -478,10 +478,12 @@
 <aside class="notice">
 You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </aside>
-<h1 id='subscription'>Subscription</h1><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/subscription'</span><span class="p">;</span>
+<h1 id='subscription'>Subscription</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/subscription'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/subscription'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -498,8 +500,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/subscription'</span>
+
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
@@ -508,29 +511,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/subscription"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/subscription'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/subscription"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/subscription</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
 <span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="nx">headers</span> <span class="p">})</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
-  <span class="p">});</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -596,15 +596,19 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/subscription</code></p>
-<h1 id='gmap'>GMap</h1><h2 id='gmap-types'>Types</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s1">'boulang'</span><span class="p">,</span>
-  <span class="s1">'locale'</span> <span class="o">=&gt;</span> <span class="s1">'fr'</span>
-<span class="p">];</span>
+<h1 id='gmap'>GMap</h1><h2 id='gmap-types'>Types</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"search_term=boulang"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"locale=fr"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s2">"boulang"</span><span class="p">,</span>
+  <span class="s1">'locale'</span> <span class="o">=&gt;</span> <span class="s2">"fr"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -622,13 +626,13 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/types'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">search_term: </span><span class="s1">'boulang'</span><span class="p">,</span>
-  <span class="ss">locale: </span><span class="s1">'fr'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s2">"boulang"</span><span class="p">,</span>
+  <span class="s1">'locale'</span> <span class="o">=&gt;</span> <span class="s2">"fr"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">query: </span><span class="n">params</span><span class="p">)</span>
@@ -637,41 +641,36 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/gmap/types"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/gmap/types'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"search_term"</span><span class="p">:</span> <span class="s">"boulang"</span><span class="p">,</span>
-  <span class="s">"locale"</span><span class="p">:</span> <span class="s">"fr"</span>
-<span class="p">}</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">"locale"</span><span class="p">:</span> <span class="s">"fr"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s2">"https://scrap.io/api/v1/gmap/types"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"search_term=boulang"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"locale=fr"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/gmap/types</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">search_term</span><span class="p">:</span> <span class="dl">'</span><span class="s1">boulang</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">locale</span><span class="p">:</span> <span class="dl">'</span><span class="s1">fr</span><span class="dl">'</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">search_term</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">boulang</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">locale</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">fr</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">},</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -720,16 +719,21 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Search locale</td>
 </tr>
 </tbody></table>
-<h2 id='gmap-locations'>Locations</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s1">'us'</span><span class="p">,</span>
-  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'admin1'</span><span class="p">,</span>
-  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s1">'New'</span><span class="p">,</span>
-<span class="p">];</span>
+<h2 id='gmap-locations'>Locations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"country_code=us"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"type=admin1"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"search_term=New"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"us"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"admin1"</span><span class="p">,</span>
+  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s2">"New"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -747,14 +751,14 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/locations'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">country_code: </span><span class="s1">'us'</span><span class="p">,</span>
-  <span class="ss">type: </span><span class="s1">'admin1'</span><span class="p">,</span>
-  <span class="ss">search_term: </span><span class="s1">'New'</span><span class="p">,</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"us"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"admin1"</span><span class="p">,</span>
+  <span class="s1">'search_term'</span> <span class="o">=&gt;</span> <span class="s2">"New"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">query: </span><span class="n">params</span><span class="p">)</span>
@@ -763,7 +767,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/gmap/locations"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/gmap/locations'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"country_code"</span><span class="p">:</span> <span class="s">"us"</span><span class="p">,</span>
@@ -771,36 +779,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
   <span class="s">"search_term"</span><span class="p">:</span> <span class="s">"New"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
-<span class="p">}</span>
-
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s2">"https://scrap.io/api/v1/gmap/locations"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"country_code=us"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=admin1"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"search_term=New"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/gmap/locations</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">country_code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">us</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">admin1</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">search_term</span><span class="p">:</span> <span class="dl">'</span><span class="s1">New</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">country_code</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">us</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">admin1</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">search_term</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">New</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">},</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -873,14 +871,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Term to search for</td>
 </tr>
 </tbody></table>
-<h2 id='gmap-place'>Place</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'google_id'</span> <span class="o">=&gt;</span> <span class="s1">'0x3e5f43348a67e24b:0xff45e502e1ceb7e2'</span><span class="p">,</span>
-<span class="p">];</span>
+<h2 id='gmap-place'>Place</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'google_id'</span> <span class="o">=&gt;</span> <span class="s2">"0x3e5f43348a67e24b:0xff45e502e1ceb7e2"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -898,12 +899,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/place'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">google_id: </span><span class="s1">'0x3e5f43348a67e24b:0xff45e502e1ceb7e2'</span><span class="p">,</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'google_id'</span> <span class="o">=&gt;</span> <span class="s2">"0x3e5f43348a67e24b:0xff45e502e1ceb7e2"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">query: </span><span class="n">params</span><span class="p">)</span>
@@ -912,38 +913,34 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/gmap/place"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/gmap/place'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"google_id"</span><span class="p">:</span> <span class="s">"0x3e5f43348a67e24b:0xff45e502e1ceb7e2"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
-<span class="p">}</span>
-
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s2">"https://scrap.io/api/v1/gmap/place"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"google_id=0x3e5f43348a67e24b:0xff45e502e1ceb7e2"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/gmap/place</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">google_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">0x3e5f43348a67e24b:0xff45e502e1ceb7e2</span><span class="dl">'</span><span class="p">,</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">google_id</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0x3e5f43348a67e24b:0xff45e502e1ceb7e2</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">},</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -1005,7 +1002,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
         </span><span class="nl">"customer_reported_price_range_detailed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="nl">"40-50"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w">
             </span><span class="nl">"50-60"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"60-70"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"60-70"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reviews_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-52384020103776286"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"reviews_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">106266</span><span class="p">,</span><span class="w">
@@ -1017,7 +1014,10 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"4"</span><span class="p">:</span><span class="w"> </span><span class="mi">10414</span><span class="p">,</span><span class="w">
             </span><span class="nl">"5"</span><span class="p">:</span><span class="w"> </span><span class="mi">88563</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="nl">"reviews_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"reviews_tags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"clean"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amazing"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+        </span><span class="p">},</span><span class="w">
         </span><span class="nl">"reviews_highlighted"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
             </span><span class="p">{</span><span class="w">
                 </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.google.com/maps/reviews/data=xx123"</span><span class="p">,</span><span class="w">
@@ -1041,7 +1041,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                             </span><span class="nl">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E:EUR_50_TO_60"</span><span class="p">,</span><span class="w">
                             </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"€50–60"</span><span class="w">
                         </span><span class="p">}</span><span class="w">
-                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
                 </span><span class="p">],</span><span class="w">
                 </span><span class="nl">"photos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                     </span><span class="s2">"https://lh5.googleusercontent.com/p/xx123"</span><span class="w">
@@ -1354,7 +1354,8 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="p">],</span><span class="w">
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-06-12T12:48:07.000000Z"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"blacklisted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1417,17 +1418,23 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You have to provide either a google_id or a place_id. And only one at a time.
 </aside>
-<h2 id='gmap-search'>Search</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s1">'us'</span><span class="p">,</span>
-  <span class="s1">'admin1_code'</span> <span class="o">=&gt;</span> <span class="s1">'NY'</span><span class="p">,</span>
-  <span class="s1">'city'</span> <span class="o">=&gt;</span> <span class="s1">'New York'</span><span class="p">,</span>
-  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'restaurant'</span>
-<span class="p">];</span>
+<h2 id='gmap-search'>Search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"country_code=us"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"admin1_code=NY"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"city=New York"</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"type=restaurant"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"us"</span><span class="p">,</span>
+  <span class="s1">'admin1_code'</span> <span class="o">=&gt;</span> <span class="s2">"NY"</span><span class="p">,</span>
+  <span class="s1">'city'</span> <span class="o">=&gt;</span> <span class="s2">"New York"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"restaurant"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -1445,15 +1452,15 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/search'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">country_code: </span><span class="s1">'us'</span><span class="p">,</span>
-  <span class="ss">admin1_code: </span><span class="s1">'NY'</span><span class="p">,</span>
-  <span class="ss">city: </span><span class="s1">'New York'</span><span class="p">,</span>
-  <span class="ss">type: </span><span class="s1">'restaurant'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"us"</span><span class="p">,</span>
+  <span class="s1">'admin1_code'</span> <span class="o">=&gt;</span> <span class="s2">"NY"</span><span class="p">,</span>
+  <span class="s1">'city'</span> <span class="o">=&gt;</span> <span class="s2">"New York"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"restaurant"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">query: </span><span class="n">params</span><span class="p">)</span>
@@ -1462,47 +1469,40 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/gmap/search"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/gmap/search'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"country_code"</span><span class="p">:</span> <span class="s">"us"</span><span class="p">,</span>
   <span class="s">"admin1_code"</span><span class="p">:</span> <span class="s">"NY"</span><span class="p">,</span>
   <span class="s">"city"</span><span class="p">:</span> <span class="s">"New York"</span><span class="p">,</span>
-  <span class="s">"type"</span><span class="p">:</span> <span class="s">"restaurant"</span>
-<span class="p">}</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">"type"</span><span class="p">:</span> <span class="s">"restaurant"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s2">"https://scrap.io/api/v1/gmap/search"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"country_code=us"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"admin1_code=NY"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"city=New York"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=restaurant"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/gmap/search</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">country_code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">us</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">admin1_code</span><span class="p">:</span> <span class="dl">'</span><span class="s1">NY</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">city</span><span class="p">:</span> <span class="dl">'</span><span class="s1">New York</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">restaurant</span><span class="dl">'</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">country_code</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">us</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">admin1_code</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">NY</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">city</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">New York</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">restaurant</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">},</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -1880,9 +1880,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="nl">"phones"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T10:24:53.000000Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="err">...</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"blacklisted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1955,9 +1955,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <tr>
 <td>type</td>
 <td>string</td>
-<td>yes</td>
+<td>no</td>
 <td></td>
-<td>ID of Gmap type to search for</td>
+<td>Gmap type to search for</td>
 </tr>
 <tr>
 <td>country_code</td>
@@ -2205,14 +2205,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Filter by presence of phones</td>
 </tr>
 </tbody></table>
-<h2 id='gmap-enrich'>Enrich</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="s1">'sugarfishsushi.com'</span>
-<span class="p">];</span>
+<h2 id='gmap-enrich'>Enrich</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s2">"domain=sugarfishsushi.com"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="s2">"sugarfishsushi.com"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -2230,12 +2233,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/gmap/enrich'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">domain: </span><span class="s1">'sugarfishsushi.com'</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'domain'</span> <span class="o">=&gt;</span> <span class="s2">"sugarfishsushi.com"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">query: </span><span class="n">params</span><span class="p">)</span>
@@ -2244,38 +2247,34 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/gmap/enrich"</span>
-
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"domain"</span><span class="p">:</span> <span class="s">"sugarfishsushi.com"</span>
-<span class="p">}</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/gmap/enrich'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">"domain"</span><span class="p">:</span> <span class="s">"sugarfishsushi.com"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s2">"https://scrap.io/api/v1/gmap/enrich"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"domain=sugarfishsushi.com"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/gmap/enrich</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">domain</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sugarfishsushi.com</span><span class="dl">'</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">domain</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sugarfishsushi.com</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span> <span class="p">},</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="nx">params</span><span class="p">,</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -2654,9 +2653,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
                 </span><span class="nl">"phones"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-07-04T10:24:53.000000Z"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="err">...</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"blacklisted"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -2763,10 +2762,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <aside class="warning">
   You can blacklist up to 10 million items.
 </aside>
-<h2 id='blacklist-list'>List</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span><span class="p">;</span>
+<h2 id='blacklist-list'>List</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -2785,7 +2786,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
@@ -2794,29 +2795,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/blacklists'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklists"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -2837,10 +2835,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>GET https://scrap.io/api/v1/blacklists</code></p>
-<h2 id='blacklist-show'>Show</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span><span class="p">;</span>
+<h2 id='blacklist-show'>Show</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -2859,7 +2859,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
@@ -2868,29 +2868,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/blacklists/my-list'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://scrap.io/api/v1/blacklists/my-list"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -2914,11 +2911,11 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-list"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myEmail2@test.com"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint allows you to get a paginated list of all your entries for a specific blackist.</p>
+<p>This endpoint allows you to get a paginated list of all your entries for a specific blacklist.</p>
 
 <p><strong>HTTP Request</strong></p>
 
@@ -2943,21 +2940,28 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Get the results for the given page</td>
 </tr>
 </tbody></table>
-<h2 id='blacklist-add'>Add</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s1">'domain'</span><span class="p">,</span>
-  <span class="s1">'data'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'sugarfishsushi.com'</span><span class="p">]</span>
-<span class="p">];</span>
+<h2 id='blacklist-add'>Add</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+        "type": "domain",
+        "data": ["sugarfishsushi.com"]
+    }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"domain"</span><span class="p">,</span>
+  <span class="s1">'data'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"sugarfishsushi.com"</span><span class="p">],</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">http_build_query</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
@@ -2971,56 +2975,54 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="ss">type: </span><span class="s1">'domain'</span><span class="p">,</span>
-  <span class="ss">data: </span><span class="p">[</span><span class="s1">'sugarfishsushi.com'</span><span class="p">]</span>
-<span class="p">}</span>
-
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"domain"</span><span class="p">,</span>
+  <span class="s1">'data'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"sugarfishsushi.com"</span><span class="p">],</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list-1"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"type"</span><span class="p">:</span> <span class="s">"domain"</span><span class="p">,</span>
-  <span class="s">"data"</span><span class="p">:</span> <span class="p">[</span><span class="s">'sugarfishsushi.com'</span><span class="p">]</span>
+  <span class="s">"data"</span><span class="p">:</span> <span class="p">[</span><span class="s">"sugarfishsushi.com"</span><span class="p">],</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://scrap.io/api/v1/blacklists/my-list-1"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"type=domain"</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s2">"data=['sugarfishsushi.com']"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list-1</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">domain</span><span class="dl">'</span><span class="p">,</span>
-  <span class="na">data</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">sugarfishsushi.com</span><span class="dl">'</span><span class="p">]</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">domain</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">sugarfishsushi.com</span><span class="dl">"</span><span class="p">],</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -3034,7 +3036,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>POST https://scrap.io/api/v1/blacklists/{list-name}</code></p>
-<h3 id='blacklist-add-query-parameters'>Query Parameters</h3>
+<h3 id='blacklist-add-body-parameters'>Body Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3056,15 +3058,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Data to add to the blacklist. Must be an array of strings [&quot;xxx1&quot;, &quot;xxx2&quot;] - (limited to 100 entries per query).</td>
 </tr>
 </tbody></table>
-<h2 id='blacklist-delete'>Delete</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
+<h2 id='blacklist-delete'>Delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s2">"DELETE"</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'DELETE'</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
@@ -3079,7 +3083,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
@@ -3088,29 +3092,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/blacklists/my-list-1"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/blacklists/my-list-1'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s2">"https://scrap.io/api/v1/blacklists/my-list-1"</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer xxxxxxxxxx"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/blacklists/my-list-1</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -3124,12 +3125,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <p><strong>HTTP Request</strong></p>
 
 <p><code>DELETE https://scrap.io/api/v1/blacklists/{list-name}</code></p>
-<h1 id='export'>Export</h1><h2 id='export-all'>All</h2>
-<!--  PHP code -->
-<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span><span class="p">;</span>
+<h1 id='export'>Export</h1><h2 id='export-all'>All</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -3142,53 +3143,41 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
-</code></pre></div>
-<!--  RUBY code -->
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-</code></pre></div>
-<!--  PYTHON code -->
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports?status=success&amp;order_by=asc"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports?status=success&amp;order_by=asc'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div>
-<!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-</code></pre></div>
-<!--  JS code -->
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports?status=success&amp;order_by=asc</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -3207,15 +3196,18 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
             </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first export"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boat-rental-service"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"boat-rental-service"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nl">"search_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"boat-rental-service"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"boat-rental-service"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"admin1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"93"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beaulieu-sur-Mer"</span><span class="w">
             </span><span class="p">},</span><span class="w">
             </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"advanced_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
             </span><span class="nl">"exported_lines_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
             </span><span class="nl">"exported_columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"google_id"</span><span class="p">,</span><span class="w">
@@ -3229,15 +3221,19 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"credits_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"export_only_new_email"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"export_only_new_place"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-16T09:47:39.000000Z"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-16T09:47:39.000000Z"</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
             </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar karaoké - France - Nouvelle-Aquitaine"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"karaoke-bar"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
             </span><span class="nl">"search_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"karaoke-bar"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
                 </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
                 </span><span class="nl">"admin1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="w">
             </span><span class="p">},</span><span class="w">
@@ -3256,9 +3252,9 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
             </span><span class="nl">"credits_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"export_only_new_email"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
             </span><span class="nl">"export_only_new_place"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="p">,</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-    </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to get a paginated list of your exports.</p>
@@ -3308,12 +3304,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Get the results for the given page</td>
 </tr>
 </tbody></table>
-<h2 id='export-find'>Find</h2>
-<!--  PHP code -->
-<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
+<h2 id='export-find'>Find</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -3326,53 +3322,41 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
-</code></pre></div>
-<!--  RUBY code -->
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-</code></pre></div>
-<!--  PYTHON code -->
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports/2"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports/2'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div>
-<!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-</code></pre></div>
-<!--  JS code -->
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports/2</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -3381,14 +3365,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar karaoké - France - Nouvelle-Aquitaine"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"karaoke-bar"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"search_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"karaoke-bar"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"admin1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"advanced_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"exported_lines_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"exported_columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"google_id"</span><span class="p">,</span><span class="w">
@@ -3402,19 +3389,20 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"credits_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_email"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_place"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to get one of your exports depending on the id.</p>
 <h3 id='export-find-http-request'>HTTP Request</h3>
 <p><code>GET https://scrap.io/api/v1/exports/{id}</code></p>
-<h2 id='export-download'>Download</h2>
-<!--  PHP code -->
-<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span><span class="p">;</span>
+<h2 id='export-download'>Download</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
   <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -3423,66 +3411,54 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
-</code></pre></div>
-<!--  RUBY code -->
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s2">"application/json"</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
+
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-</code></pre></div>
-<!--  PYTHON code -->
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports/2/download?type=csv"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports/2/download?type=csv'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Content-Type"</span><span class="p">:</span> <span class="s">"application/json"</span><span class="p">,</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div>
-<!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> GET <span class="s1">'https://scrap.io/api/v1/exports/2/download?type=csv'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-</code></pre></div>
-<!--  JS code -->
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
-<span class="kd">const</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports/2/download?type=csv</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> 
-    <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
-    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> 
-  <span class="p">}</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://scrap-io.s3.amazonaws.com/some-other-url-things"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"download_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://scrap-io.s3.amazonaws.com/some-other-url-things"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to get a temporary url to download an export file based on the export id. The link is valid for 5 minutes.</p>
@@ -3506,30 +3482,40 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Type of the file you want to download.</td>
 </tr>
 </tbody></table>
-<h2 id='export-create'>Create</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"My export name (1)"</span><span class="p">,</span>
-    <span class="s2">"country_code"</span> <span class="o">=&gt;</span> <span class="s2">"FR"</span><span class="p">,</span>
-    <span class="s2">"type"</span> <span class="o">=&gt;</span> <span class="s2">"karaoke-bar"</span><span class="p">,</span>
-    <span class="s2">"admin1_code"</span> <span class="o">=&gt;</span> <span class="s2">"75"</span><span class="p">,</span>
-    <span class="s2">"exported_lines_limit"</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="s2">"exported_columns"</span> <span class="o">=&gt;</span> <span class="p">[</span>
-        <span class="s2">"google_id"</span><span class="p">,</span> 
-        <span class="s2">"name"</span>
-    <span class="p">],</span>
-    <span class="s2">"gmap_price_range"</span> <span class="o">=&gt;</span> <span class="s2">"$$"</span><span class="p">,</span>
-    <span class="s2">"website_has_instagram"</span> <span class="o">=&gt;</span> <span class="kc">true</span>
-<span class="p">];</span>
+<h2 id='export-create'>Create</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST <span class="s1">'https://scrap.io/api/v1/exports'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+        "name": "My export name (1)",
+        "country_code": "FR",
+        "type": "karaoke-bar",
+        "admin1_code": "75",
+        "exported_lines_limit": 4,
+        "exported_columns": ["google_id", "name"],
+        "gmap_price_range": "$$",
+        "website_has_instagram": true
+    }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s2">"My export name (1)"</span><span class="p">,</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"FR"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"karaoke-bar"</span><span class="p">,</span>
+  <span class="s1">'admin1_code'</span> <span class="o">=&gt;</span> <span class="s2">"75"</span><span class="p">,</span>
+  <span class="s1">'exported_lines_limit'</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s1">'exported_columns'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"google_id"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">],</span>
+  <span class="s1">'gmap_price_range'</span> <span class="o">=&gt;</span> <span class="s2">"$$"</span><span class="p">,</span>
+  <span class="s1">'website_has_instagram'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">http_build_query</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
@@ -3543,95 +3529,72 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">name: </span><span class="s2">"My export name (1)"</span><span class="p">,</span>
-    <span class="ss">country_code: </span><span class="s2">"FR"</span><span class="p">,</span>
-    <span class="ss">type: </span><span class="s2">"karaoke-bar"</span><span class="p">,</span>
-    <span class="ss">admin1_code: </span><span class="s2">"75"</span><span class="p">,</span>
-    <span class="ss">exported_lines_limit: </span><span class="mi">4</span><span class="p">,</span>
-    <span class="ss">exported_columns: </span><span class="p">[</span>
-        <span class="s2">"google_id"</span><span class="p">,</span> 
-        <span class="s2">"name"</span>
-    <span class="p">],</span>
-    <span class="ss">gmap_price_range: </span><span class="s2">"$$"</span><span class="p">,</span>
-    <span class="ss">website_has_instagram: </span><span class="kp">true</span>
-<span class="p">}</span>
-
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s2">"My export name (1)"</span><span class="p">,</span>
+  <span class="s1">'country_code'</span> <span class="o">=&gt;</span> <span class="s2">"FR"</span><span class="p">,</span>
+  <span class="s1">'type'</span> <span class="o">=&gt;</span> <span class="s2">"karaoke-bar"</span><span class="p">,</span>
+  <span class="s1">'admin1_code'</span> <span class="o">=&gt;</span> <span class="s2">"75"</span><span class="p">,</span>
+  <span class="s1">'exported_lines_limit'</span> <span class="o">=&gt;</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s1">'exported_columns'</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"google_id"</span><span class="p">,</span> <span class="s2">"name"</span><span class="p">],</span>
+  <span class="s1">'gmap_price_range'</span> <span class="o">=&gt;</span> <span class="s2">"$$"</span><span class="p">,</span>
+  <span class="s1">'website_has_instagram'</span> <span class="o">=&gt;</span> <span class="kp">true</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"name"</span><span class="p">:</span> <span class="s">"My export name (1)"</span><span class="p">,</span>
-    <span class="s">"country_code"</span><span class="p">:</span> <span class="s">"FR"</span><span class="p">,</span>
-    <span class="s">"type"</span><span class="p">:</span> <span class="s">"karaoke-bar"</span><span class="p">,</span>
-    <span class="s">"admin1_code"</span><span class="p">:</span> <span class="s">"75"</span><span class="p">,</span>
-    <span class="s">"exported_lines_limit"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="s">"exported_columns"</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s">"google_id"</span><span class="p">,</span> 
-        <span class="s">"name"</span>
-    <span class="p">],</span>
-    <span class="s">"gmap_price_range"</span><span class="p">:</span> <span class="s">"$$"</span><span class="p">,</span>
-    <span class="s">"website_has_instagram"</span><span class="p">:</span> <span class="bp">True</span>
+  <span class="s">"country_code"</span><span class="p">:</span> <span class="s">"FR"</span><span class="p">,</span>
+  <span class="s">"type"</span><span class="p">:</span> <span class="s">"karaoke-bar"</span><span class="p">,</span>
+  <span class="s">"admin1_code"</span><span class="p">:</span> <span class="s">"75"</span><span class="p">,</span>
+  <span class="s">"exported_lines_limit"</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="s">"exported_columns"</span><span class="p">:</span> <span class="p">[</span><span class="s">"google_id"</span><span class="p">,</span> <span class="s">"name"</span><span class="p">],</span>
+  <span class="s">"gmap_price_range"</span><span class="p">:</span> <span class="s">"$$"</span><span class="p">,</span>
+  <span class="s">"website_has_instagram"</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://scrap.io/api/v1/exports'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "name": "My export name (1)",
-    "country_code": "FR",
-    "type": "karaoke-bar",
-    "admin1_code": "75",
-    "exported_lines_limit": 4,
-    "exported_columns": [
-        "google_id", 
-        "name"
-    ],
-    "gmap_price_range": "$$",
-    "website_has_instagram": true
-}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My export name (1)</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">country_code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">FR</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">karaoke-bar</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">admin1_code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">75</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">exported_lines_limit</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="na">exported_columns</span><span class="p">:</span> <span class="p">[</span>
-        <span class="dl">"</span><span class="s2">google_id</span><span class="dl">"</span><span class="p">,</span> 
-        <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span>
-    <span class="p">],</span>
-    <span class="na">gmap_price_range</span><span class="p">:</span> <span class="dl">"</span><span class="s2">$$</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">website_has_instagram</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My export name (1)</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">country_code</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">FR</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">karaoke-bar</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">admin1_code</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">75</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">exported_lines_limit</span><span class="dl">'</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">exported_columns</span><span class="dl">'</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">google_id</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">],</span>
+  <span class="dl">'</span><span class="s1">gmap_price_range</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">$$</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">website_has_instagram</span><span class="dl">'</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -3640,14 +3603,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My export name (1)"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"karaoke-bar"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"search_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"karaoke-bar"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"admin1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"advanced_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"exported_lines_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"exported_columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"google_id"</span><span class="p">,</span><span class="w">
@@ -3661,7 +3627,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"credits_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_email"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_place"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h3 id='export-create-http-request'>HTTP Request</h3>
 <p><code>POST https://scrap.io/api/v1/exports</code></p>
@@ -4105,20 +4071,26 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>Website pixel ad</td>
 </tr>
 </tbody></table>
-<h2 id='export-update'>Update</h2><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/3'</span><span class="p">;</span>
-
-<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">"name"</span> <span class="o">=&gt;</span> <span class="s2">"My new export name"</span>
-<span class="p">];</span>
+<h2 id='export-update'>Update</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PATCH <span class="s1">'https://scrap.io/api/v1/exports/3'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+    <span class="nt">-d</span> <span class="s1">'{
+        "name": "My new export name"
+    }'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/3'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$params</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s2">"My new export name"</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_CUSTOMREQUEST</span><span class="p">,</span> <span class="s1">'PATCH'</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">http_build_query</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$params</span><span class="p">));</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="nv">$headers</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
 
@@ -4132,55 +4104,51 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/3'</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="ss">name: </span><span class="s2">"My new export name"</span><span class="p">,</span>
-<span class="p">}</span>
-
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s1">'name'</span> <span class="o">=&gt;</span> <span class="s2">"My new export name"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">,</span> <span class="ss">body: </span><span class="n">params</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports/3"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports/3'</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
+<span class="p">}</span>
 
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">"name"</span><span class="p">:</span> <span class="s">"My new export name"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
-<span class="p">}</span>
-
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">patch</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> PATCH <span class="s1">'https://scrap.io/api/v1/exports/3'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-<span class="nt">--data</span> <span class="s1">'{
-    "name": "My new export name",
-}'</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports/3</span><span class="dl">'</span>
 
-<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My new export name</span><span class="dl">"</span><span class="p">,</span>
-<span class="p">}</span>
-
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">:</span> <span class="dl">"</span><span class="s2">My new export name</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">}</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="nx">patch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="nx">patch</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
@@ -4189,14 +4157,17 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My new export name"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"karaoke-bar"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
     </span><span class="nl">"search_params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"karaoke-bar"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"karaoke-bar"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
         </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"admin1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"advanced_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="nl">"exported_lines_limit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"exported_columns"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="s2">"google_id"</span><span class="p">,</span><span class="w">
@@ -4210,7 +4181,7 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
     </span><span class="nl">"credits_used"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_email"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
     </span><span class="nl">"export_only_new_place"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"scraped_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-02-19T07:04:09.000000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint allows you to rename one of your exports.</p>
@@ -4232,12 +4203,12 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <td>The name of the export. Must be unique, min 3 char and max 255 char.</td>
 </tr>
 </tbody></table>
-<h2 id='export-delete'>Delete</h2>
-<!--  PHP code -->
-<div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
+<h2 id='export-delete'>Delete</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span><span class="p">;</span>
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[</span>
-  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span>
+  <span class="s1">'Authorization: Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">];</span>
 
 <span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
@@ -4251,53 +4222,41 @@ You must replace <code>xxxxxxxxxx</code> with your personal API key.
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
 
 <span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_decode</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
-</code></pre></div>
-<!--  RUBY code -->
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
+</code></pre></div><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'httparty'</span>
 <span class="nb">require</span> <span class="s1">'json'</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">'https://scrap.io/api/v1/exports/2'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="no">Authorization</span><span class="p">:</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="no">HTTParty</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="ss">headers: </span><span class="n">headers</span><span class="p">)</span>
 
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="p">.</span><span class="nf">parse</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="nf">body</span><span class="p">)</span>
-</code></pre></div>
-<!--  PYTHON code -->
-<div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="s">"https://scrap.io/api/v1/exports/2"</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://scrap.io/api/v1/exports/2'</span>
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s">"Authorization"</span><span class="p">:</span> <span class="s">"Bearer xxxxxxxxxx"</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'Bearer xxxxxxxxxx'</span><span class="p">,</span>
 <span class="p">}</span>
 
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
-
 <span class="n">json</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
-</code></pre></div>
-<!--  SHELL code -->
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> DELETE <span class="s1">'https://scrap.io/api/v1/exports/2'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Authorization: Bearer xxxxxxxxxxx'</span>
-</code></pre></div>
-<!--  JS code -->
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">axios</span><span class="dl">'</span><span class="p">)</span>
 
 <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">https://scrap.io/api/v1/exports/2</span><span class="dl">'</span>
 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span> <span class="p">},</span>
-<span class="p">}</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Bearer xxxxxxxxxx</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">};</span>
 
-<span class="nx">axios</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">headers</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">json</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span>  
-  <span class="p">});</span>
+<span class="nx">axios</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="nx">headers</span> <span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>The above code returns JSON structured like this:</p>
